@@ -18,7 +18,7 @@ from driverUtils import executeOnCaeStartup
 from odbAccess import *
 import mesh
 
-from propellant_output_pick import *
+# from propellant_output_pick import *
 from propellent_03_function import *
 
 # 定义参数文本、子程序文本的默认地址
@@ -41,6 +41,19 @@ for instance, num in zip(instance_model, range(len(part_list))):
     if instance != 'bfc-1' and instance != 'fengtou-1' and instance != 'propeller-1':
         instance_list[0] = instance_model[num]
 
+class Part():
+    '''
+    本类中储存所有ABAQUS关于PART模块中的所有操作
+    '''
+    def __init__(self):
+        self.part = part
+
+    def import_part(self, part, part_path):
+        # 导入构件,默认为sat文件
+        acis = mdb.openAcis(part_path, scaleFromFile=OFF)
+        mdb.models['Model-1'].PartFromGeometryFile(name=part, geometryFile=acis,
+        combine=False, dimensionality=THREE_D, type=DEFORMABLE_BODY)
+        print('{} has been imported to CAE!'.format(part))
 
 def FaceIndex2region(indexlist, num):
     '''
