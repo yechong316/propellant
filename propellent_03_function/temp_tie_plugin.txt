@@ -1,0 +1,22 @@
+from propellent_07_job.tie_parameter_GUI_file import *
+
+if var_data().extract_var == 'GUI':
+    data_c_b_position = Data_GUI().c_b_position
+    data_c_b_var = Data_GUI().c_b_var
+    data_b_f_position = Data_GUI().b_f_position
+    data_b_f_var = Data_GUI().b_f_var
+    data_b_h_position = Data_GUI().b_h_position
+    data_b_h_var = Data_GUI().b_h_var
+    data_h_f_position = Data_GUI().h_f_position
+    data_h_f_var = Data_GUI().h_f_var
+elif var_data().extract_var == 'file':
+
+    data_c_b_position = Data_file().c_b_position
+    data_c_b_var = Data_file().c_b_var
+    data_b_f_position = Data_file().b_f_position
+    data_b_f_var = Data_file().b_f_var
+    data_b_h_position = Data_file().b_h_position
+    data_b_h_var = Data_file().b_h_var
+    data_h_f_position = Data_file().h_f_position
+    data_h_f_var = Data_file().h_f_var
+

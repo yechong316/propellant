@@ -1,0 +1,10 @@
+      IF(TIME(2).LE.20)THEN
+          U(1)=297+TIME(2)*-4
+      ELSEIF(TIME(2).LE.740)THEN
+          U(1)=232+TIME(2)*0
+      ELSEIF(TIME(2).LE.741)THEN
+          U(1)=232+TIME(2)*90
+      ELSEIF(TIME(2).LE.1460)THEN
+          U(1)=322+TIME(2)*0
+      ELSEIF(TIME(2).LE.1461)THEN
+          U(1)=322+TIME(2)*-25

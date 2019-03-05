@@ -1,0 +1,14 @@
+from propellent_07_job.warp_parameter_GUI_file import *
+
+if var_data().extract_var == 'GUI':
+    data_Force = Data_GUI().Force
+    data_Thickness = Data_GUI().Thickness
+    data_Width = Data_GUI().Width
+    data_CPUnum = Data_GUI().CPUnum
+elif var_data().extract_var == 'file':
+
+    data_Force = Data_file().Force
+    data_Thickness = Data_file().Thickness
+    data_Width = Data_file().Width
+    data_CPUnum = Data_file().CPUnum
+

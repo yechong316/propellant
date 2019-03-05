@@ -1,0 +1,12 @@
+from propellent_07_job.curing_parameter_GUI_file import *
+
+if var_data().extract_var == 'GUI':
+    data_time = Data_GUI().time
+    data_init_temp = Data_GUI().init_temp
+    data_CPUnum = Data_GUI().CPUnum
+elif var_data().extract_var == 'file':
+
+    data_time = Data_file().time
+    data_init_temp = Data_file().init_temp
+    data_CPUnum = Data_file().CPUnum
+

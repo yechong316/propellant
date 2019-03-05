@@ -1,0 +1,119 @@
+# -*- coding: mbcs -*-
+from part import *
+from material import *
+from section import *
+from optimization import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.openAcis('D:\\Temp\\abaqus_plugins\\propellant\\propellent_06_CAD\\bfc.sat'
+    , scaleFromFile=OFF)
+mdb.models['Model-1'].PartFromGeometryFile(combine=False, dimensionality=
+    THREE_D, geometryFile=mdb.acis, name='bfc', type=DEFORMABLE_BODY)
+mdb.models['Model-1'].Material(name='bfc')
+mdb.models['Model-1'].materials['bfc'].Density(table=((1.23e-06, ), ))
+mdb.models['Model-1'].materials['bfc'].Elastic(table=((0.384, 0.3), ))
+mdb.models['Model-1'].materials['bfc'].Conductivity(table=((1, ), ))
+mdb.models['Model-1'].materials['bfc'].SpecificHeat(table=((1219, ), ))
+mdb.models['Model-1'].materials['bfc'].Expansion(table=((0.000326, ), ))
+mdb.models['Model-1'].HomogeneousSolidSection(material='bfc', name=
+    'bfc_section', thickness=None)
+mdb.models['Model-1'].rootAssembly.Instance(dependent=ON, name='bfc-1', part=
+    mdb.models['Model-1'].parts['bfc'])
+mdb.models['Model-1'].parts['bfc'].Set(cells=
+    mdb.models['Model-1'].parts['bfc'].cells.getSequenceFromMask(mask=(
+    '[#ff ]', ), ), name='Set-bfc')
+mdb.models['Model-1'].parts['bfc'].SectionAssignment(offset=0.0, offsetField=''
+    , offsetType=MIDDLE_SURFACE, region=
+    mdb.models['Model-1'].parts['bfc'].sets['Set-bfc'], sectionName=
+    'bfc_section', thicknessAssignment=FROM_SECTION)
+mdb.models['Model-1'].parts['bfc'].setMeshControls(algorithm=ADVANCING_FRONT, 
+    elemShape=HEX, regions=
+    mdb.models['Model-1'].parts['bfc'].cells.getSequenceFromMask(mask=(
+    '[#ff ]', ), ), technique=SWEEP)
+mdb.models['Model-1'].parts['bfc'].setElementType(elemTypes=(ElemType(
+    elemCode=C3D8R, elemLibrary=STANDARD, secondOrderAccuracy=OFF, 
+    kinematicSplit=AVERAGE_STRAIN, hourglassControl=DEFAULT, 
+    distortionControl=DEFAULT), ElemType(elemCode=C3D6, elemLibrary=STANDARD), 
+    ElemType(elemCode=C3D4, elemLibrary=STANDARD)), regions=
+    mdb.models['Model-1'].parts['bfc'].sets['Set-bfc'])
+mdb.models['Model-1'].parts['bfc'].seedPart(deviationFactor=0.1, minSizeFactor=
+    0.1, size=5)
+mdb.models['Model-1'].parts['bfc'].generateMesh()
+mdb.openAcis(
+    'D:\\Temp\\abaqus_plugins\\propellant\\propellent_06_CAD\\fengtou.sat', 
+    scaleFromFile=OFF)
+mdb.models['Model-1'].PartFromGeometryFile(combine=False, dimensionality=
+    THREE_D, geometryFile=mdb.acis, name='fengtou', type=DEFORMABLE_BODY)
+mdb.models['Model-1'].Material(name='fengtou')
+mdb.models['Model-1'].materials['fengtou'].Density(table=((0.00785, ), ))
+mdb.models['Model-1'].materials['fengtou'].Elastic(table=((200000, 0.3), ))
+mdb.models['Model-1'].materials['fengtou'].Conductivity(table=((1.6578, ), ))
+mdb.models['Model-1'].materials['fengtou'].SpecificHeat(table=((512, ), ))
+mdb.models['Model-1'].materials['fengtou'].Expansion(table=((1.22e-05, ), ))
+mdb.models['Model-1'].HomogeneousSolidSection(material='fengtou', name=
+    'fengtou_section', thickness=None)
+mdb.models['Model-1'].rootAssembly.Instance(dependent=ON, name='fengtou-1', 
+    part=mdb.models['Model-1'].parts['fengtou'])
+mdb.models['Model-1'].parts['fengtou'].Set(cells=
+    mdb.models['Model-1'].parts['fengtou'].cells.getSequenceFromMask(mask=(
+    '[#f ]', ), ), name='Set-fengtou')
+mdb.models['Model-1'].parts['fengtou'].SectionAssignment(offset=0.0, 
+    offsetField='', offsetType=MIDDLE_SURFACE, region=
+    mdb.models['Model-1'].parts['fengtou'].sets['Set-fengtou'], sectionName=
+    'fengtou_section', thicknessAssignment=FROM_SECTION)
+mdb.models['Model-1'].parts['fengtou'].setMeshControls(algorithm=
+    ADVANCING_FRONT, elemShape=HEX, regions=
+    mdb.models['Model-1'].parts['fengtou'].cells.getSequenceFromMask(mask=(
+    '[#f ]', ), ), technique=SWEEP)
+mdb.models['Model-1'].parts['fengtou'].setElementType(elemTypes=(ElemType(
+    elemCode=C3D8R, elemLibrary=STANDARD, secondOrderAccuracy=OFF, 
+    kinematicSplit=AVERAGE_STRAIN, hourglassControl=DEFAULT, 
+    distortionControl=DEFAULT), ElemType(elemCode=C3D6, elemLibrary=STANDARD), 
+    ElemType(elemCode=C3D4, elemLibrary=STANDARD)), regions=
+    mdb.models['Model-1'].parts['fengtou'].sets['Set-fengtou'])
+mdb.models['Model-1'].parts['fengtou'].seedPart(deviationFactor=0.1, 
+    minSizeFactor=0.1, size=3)
+mdb.models['Model-1'].parts['fengtou'].generateMesh()
+mdb.openAcis(
+    'D:\\Temp\\abaqus_plugins\\propellant\\propellent_06_CAD\\propeller.sat', 
+    scaleFromFile=OFF)
+mdb.models['Model-1'].PartFromGeometryFile(combine=False, dimensionality=
+    THREE_D, geometryFile=mdb.acis, name='propeller', type=DEFORMABLE_BODY)
+mdb.models['Model-1'].Material(name='propeller')
+mdb.models['Model-1'].materials['propeller'].Density(table=((1.65e-06, ), ))
+mdb.models['Model-1'].materials['propeller'].Elastic(table=((4000, 0.3), ))
+mdb.models['Model-1'].materials['propeller'].Conductivity(table=((0.001, ), ))
+mdb.models['Model-1'].materials['propeller'].SpecificHeat(table=((1500, ), ))
+mdb.models['Model-1'].materials['propeller'].Expansion(table=((0.0001263, ), ))
+mdb.models['Model-1'].HomogeneousSolidSection(material='propeller', name=
+    'propeller_section', thickness=None)
+mdb.models['Model-1'].rootAssembly.Instance(dependent=ON, name='propeller-1', 
+    part=mdb.models['Model-1'].parts['propeller'])
+mdb.models['Model-1'].parts['propeller'].Set(cells=
+    mdb.models['Model-1'].parts['propeller'].cells.getSequenceFromMask(mask=(
+    '[#ff ]', ), ), name='Set-propeller')
+mdb.models['Model-1'].parts['propeller'].SectionAssignment(offset=0.0, 
+    offsetField='', offsetType=MIDDLE_SURFACE, region=
+    mdb.models['Model-1'].parts['propeller'].sets['Set-propeller'], 
+    sectionName='propeller_section', thicknessAssignment=FROM_SECTION)
+mdb.models['Model-1'].parts['propeller'].setMeshControls(algorithm=
+    ADVANCING_FRONT, elemShape=HEX, regions=
+    mdb.models['Model-1'].parts['propeller'].cells.getSequenceFromMask(mask=(
+    '[#ff ]', ), ), technique=SWEEP)
+mdb.models['Model-1'].parts['propeller'].setElementType(elemTypes=(ElemType(
+    elemCode=C3D8R, elemLibrary=STANDARD, secondOrderAccuracy=OFF, 
+    kinematicSplit=AVERAGE_STRAIN, hourglassControl=DEFAULT, 
+    distortionControl=DEFAULT), ElemType(elemCode=C3D6, elemLibrary=STANDARD), 
+    ElemType(elemCode=C3D4, elemLibrary=STANDARD)), regions=
+    mdb.models['Model-1'].parts['propeller'].sets['Set-propeller'])
+mdb.models['Model-1'].parts['propeller'].seedPart(deviationFactor=0.1, 
+    minSizeFactor=0.1, size=5)
+mdb.models['Model-1'].parts['propeller'].generateMesh()
+# Save by yanguowei on 2019_03_03-23.26.06; build 6.14-4 2015_06_12-04.41.13 135079
