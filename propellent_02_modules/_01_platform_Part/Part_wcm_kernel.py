@@ -88,38 +88,11 @@ def Part_WCM_property(
                         ]
         '''
         mat_size_total = readTXT(inputfile, 1)
-        # 依次4个构件的材料参数,网格尺寸----字符串形式
-        mat_size = [
-            list(filter(None, mat_size_total[1])),
-            list(filter(None, mat_size_total[2])),
-            list(filter(None, mat_size_total[3])),
-            list(filter(None, mat_size_total[4])),
-        ]
-        '''
-        mat_size 是如下形式的4×7的矩阵，每个元素的类型为字符串，
-        mat_size = [
-             ['1.23e-06', '235000', '0.33', '0.00043', '826', '0.00143', '5'], 
-             ['1.23e-06', '0.384', '0.3', '1', '1219', '0.000326', '5'], 
-             ['0.00785', '200000', '0.3', '1.6578', '512', '1.22e-05', '3'], 
-             ['1.65e-06', '4000', '0.3', '0.001', '1500', '0.0001263', '5']
-                  ]
-        '''
-
-        # 删去复合材料的属性
-        del mat_size[0]
-        creat_parameter(True, mat_size, WCM_state=True)
-        # 依次4个构件的材料参数,网格尺寸转换为数字形式
-        mat_size_c = map(float, mat_size[0])
-        mat_size_b = map(float, mat_size[1])
-        mat_size_f = map(float, mat_size[2])
-        mat_size_h = map(float, mat_size[3])
 
         # 提取4个构件的网格尺寸
-        size_list = []
-        size_list.append(mat_size_c[6])
-        size_list.append(mat_size_b[6])
-        size_list.append(mat_size_f[6])
-        size_list.append(mat_size_h[6])
+        size_list = [
+            i[6] for i in mat_size_total
+        ]
 
         # 提取4个构件的材料参数
         mat_list = []
@@ -129,6 +102,7 @@ def Part_WCM_property(
         mat_list.append(mat_size_h)
 
         # 依次调用3个构件，完成导入构件巴拉巴拉的功能
+        part = Part()
         for i in range(len(mat_size)):
             cad_i = CAD_list[i]
             part_i = part_list[i]
@@ -137,7 +111,8 @@ def Part_WCM_property(
             # 用户输入的材料和网格参数如下：
             mat_i = mat_list[i]
             size_i = size_list[i]
-            imputCAD_property_instance_mesh(cad_i, part_i, mat_i, size_i, parthanzi_i)
+            part.import_part(part_i, cad_i)
+            # imputCAD_property_instance_mesh(cad_i, part_i, mat_i, size_i, parthanzi_i)
 
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     # 当用户勾选后，执行操作
@@ -201,11 +176,7 @@ def imputCAD_property_instance_mesh(filepath, part, mat , size, part_hanzi):
     '''
 
     # print('imputCAD_property_instance_mesh IS STARTING...')
-    # 导入构件
-    acis = mdb.openAcis(filepath, scaleFromFile=OFF)
-    mdb.models['Model-1'].PartFromGeometryFile(name=part, geometryFile=acis,
-                                               combine=False, dimensionality=THREE_D, type=DEFORMABLE_BODY)
-    print('   ----%s\xb3\xc9\xb9\xa6\xb5\xbc\xc8\xeb!'%part_hanzi)
+
 
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     # 材料属性生成
