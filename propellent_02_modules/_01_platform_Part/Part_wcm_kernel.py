@@ -88,24 +88,13 @@ def Part_WCM_property(
                         ]
         '''
         mat_size_total = readTXT(inputfile, 1)
-
         # 依次4个构件的材料参数,网格尺寸----字符串形式
-        mat_size_c = mat_size_total[1]
-        mat_size_b = mat_size_total[2]
-        mat_size_f = mat_size_total[3]
-        mat_size_h = mat_size_total[4]
-
-        # 删去列表中的空字符串
-        mat_size_c = list(filter(None, mat_size_c))
-        mat_size_b = list(filter(None, mat_size_b))
-        mat_size_f = list(filter(None, mat_size_f))
-        mat_size_h = list(filter(None, mat_size_h))
-
-        mat_size = []
-        mat_size.append(mat_size_c)
-        mat_size.append(mat_size_b)
-        mat_size.append(mat_size_f)
-        mat_size.append(mat_size_h)
+        mat_size = [
+            list(filter(None, mat_size_total[1])),
+            list(filter(None, mat_size_total[2])),
+            list(filter(None, mat_size_total[3])),
+            list(filter(None, mat_size_total[4])),
+        ]
         '''
         mat_size 是如下形式的4×7的矩阵，每个元素的类型为字符串，
         mat_size = [
@@ -120,10 +109,10 @@ def Part_WCM_property(
         del mat_size[0]
         creat_parameter(True, mat_size, WCM_state=True)
         # 依次4个构件的材料参数,网格尺寸转换为数字形式
-        mat_size_c = map(float, mat_size_c)
-        mat_size_b = map(float, mat_size_b)
-        mat_size_f = map(float, mat_size_f)
-        mat_size_h = map(float, mat_size_h)
+        mat_size_c = map(float, mat_size[0])
+        mat_size_b = map(float, mat_size[1])
+        mat_size_f = map(float, mat_size[2])
+        mat_size_h = map(float, mat_size[3])
 
         # 提取4个构件的网格尺寸
         size_list = []
