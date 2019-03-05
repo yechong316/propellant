@@ -38,7 +38,7 @@ input
 '''
 def part_var(
     # 3个构件文件路径
-    # filepath_c=None,
+    filepath_c=None,
         filepath_b=None, filepath_f=None, filepath_h=None
     # 1-复合材料的材料参数
     # desity_c=None, Elastic_c=None, Poisson_c=None, Conductivity_c=None,

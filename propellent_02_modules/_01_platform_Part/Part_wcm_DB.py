@@ -64,8 +64,14 @@ class Part_wcm_DB(AFXDataDialog):
         FXMAPFUNC(self, SEL_COMMAND, self.ID_composite, Part_wcm_DB.onCmdComposite)
 
         # 定义一个启动的button
-        FXButton(p=self, text='\xca\xe4\xc8\xeb\xb8\xb4\xba\xcf\xb2\xc4\xc1\xcf\xca\xf4\xd0\xd4'  # 输入复合材料属性
+        hf = FXHorizontalFrame(p=self, opts=0, x=0, y=0, w=0, h=0,
+            pl=0, pr=0, pt=0, pb=0)
+        self.composite_wcm = FXButton(p=hf, text='\xca\xe4\xc8\xeb\xb8\xb4\xba\xcf\xb2\xc4\xc1\xcf\xca\xf4\xd0\xd4'  # 输入复合材料属性
         , ic=None, tgt=self, sel=self.ID_composite,opts=BUTTON_NORMAL, x=0, y=0, w=0, h=0, pl=0)
+        # 新增一个检查框，是否使用WCM插件
+        self.var_WCM_data = FXCheckButton(p=hf,
+        text='WCM plugin', tgt=form.var_WCMKw, sel=0, opts=CHECKBUTTON_NORMAL,
+                 x=0, y=0, w=0, h=0, pl=DEFAULT_PAD, pr=DEFAULT_PAD, pt=DEFAULT_PAD, pb=DEFAULT_PAD)
         # 这里需增加一个复合材料专属控件
 
 
@@ -78,17 +84,16 @@ class Part_wcm_DB(AFXDataDialog):
             opts=TABBOOK_NORMAL,
             x=0, y=0, w=0, h=0, pl=DEFAULT_SPACING, pr=DEFAULT_SPACING,
             pt=DEFAULT_SPACING, pb=DEFAULT_SPACING)
+        # 创建子标签页的属性TabItem_3
+        # 插件的层级为，TabBook_1 -》 TabItem_3 -》FXLabel
 
-        # 开始创建多个子标签页的内容的标题等等
+        # 包覆层
         tabItem = FXTabItem(p=TabBook_1, text='\xb0\xfc\xb8\xb2\xb2\xe3', ic=None, opts=TAB_TOP_NORMAL,
             x=0, y=0, w=0, h=0, pl=6, pr=6, pt=DEFAULT_PAD, pb=DEFAULT_PAD)
-
-        # 创建子标签页的属性TabItem_3 插件的层级为，TabBook_1 -》 TabItem_3 -》FXLabel
         TabItem_3 = FXVerticalFrame(p=TabBook_1,
             opts=FRAME_RAISED|FRAME_THICK|LAYOUT_FILL_X,
             x=0, y=0, w=0, h=0, pl=DEFAULT_SPACING, pr=DEFAULT_SPACING,
             pt=DEFAULT_SPACING, pb=DEFAULT_SPACING, hs=DEFAULT_SPACING, vs=DEFAULT_SPACING)
-
         l = FXLabel(p=TabItem_3, text='\xc7\xeb\xb5\xbc\xc8\xeb\xb9\xb9\xbc\xfe\xa3\xba', opts=JUSTIFY_LEFT)
         HFrame_5 = FXHorizontalFrame(p=TabItem_3, opts=0, x=0, y=0, w=0, h=0,
             pl=0, pr=0, pt=0, pb=0)
@@ -122,6 +127,8 @@ class Part_wcm_DB(AFXDataDialog):
             FXHorizontalSeparator(p=TabItem_3, x=0, y=0, w=0, h=0, pl=2, pr=2, pt=2, pb=2)
         l = FXLabel(p=TabItem_3, text='\xcd\xf8\xb8\xf1\xbb\xae\xb7\xd6', opts=JUSTIFY_LEFT)
         self.mb = AFXTextField(p=TabItem_3, ncols=12, labelText='\xc8\xab\xbe\xd6\xcd\xf8\xb8\xf1\xb3\xdf\xb4\xe7:', tgt=form.size_bKw, sel=0)
+
+        # 封头
         tabItem = FXTabItem(p=TabBook_1, text='\xb7\xe2\xcd\xb7', ic=None, opts=TAB_TOP_NORMAL,
             x=0, y=0, w=0, h=0, pl=6, pr=6, pt=DEFAULT_PAD, pb=DEFAULT_PAD)
         TabItem_4 = FXVerticalFrame(p=TabBook_1,
@@ -159,6 +166,8 @@ class Part_wcm_DB(AFXDataDialog):
             FXHorizontalSeparator(p=TabItem_4, x=0, y=0, w=0, h=0, pl=2, pr=2, pt=2, pb=2)
         l = FXLabel(p=TabItem_4, text='\xcd\xf8\xb8\xf1\xbb\xae\xb7\xd6', opts=JUSTIFY_LEFT)
         self.mf = AFXTextField(p=TabItem_4, ncols=12, labelText='\xc8\xab\xbe\xd6\xcd\xf8\xb8\xf1\xb3\xdf\xb4\xe7:', tgt=form.size_fKw, sel=0)
+
+        # 推进剂
         tabItem = FXTabItem(p=TabBook_1, text='\xcd\xc6\xbd\xf8\xbc\xc1', ic=None, opts=TAB_TOP_NORMAL,
             x=0, y=0, w=0, h=0, pl=6, pr=6, pt=DEFAULT_PAD, pb=DEFAULT_PAD)
         TabItem_2 = FXVerticalFrame(p=TabBook_1,
@@ -196,6 +205,17 @@ class Part_wcm_DB(AFXDataDialog):
             FXHorizontalSeparator(p=TabItem_2, x=0, y=0, w=0, h=0, pl=2, pr=2, pt=2, pb=2)
         l = FXLabel(p=TabItem_2, text='\xcd\xf8\xb8\xf1\xbb\xae\xb7\xd6', opts=JUSTIFY_LEFT)
         self.mh = AFXTextField(p=TabItem_2, ncols=12, labelText='\xc8\xab\xbe\xd6\xcd\xf8\xb8\xf1\xb3\xdf\xb4\xe7:', tgt=form.size_hKw, sel=0)
+
+        # 推进剂外壳
+        tabItem = FXTabItem(p=TabBook_1, text='shell', ic=None, opts=TAB_TOP_NORMAL,
+            x=0, y=0, w=0, h=0, pl=6, pr=6, pt=DEFAULT_PAD, pb=DEFAULT_PAD)
+        TabItem_2 = FXVerticalFrame(p=TabBook_1,
+            opts=FRAME_RAISED|FRAME_THICK|LAYOUT_FILL_X,
+            x=0, y=0, w=0, h=0, pl=DEFAULT_SPACING, pr=DEFAULT_SPACING,
+            pt=DEFAULT_SPACING, pb=DEFAULT_SPACING, hs=DEFAULT_SPACING, vs=DEFAULT_SPACING)
+        l = FXLabel(p=TabItem_2, text='shell text', opts=JUSTIFY_LEFT)
+
+        # table 分页完毕
         l = FXLabel(p=self, text=
         '\xb1\xd8\xd0\xeb\xbd\xab4\xb8\xf6\xb9\xb9\xbc\xfe\xb5\xc4\xc2\xb7\xbe\xb6\xa3\xac\xb2\xc4\xc1\xcf\xca\xf4\xd0\xd4\xa3\xac\xcd\xf8\xb8\xf1\xb3\xdf\xb4\xe7\xa3\xac\xcb\xf9\xd3\xd0\xca\xf4\xd0\xd4\xca\xe4\xc8\xeb\xcd\xea\xb1\xcf\xb2\xc5\xbf\xc9\xd2\xd4\xb5\xe3\xbb\xf7\xc8\xb7\xb6\xa8\xbb\xf2\xd5\xdf\xd3\xa6\xd3\xc3'
                     , opts=JUSTIFY_LEFT)
@@ -224,8 +244,7 @@ class Part_wcm_DB(AFXDataDialog):
         icon = afxGetIcon('fileOpen', AFX_ICON_SMALL )
         self.read_out_data = FXButton(p=fileTextHf, text='	Select File\nFrom Dialog', ic=icon, tgt=fileHandler_input, sel=AFXMode.ID_ACTIVATE,
             opts=BUTTON_NORMAL|LAYOUT_CENTER_Y, x=0, y=0, w=0, h=0, pl=1, pr=1, pt=1, pb=1)
-        # 新增一个检查框，是否使用WCM插件
-        self.var_WCM_data = FXCheckButton(p=HFrame_data_in_out,text=b'\xca\xb9\xd3\xc3WCM\xb2\xe5\xbc\xfe', tgt=form.var_WCMKw, sel=0)
+
         # 建立读取数据的框
         self.form = form
 
@@ -284,7 +303,12 @@ class Part_wcm_DB(AFXDataDialog):
             # self.mh.show()
 
     # def processUpdates(self):
-    #     if  self.var_WCM_data
+    #     if  self.var_WCM_data.getValue() == True:
+    #         self.composite_wcm.enable()
+    #     else:
+    #         self.composite_wcm.disable()
+    # # elif
+    # self.
 #     自定义执行方法
     def onCmdComposite(self, sender, sel, ptr):
         if SELID(sel) ==self.ID_composite:

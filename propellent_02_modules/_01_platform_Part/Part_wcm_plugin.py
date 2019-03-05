@@ -59,7 +59,7 @@ elif var_data().extract_var == 'file':
     data_h_mesh_size = Data_file().h_mesh_size
 # '''
 # 2019年2月14日00:00:22  经测试，以上方法可行，设置开关，根据是否导入文件数据，在界面上显示不同来源的数据
-# '''
+# '''part_wcm_plugin.py
 
 
 CAD_path = os.path.abspath(os.path.join(os.getcwd(), "...")) + '\\abaqus_plugins\\propellant\\propellent_06_CAD\\' 
@@ -83,12 +83,18 @@ class Part_wcm_plugin(AFXForm):
         self.radioButtonGroups = {}
 
         # 2019年2月27日17:53:51 定义原始的版本
-        print('i am in part_wcm_plugin.py')
-        print(os.path.abspath(os.path.join(os.getcwd(), ".")))
+        # print('i am in part_wcm_plugin.py')
+        # print(os.path.abspath(os.path.join(os.getcwd(), ".")))
         #print(propellent_02_modules)
         self.cmd = AFXGuiCommand(mode=self, method='part_var',
             objectName='propellent_02_modules._01_platform_Part.Part_wcm_kernel', registerQuery=False)
         pickedDefault = ''
+
+        # 复合材料
+        self.filepath_cKw = AFXStringKeyword(self.cmd, 'filepath_c', True, CAD_path + 'composite.sat')
+
+
+        # 包覆层
         self.filepath_bKw = AFXStringKeyword(self.cmd, 'filepath_b', True, CAD_path + 'bfc.sat')
         self.desity_bKw = AFXFloatKeyword(self.cmd, 'desity_b', True, data_b_d)
         self.Elastic_bKw = AFXFloatKeyword(self.cmd, 'Elastic_b', True, data_b_e)
@@ -97,6 +103,8 @@ class Part_wcm_plugin(AFXForm):
         self.SpecificHeat_bKw = AFXFloatKeyword(self.cmd, 'SpecificHeat_b', True, data_b_s)
         self.Expansion_bKw = AFXFloatKeyword(self.cmd, 'Expansion_b', True, data_b_ep)
         self.size_bKw = AFXFloatKeyword(self.cmd, 'size_b', True, data_b_mesh_size)
+
+        # 封头
         self.filepath_fKw = AFXStringKeyword(self.cmd, 'filepath_f', True, CAD_path + 'fengtou.sat')
         self.desity_fKw = AFXFloatKeyword(self.cmd, 'desity_f', True, data_f_d)
         self.Elastic_fKw = AFXFloatKeyword(self.cmd, 'Elastic_f', True, data_f_e)
@@ -105,6 +113,8 @@ class Part_wcm_plugin(AFXForm):
         self.SpecificHeat_fKw = AFXFloatKeyword(self.cmd, 'SpecificHeat_f', True, data_f_s)
         self.Expansion_fKw = AFXFloatKeyword(self.cmd, 'Expansion_f', True, data_f_ep)
         self.size_fKw = AFXFloatKeyword(self.cmd, 'size_f', True, data_f_mesh_size)
+
+        # 推进剂
         self.filepath_hKw = AFXStringKeyword(self.cmd, 'filepath_h', True, CAD_path + 'propeller.sat')
         self.desity_hKw = AFXFloatKeyword(self.cmd, 'desity_h', True, data_h_d)
         self.Elastic_hKw = AFXFloatKeyword(self.cmd, 'Elastic_h', True, data_h_e)
