@@ -41,12 +41,13 @@ for instance, num in zip(instance_model, range(len(part_list))):
     if instance != 'bfc-1' and instance != 'fengtou-1' and instance != 'propeller-1':
         instance_list[0] = instance_model[num]
 
-class Part():
+class Part(object):
     '''
     本类中储存所有ABAQUS关于PART模块中的所有操作
     '''
-    def __init__(self):
+    def __init__(self, part, part_path):
         self.part = part
+        self.part_path = part_path
 
     def import_part(self, part, part_path):
         # 导入构件,默认为sat文件
@@ -671,54 +672,53 @@ def readTXT(txtname, plug_type):
     if plug_type == 1:
         # print('READTXT IS SUCCESSFUL STARTING!!!')
         # 打开该txt文件
-        with open(txtname, 'r') as fpr:
-            content = fpr.read()
+        with open(txtname, 'r') as f:
+            data_origin = f.read()
         #     删除无用汉字文本
-        content = content.replace('复合材料壳体:', '')
-        content = content.replace('使用说明：每一行的数据分别为该构件的密度、弹性模量、泊松比、热传导系数、比热容系数、热膨胀系数和网格尺寸', '')
-        content = content.replace('包覆层:', '')
-        content = content.replace('封头:', '')
-        content = content.replace('推进剂:', '')
+        data_origin = data_origin.replace('复合材料壳体:', '')
+        data_origin = data_origin.replace('使用说明：每一行的数据分别为该构件的密度、弹性模量、泊松比、热传导系数、比热容系数、热膨胀系数和网格尺寸', '')
+        data_origin = data_origin.replace('包覆层:', '')
+        data_origin = data_origin.replace('封头:', '')
+        data_origin = data_origin.replace('推进剂:', '')
         with open(file, 'w') as fpw:
-            fpw.write(content)
-        List_row = content
+            fpw.write(data_origin)
+        # data_total = data_origin
         F1 = open(file, "r")
-        List_row = F1.readlines()
-        list_source = []
-        for i in range(len(List_row)):
-            column_list = List_row[i].strip().split("、")  # 每一行split后是一个列表
-            list_source.append(column_list)
-        # print(
-        #     b'\xd2\xd1\xb3\xc9\xb9\xa6\xb6\xc1\xc8\xa1\xb2\xce\xca\xfd:'
-        # )
-        # print(list_source)
-        print('END OF PROPERTY DATA READING!')
-        return list_source
+        data_total = F1.readlines()
+        mat_size = []
+        for i in range(1, len(data_total)):
+            data_None_str = data_total[i].strip().split("、")  # 每一行split后是一个列表
+            data_str = filter(None, data_None_str)
+            data = map(float, data_str)
+            mat_size.append(data)
+        F1.close()
+        print('The data from {} has been imported to CAE!'.format(txtname))
+        return mat_size
 
     # 绑定关系
     elif plug_type == 2:
         # print('READTXT TIE IS SUCCESSFUL STARTING')
         # 打开该txt文件
-        with open(txtname, 'r') as fpr:
-            content = fpr.read()
+        with open(txtname, 'r') as f:
+            data_origin = f.read()
 
         #     删除无用汉字文本
-        content = content.replace('推进剂VS封头:', '')
-        content = content.replace('使用说明：每一行的数据分别为该构件的主面坐标、从面坐标、位置容差、是否切换主从面','')
-        content = content.replace('复合材料VS包覆层:', '')
-        content = content.replace('包覆层VS封头:', '')
-        content = content.replace('包覆层VS推进剂:', '')
+        data_origin = data_origin.replace('推进剂VS封头:', '')
+        data_origin = data_origin.replace('使用说明：每一行的数据分别为该构件的主面坐标、从面坐标、位置容差、是否切换主从面', '')
+        data_origin = data_origin.replace('复合材料VS包覆层:', '')
+        data_origin = data_origin.replace('包覆层VS封头:', '')
+        data_origin = data_origin.replace('包覆层VS推进剂:', '')
 
         # 将处理后的数据写入到临时文本，然后将存到list_source中
         with open(file, 'w') as fpw:
-            fpw.write(content)
-        List_row = content
+            fpw.write(data_origin)
+        data_total = data_origin
         F1 = open(file, "r")
-        List_row = F1.readlines()
+        data_total = F1.readlines()
         list_source = []
-        for i in range(len(List_row)):
-            column_list = List_row[i].strip().split("、")  # 每一行split后是一个列表
-            list_source.append(column_list)
+        for i in range(len(data_total)):
+            data_str = data_total[i].strip().split("、")  # 每一行split后是一个列表
+            list_source.append(data_str)
 
         # 将此一维序列转变为 4 × 4 的序列，供主程序使用
         lsit_final = []
@@ -747,26 +747,26 @@ def readTXT(txtname, plug_type):
         # print('readTXT-functiong is successful starting')
 
         # 打开该txt文件
-        with open(txtname, 'r') as fpr:
-            content = fpr.read()
+        with open(txtname, 'r') as f:
+            data_origin = f.read()
         #     删除无用汉字文本
-        content = content.replace('温度冲击试验时间:', '')
-        content = content.replace('使用说明：每一行的数据分别对应温度冲击试验时间，构件初始温度，升降温曲线，复合材料外表面坐标，CPU核数', '')
-        content = content.replace('构件初始温度:', '')
-        content = content.replace('升降温曲线:', '')
-        content = content.replace('复合材料外表面索引:', '')
-        content = content.replace('CPU核数:', '')
-        # print('After delete:content:')
-        # print(content)
+        data_origin = data_origin.replace('温度冲击试验时间:', '')
+        data_origin = data_origin.replace('使用说明：每一行的数据分别对应温度冲击试验时间，构件初始温度，升降温曲线，复合材料外表面坐标，CPU核数', '')
+        data_origin = data_origin.replace('构件初始温度:', '')
+        data_origin = data_origin.replace('升降温曲线:', '')
+        data_origin = data_origin.replace('复合材料外表面索引:', '')
+        data_origin = data_origin.replace('CPU核数:', '')
+        # print('After delete:data_origin:')
+        # print(data_origin)
         with open(file, 'w') as fpw:
-            fpw.write(content)
-        List_row = content
+            fpw.write(data_origin)
+        data_total = data_origin
         F1 = open(file, "r")
-        List_row = F1.readlines()
+        data_total = F1.readlines()
         list_source = []
-        for i in range(len(List_row)):
-            column_list = List_row[i]  # 每一行split后是一个列表
-            list_source.append(column_list)
+        for i in range(len(data_total)):
+            data_str = data_total[i]  # 每一行split后是一个列表
+            list_source.append(data_str)
         for line in F1.readlines():
             line = line.strip('\n')
         # print('End of data_thermal reading!')
@@ -786,26 +786,26 @@ def readTXT(txtname, plug_type):
     elif plug_type == 4:
         # print('readTXT is successful starting')
         # 打开该txt文件
-        with open(txtname, 'r') as fpr:
-            content = fpr.read()
+        with open(txtname, 'r') as f:
+            data_origin = f.read()
         #     删除无用汉字文本
-        content = content.replace('固化工艺时间:', '')
-        content = content.replace('使用说明：每一行的数据分别对应固化工艺时间，构件初始温度，升降温曲线，复合材料外表面坐标，CPU核数', '')
-        content = content.replace('构件初始温度:', '')
-        content = content.replace('升降温曲线:', '')
-        content = content.replace('复合材料外表面索引:', '')
-        content = content.replace('CPU核数:', '')
-        # print('After delete:content:')
+        data_origin = data_origin.replace('固化工艺时间:', '')
+        data_origin = data_origin.replace('使用说明：每一行的数据分别对应固化工艺时间，构件初始温度，升降温曲线，复合材料外表面坐标，CPU核数', '')
+        data_origin = data_origin.replace('构件初始温度:', '')
+        data_origin = data_origin.replace('升降温曲线:', '')
+        data_origin = data_origin.replace('复合材料外表面索引:', '')
+        data_origin = data_origin.replace('CPU核数:', '')
+        # print('After delete:data_origin:')
         with open(file, 'w') as fpw:
-            fpw.write(content)
-        List_row = content
+            fpw.write(data_origin)
+        data_total = data_origin
         F1 = open(file, "r")
-        List_row = F1.readlines()
+        data_total = F1.readlines()
 
         list_source = []
-        for i in range(len(List_row)):
-            column_list = List_row[i]  # 每一行split后是一个列表
-            list_source.append(column_list)
+        for i in range(len(data_total)):
+            data_str = data_total[i]  # 每一行split后是一个列表
+            list_source.append(data_str)
         for line in F1.readlines():
             line = line.strip('\n')
 
@@ -823,35 +823,36 @@ def readTXT(txtname, plug_type):
     # 缠绕工艺
     elif plug_type == 5:
         # 打开该txt文件
-        with open(txtname, 'r') as fpr:
-            content = fpr.read()
+        with open(txtname, 'r') as f:
+            data_origin = f.read()
         #     删除无用汉字文本
-        content = content.replace('预紧力:', '')
-        content = content.replace('使用说明：每一行的数据分别对应预紧力,纤维铺层厚度，纤维宽度，CPU核数', '')
-        content = content.replace('纤维铺层厚度:', '')
-        content = content.replace('纤维宽度:', '')
-        content = content.replace('CPU核数:', '')
-        # print(content)
+        data_origin = data_origin.replace('预紧力:', '')
+        data_origin = data_origin.replace('使用说明：每一行的数据分别对应预紧力,纤维铺层厚度，纤维宽度，CPU核数', '')
+        data_origin = data_origin.replace('纤维铺层厚度:', '')
+        data_origin = data_origin.replace('纤维宽度:', '')
+        data_origin = data_origin.replace('CPU核数:', '')
+        # print(data_origin)
         with open(file, 'w') as fpw:
-            fpw.write(content)
-        List_row = content
+            fpw.write(data_origin)
+        # data_total = data_origin
         F1 = open(file, "r")
-        List_row = F1.readlines()
+        data_total = F1.readlines()
         list_source = []
-        for i in range(len(List_row)):
-            # print(List_row[i])
-            column_list = List_row[i].strip().split(",")  # 每一行split后是一个列表
-            list_source.append(column_list)
+        for i in range(len(data_total)):
+            # print(data_total[i])
+            data_str = data_total[i].strip().split(",")  # 每一行split后是一个列表
+            list_source.append(data_str)
         # 开始删除空格符号
         list = []
         for i in list_source:
             if i != '\n':
                 # print(i)
                 list.append(i)
+        F1.close()
         return list
-    F1.close()
+    # F1.close()
     print('The data of warp has been import to CAE!')
-    os.remove(file)
+    # os.remove(file)
 
 
 def pick_face2index_list(pick):
