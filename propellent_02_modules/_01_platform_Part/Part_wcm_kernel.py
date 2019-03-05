@@ -120,7 +120,7 @@ def Part_WCM_kernel(
             part_i = part_list[i]
             mat_i = mat_list[i]
             size_i = size_list[i]
-            imputCAD_property_instance_mesh(cad_i, part_i, mat_i, size_i, parthanzi_i)
+            imputCAD_property_instance_mesh(cad_i, part_i, mat_i, size_i)
 
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     else:

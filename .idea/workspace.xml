@@ -9,14 +9,14 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.3425254">
+    <splitter split-orientation="horizontal" split-proportion="0.6502177">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file pinned="false" current-in-tab="true">
+          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/propellent_02_modules/_01_platform_Part/Part_wcm_DB.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-17">
-                  <caret line="235" column="104" selection-start-line="235" selection-start-column="94" selection-end-line="235" selection-end-column="104" />
+                <state relative-caret-position="183">
+                  <caret line="70" column="27" lean-forward="true" selection-start-line="70" selection-start-column="27" selection-end-line="70" selection-end-column="27" />
                   <folding>
                     <element signature="e#202#645#1" />
                   </folding>
@@ -24,11 +24,11 @@
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="false">
+          <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/propellent_02_modules/_01_platform_Part/Part_wcm_kernel.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="758">
-                  <caret line="70" column="9" lean-forward="true" selection-start-line="70" selection-start-column="9" selection-end-line="70" selection-end-column="9" />
+                <state relative-caret-position="283">
+                  <caret line="122" column="72" selection-start-line="122" selection-start-column="72" selection-end-line="122" selection-end-column="72" />
                   <folding>
                     <element signature="e#344#364#0" expanded="true" />
                   </folding>
@@ -44,7 +44,7 @@
             <entry file="file://$PROJECT_DIR$/propellent_02_modules/_01_platform_Part/Part_wcm_plugin.py">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="358">
-                  <caret line="133" column="74" selection-start-line="133" selection-start-column="74" selection-end-line="133" selection-end-column="74" />
+                  <caret line="133" column="88" selection-start-line="133" selection-start-column="88" selection-end-line="133" selection-end-column="88" />
                   <folding>
                     <element signature="e#24#47#0" expanded="true" />
                   </folding>
@@ -65,7 +65,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>Tank</find>
       <find>str_index has been transfer index</find>
       <find>access</find>
       <find>userfile_path</find>
@@ -95,6 +94,7 @@
       <find>FXVerticalFrame</find>
       <find>FXTabItem</find>
       <find>desity_cKw</find>
+      <find>shell</find>
     </findStrings>
     <replaceStrings>
       <replace>len(part_list)</replace>
@@ -130,9 +130,9 @@
         <option value="$PROJECT_DIR$/propellent_03_function/propellent_03_function.py" />
         <option value="$PROJECT_DIR$/propellent_03_function/读取文件的方法.py" />
         <option value="F:/CAIS31/插件为菜单栏/汉字gbk编码.py" />
+        <option value="$PROJECT_DIR$/propellent_02_modules/_01_platform_Part/Part_wcm_plugin.py" />
         <option value="$PROJECT_DIR$/propellent_02_modules/_01_platform_Part/Part_wcm_DB.py" />
         <option value="$PROJECT_DIR$/propellent_02_modules/_01_platform_Part/Part_wcm_kernel.py" />
-        <option value="$PROJECT_DIR$/propellent_02_modules/_01_platform_Part/Part_wcm_plugin.py" />
       </list>
     </option>
   </component>
@@ -358,32 +358,32 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/propellent_02_modules/_01_platform_Part/Part_wcm_kernel.py">
+    <entry file="file://$PROJECT_DIR$/propellent_02_modules/_01_platform_Part/Part_wcm_plugin.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="758">
-          <caret line="70" column="9" lean-forward="true" selection-start-line="70" selection-start-column="9" selection-end-line="70" selection-end-column="9" />
+        <state relative-caret-position="358">
+          <caret line="133" column="88" selection-start-line="133" selection-start-column="88" selection-end-line="133" selection-end-column="88" />
           <folding>
-            <element signature="e#344#364#0" expanded="true" />
+            <element signature="e#24#47#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/propellent_02_modules/_01_platform_Part/Part_wcm_DB.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-17">
-          <caret line="235" column="104" selection-start-line="235" selection-start-column="94" selection-end-line="235" selection-end-column="104" />
+        <state relative-caret-position="183">
+          <caret line="70" column="27" lean-forward="true" selection-start-line="70" selection-start-column="27" selection-end-line="70" selection-end-column="27" />
           <folding>
             <element signature="e#202#645#1" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/propellent_02_modules/_01_platform_Part/Part_wcm_plugin.py">
+    <entry file="file://$PROJECT_DIR$/propellent_02_modules/_01_platform_Part/Part_wcm_kernel.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="358">
-          <caret line="133" column="74" selection-start-line="133" selection-start-column="74" selection-end-line="133" selection-end-column="74" />
+        <state relative-caret-position="283">
+          <caret line="122" column="72" selection-start-line="122" selection-start-column="72" selection-end-line="122" selection-end-column="72" />
           <folding>
-            <element signature="e#24#47#0" expanded="true" />
+            <element signature="e#344#364#0" expanded="true" />
           </folding>
         </state>
       </provider>

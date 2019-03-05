@@ -69,9 +69,11 @@ class Part_wcm_DB(AFXDataDialog):
         self.composite_wcm = FXButton(p=hf, text='\xca\xe4\xc8\xeb\xb8\xb4\xba\xcf\xb2\xc4\xc1\xcf\xca\xf4\xd0\xd4'  # 输入复合材料属性
         , ic=None, tgt=self, sel=self.ID_composite,opts=BUTTON_NORMAL, x=0, y=0, w=0, h=0, pl=0)
         # 新增一个检查框，是否使用WCM插件
-        self.var_WCM_data = FXCheckButton(p=hf,
-        text='WCM plugin', tgt=form.var_WCMKw, sel=0, opts=CHECKBUTTON_NORMAL,
-                 x=0, y=0, w=0, h=0, pl=DEFAULT_PAD, pr=DEFAULT_PAD, pt=DEFAULT_PAD, pb=DEFAULT_PAD)
+        # FXCheckButton(p=hf,
+        # text='WCM plugin', tgt=form.var_WCMKw, sel=0, opts=CHECKBUTTON_NORMAL,
+        #          x=0, y=0, w=0, h=0, pl=DEFAULT_PAD, pr=DEFAULT_PAD, pt=DEFAULT_PAD, pb=DEFAULT_PAD)
+        FXCheckButton(p=hf,
+        text=b'\xca\xb9\xd3\xc3WCM\xb2\xe5\xbc\xfe', tgt=form.var_WCMKw, sel=0)
         # 这里需增加一个复合材料专属控件
 
 
@@ -213,7 +215,7 @@ class Part_wcm_DB(AFXDataDialog):
             opts=FRAME_RAISED|FRAME_THICK|LAYOUT_FILL_X,
             x=0, y=0, w=0, h=0, pl=DEFAULT_SPACING, pr=DEFAULT_SPACING,
             pt=DEFAULT_SPACING, pb=DEFAULT_SPACING, hs=DEFAULT_SPACING, vs=DEFAULT_SPACING)
-        l = FXLabel(p=TabItem_2, text='shell text', opts=JUSTIFY_LEFT)
+        # l = FXLabel(p=TabItem_2, text='shell text', opts=JUSTIFY_LEFT)
         l = FXLabel(p=TabItem_2, text='\xc7\xeb\xb5\xbc\xc8\xeb\xb9\xb9\xbc\xfe\xa3\xba', opts=JUSTIFY_LEFT)
         fileHandler = part_DBFileHandler(form, 'filepath_c', 'ACIS SAT(*.sat*)')
         fileTextHf = FXHorizontalFrame(p=TabItem_2, opts=0, x=0, y=0, w=0, h=0,

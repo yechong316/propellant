@@ -131,7 +131,7 @@ class Part_wcm_plugin(AFXForm):
         self.var_exportKw = AFXBoolKeyword(self.cmd, 'var_export', AFXBoolKeyword.TRUE_FALSE,True, False)
         self.var_inputKw = AFXBoolKeyword(self.cmd, 'var_input', AFXBoolKeyword.TRUE_FALSE,True, False)
         self.inputfileKw = AFXStringKeyword(self.cmd, 'inputfile', True, None)
-        self.var_WCMKw = AFXStringKeyword(self.cmd, 'var_WCM', True, False)
+        self.var_WCMKw = AFXBoolKeyword(self.cmd, 'var_WCM', AFXBoolKeyword.TRUE_FALSE, True, False)
         
 
 
