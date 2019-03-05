@@ -9,53 +9,30 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.14669572">
+    <splitter split-orientation="horizontal" split-proportion="0.60159075">
       <split-first>
-        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+        <leaf>
           <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/propellent_02_modules/_01_platform_Part/Part_wcm_kernel.py">
+            <entry file="file://$PROJECT_DIR$/propellent_02_modules/_01_platform_Part/Part_wcm_DB.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-252">
-                  <caret line="54" column="48" selection-start-line="54" selection-start-column="41" selection-end-line="54" selection-end-column="48" />
+                <state relative-caret-position="182">
+                  <caret line="227" column="63" selection-start-line="227" selection-start-column="63" selection-end-line="227" selection-end-column="63" />
                   <folding>
-                    <element signature="e#344#364#0" expanded="true" />
-                    <element signature="e#1366#5308#0" />
-                    <element signature="e#1449#2252#0" />
-                    <element signature="e#1629#1916#0" />
-                    <element signature="e#2002#2252#0" />
-                    <element signature="e#2362#3493#0" />
-                    <element signature="e#2386#2840#1" />
-                    <element signature="e#3212#3493#0" />
-                    <element signature="e#3499#3584#0" />
-                    <element signature="e#3631#5142#0" />
-                    <element signature="e#4515#5005#0" />
-                    <element signature="e#7863#11581#0" />
-                    <element signature="e#8252#8552#0" />
-                    <element signature="e#7937#8143#0" />
-                    <element signature="e#8253#9244#0" />
-                    <element signature="e#8277#8731#1" />
-                    <element signature="e#9021#9244#0" />
-                    <element signature="e#9382#10893#0" />
-                    <element signature="e#10266#10756#0" />
-                    <element signature="e#11399#14216#0" />
-                    <element signature="e#12501#13006#0" />
-                    <element signature="e#13096#14229#0" />
-                    <element signature="e#14265#15949#0" />
+                    <element signature="e#202#645#1" />
+                    <element signature="e#19296#20022#0" />
+                    <element signature="e#20050#20757#0" />
                   </folding>
                 </state>
               </provider>
             </entry>
           </file>
           <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/propellent_03_function/propellent_03_function.py">
+            <entry file="file://$PROJECT_DIR$/propellent_02_modules/_01_platform_Part/Part_wcm_kernel.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-18">
-                  <caret line="959" column="64" selection-start-line="959" selection-start-column="55" selection-end-line="959" selection-end-column="64" />
+                <state relative-caret-position="175">
+                  <caret line="55" column="48" selection-start-line="55" selection-start-column="41" selection-end-line="55" selection-end-column="48" />
                   <folding>
-                    <element signature="e#147#162#0" expanded="true" />
-                    <element signature="e#12747#13341#0" />
-                    <element signature="e#13385#13453#0" />
-                    <element signature="e#13995#14065#0" />
+                    <element signature="e#344#364#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
@@ -65,34 +42,13 @@
       </split-first>
       <split-second>
         <leaf>
-          <file pinned="false" current-in-tab="false">
+          <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/propellent_02_modules/_01_platform_Part/Part_wcm_plugin.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="544">
-                  <caret line="131" lean-forward="true" selection-start-line="131" selection-end-line="131" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/propellent_02_modules/_01_platform_Part/Part_wcm_DB.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="75">
-                  <caret line="268" column="28" selection-start-line="268" selection-start-column="28" selection-end-line="268" selection-end-column="28" />
+                <state relative-caret-position="165">
+                  <caret line="120" column="22" selection-start-line="120" selection-start-column="13" selection-end-line="120" selection-end-column="22" />
                   <folding>
-                    <element signature="e#202#645#1" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://F:/CAIS31/插件为菜单栏/汉字gbk编码.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="350">
-                  <caret line="23" selection-start-line="23" selection-end-line="23" selection-end-column="15" />
-                  <folding>
-                    <element signature="e#103#113#0" expanded="true" />
+                    <element signature="e#24#47#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
@@ -170,9 +126,9 @@
         <option value="$PROJECT_DIR$/propellent_02_modules/_04_platform_curing/curing_kernel.py" />
         <option value="$PROJECT_DIR$/propellent_03_function/propellent_03_function.py" />
         <option value="$PROJECT_DIR$/propellent_03_function/读取文件的方法.py" />
+        <option value="F:/CAIS31/插件为菜单栏/汉字gbk编码.py" />
         <option value="$PROJECT_DIR$/propellent_02_modules/_01_platform_Part/Part_wcm_kernel.py" />
         <option value="$PROJECT_DIR$/propellent_02_modules/_01_platform_Part/Part_wcm_plugin.py" />
-        <option value="F:/CAIS31/插件为菜单栏/汉字gbk编码.py" />
         <option value="$PROJECT_DIR$/propellent_02_modules/_01_platform_Part/Part_wcm_DB.py" />
       </list>
     </option>
@@ -206,11 +162,6 @@
               <item name="propellant" type="462c0819:PsiDirectoryNode" />
               <item name="propellent_02_modules" type="462c0819:PsiDirectoryNode" />
               <item name="_01_platform_Part" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="propellant" type="b2602c69:ProjectViewProjectNode" />
-              <item name="propellant" type="462c0819:PsiDirectoryNode" />
-              <item name="propellent_03_function" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -303,12 +254,12 @@
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.08982827" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.08652576" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.37057993" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.14144272" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.14144272" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.36916548" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -405,45 +356,6 @@
     <entry file="file://$PROJECT_DIR$/propellent_02_modules/_01_platform_Part/composite/composite_plugin.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/propellent_02_modules/_01_platform_Part/Part_wcm_kernel.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-252">
-          <caret line="54" column="48" selection-start-line="54" selection-start-column="41" selection-end-line="54" selection-end-column="48" />
-          <folding>
-            <element signature="e#344#364#0" expanded="true" />
-            <element signature="e#1366#5308#0" />
-            <element signature="e#1449#2252#0" />
-            <element signature="e#1629#1916#0" />
-            <element signature="e#2002#2252#0" />
-            <element signature="e#2362#3493#0" />
-            <element signature="e#2386#2840#1" />
-            <element signature="e#3212#3493#0" />
-            <element signature="e#3499#3584#0" />
-            <element signature="e#3631#5142#0" />
-            <element signature="e#4515#5005#0" />
-            <element signature="e#7863#11581#0" />
-            <element signature="e#8252#8552#0" />
-            <element signature="e#7937#8143#0" />
-            <element signature="e#8253#9244#0" />
-            <element signature="e#8277#8731#1" />
-            <element signature="e#9021#9244#0" />
-            <element signature="e#9382#10893#0" />
-            <element signature="e#10266#10756#0" />
-            <element signature="e#11399#14216#0" />
-            <element signature="e#12501#13006#0" />
-            <element signature="e#13096#14229#0" />
-            <element signature="e#14265#15949#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/propellent_02_modules/_01_platform_Part/Part_wcm_plugin.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="544">
-          <caret line="131" lean-forward="true" selection-start-line="131" selection-end-line="131" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://F:/CAIS31/插件为菜单栏/汉字gbk编码.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="350">
@@ -454,12 +366,34 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/propellent_02_modules/_01_platform_Part/Part_wcm_kernel.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="175">
+          <caret line="55" column="48" selection-start-line="55" selection-start-column="41" selection-end-line="55" selection-end-column="48" />
+          <folding>
+            <element signature="e#344#364#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/propellent_02_modules/_01_platform_Part/Part_wcm_plugin.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="120" column="22" selection-start-line="120" selection-start-column="13" selection-end-line="120" selection-end-column="22" />
+          <folding>
+            <element signature="e#24#47#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/propellent_02_modules/_01_platform_Part/Part_wcm_DB.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="268" column="28" selection-start-line="268" selection-start-column="28" selection-end-line="268" selection-end-column="28" />
+        <state relative-caret-position="182">
+          <caret line="227" column="63" selection-start-line="227" selection-start-column="63" selection-end-line="227" selection-end-column="63" />
           <folding>
             <element signature="e#202#645#1" />
+            <element signature="e#19296#20022#0" />
+            <element signature="e#20050#20757#0" />
           </folding>
         </state>
       </provider>
