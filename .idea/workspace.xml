@@ -27,8 +27,8 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/propellent_02_modules/_01_platform_Part/Part_wcm_kernel.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="283">
-                  <caret line="122" column="72" selection-start-line="122" selection-start-column="72" selection-end-line="122" selection-end-column="72" />
+                <state relative-caret-position="1183">
+                  <caret line="324" column="47" lean-forward="true" selection-start-line="324" selection-start-column="47" selection-end-line="324" selection-end-column="47" />
                   <folding>
                     <element signature="e#344#364#0" expanded="true" />
                   </folding>
@@ -65,7 +65,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>str_index has been transfer index</find>
       <find>access</find>
       <find>userfile_path</find>
       <find>old_job_path</find>
@@ -95,6 +94,7 @@
       <find>FXTabItem</find>
       <find>desity_cKw</find>
       <find>shell</find>
+      <find>imputCAD_property_instance_mesh</find>
     </findStrings>
     <replaceStrings>
       <replace>len(part_list)</replace>
@@ -380,8 +380,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/propellent_02_modules/_01_platform_Part/Part_wcm_kernel.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="283">
-          <caret line="122" column="72" selection-start-line="122" selection-start-column="72" selection-end-line="122" selection-end-column="72" />
+        <state relative-caret-position="1183">
+          <caret line="324" column="47" lean-forward="true" selection-start-line="324" selection-start-column="47" selection-end-line="324" selection-end-column="47" />
           <folding>
             <element signature="e#344#364#0" expanded="true" />
           </folding>

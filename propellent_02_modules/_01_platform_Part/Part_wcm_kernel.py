@@ -313,7 +313,6 @@ def imputCAD_property_instance_mesh(part_path, part, mat , size):
     :return: 执行命令
     '''
 
-    # print('imputCAD_property_instance_mesh IS STARTING...')
     acis = mdb.openAcis(part_path, scaleFromFile=OFF)
     mdb.models['Model-1'].PartFromGeometryFile(name=part, geometryFile=acis,
                                                combine=False, dimensionality=THREE_D, type=DEFORMABLE_BODY)

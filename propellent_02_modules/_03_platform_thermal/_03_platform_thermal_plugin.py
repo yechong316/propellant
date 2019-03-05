@@ -32,7 +32,7 @@ class _03_platform_thermal_plugin(AFXForm):
             objectName='propellent_02_modules._03_platform_thermal.temprature_shock_kernel', registerQuery=False)
         pickedDefault = ''
         self.timePeriod1Kw = AFXFloatKeyword(self.cmd, 'timePeriod1', True, data_time)
-        print(self.timePeriod1Kw)
+        # print(self.timePeriod1Kw)
         self.intialtempKw = AFXFloatKeyword(self.cmd, 'intialtemp', True, data_init_temp)
 
         self.hermal_zaihe_listKw = AFXTableKeyword(self.cmd, 'hermal_zaihe_list', True)
