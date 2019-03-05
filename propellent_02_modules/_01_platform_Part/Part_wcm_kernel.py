@@ -24,9 +24,7 @@ import sys
 from propellent_03_function.propellent_03_function import *
 
 this_path = os.path.abspath(os.path.join(os.getcwd(), "")) + '\\abaqus_plugins\\propellant'
-# print('current path is :', os.getcwd())
 
-# (?# assert this_path == r'C:\\Users\\yanguowei\\abaqus_plugins\\propellant\\', 'path is not C')
 os.chdir = (this_path)
 
 # ABAQUS主函数，也是核心函数
@@ -46,9 +44,6 @@ def Part_WCM_property(
 
     # 定义3个构件公用的参数，根据inputfile是否为空，取决于后续程序调用哪些参数
     part_list = ['bfc', 'fengtou', 'propeller']
-    parthanzi_list = [ '\xb0\xfc\xb8\xb2\xb2\xe3'
-        , '\xb7\xe2\xcd\xb7'
-        , '\xcd\xc6\xbd\xf8\xbc\xc1']
     CAD_list = [filepath_b, filepath_f, filepath_h]
 
     # 开始判断数据来源， 文件 OR 用户输入
@@ -95,14 +90,12 @@ def Part_WCM_property(
         ]
 
         # 提取4个构件的材料参数
-        mat_list = []
-        mat_list.append(mat_size_c)
-        mat_list.append(mat_size_b)
-        mat_list.append(mat_size_f)
-        mat_list.append(mat_size_h)
-
-        # 依次调用3个构件，完成导入构件巴拉巴拉的功能
-        part = Part()
+        mat_list = [
+            mat_size_total[0],
+            mat_size_total[1],
+            mat_size_total[2],
+            mat_size_total[3]
+        ]
         for i in range(len(mat_size)):
             cad_i = CAD_list[i]
             part_i = part_list[i]
@@ -111,8 +104,7 @@ def Part_WCM_property(
             # 用户输入的材料和网格参数如下：
             mat_i = mat_list[i]
             size_i = size_list[i]
-            part.import_part(part_i, cad_i)
-            # imputCAD_property_instance_mesh(cad_i, part_i, mat_i, size_i, parthanzi_i)
+            imputCAD_property_instance_mesh(cad_i, part_i, mat_i, size_i, parthanzi_i)
 
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     # 当用户勾选后，执行操作
@@ -154,15 +146,130 @@ def Part_WCM_property(
 
         # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         exportTXT(data,1, WCM_state=True)
-    #生成python文件
-    # # python_name = this_path + '\\propellent_07_job\\' +
-    # with open('open_cae.py', 'w') as f:
-    #     f.write('# coding:utf-8\nfrom abaqus import *\nfrom abaqusConstants import *\n')
-    #     f.write('openMdb(pathName={}\n'.format(cae_name))
 
-    # # 生成bat文件
-    # with open('open_cae.bat', 'w') as f:
-    #     f.write('abq6144 cae script = open_cae.py')
+# ABAQUS主函数，也是核心函数
+def Part_property(
+        # 3个构件文件路径
+        filepath_c, filepath_b, filepath_f,filepath_h
+        # 1-复合材料的材料参数
+        , desity_c, Elastic_c, Poisson_c, Conductivity_c, SpecificHeat_c, Expansion_c, size_c
+        # 2-包覆层的材料参数
+        ,desity_b,Elastic_b, Poisson_b,Conductivity_b,  SpecificHeat_b,Expansion_b,size_b
+        # 3-封头的材料参数
+        ,desity_f, Elastic_f, Poisson_f, Conductivity_f, SpecificHeat_f, Expansion_f, size_f
+        # 4-火药的材料参数
+        ,desity_h, Elastic_h, Poisson_h, Conductivity_h, SpecificHeat_h, Expansion_h, size_h
+
+        # 读取文件和输出参数
+        ,var_export=False, var_input=False,inputfile=None
+):
+
+    # 定义3个构件公用的参数，根据inputfile是否为空，取决于后续程序调用哪些参数
+    part_list = ['bfc', 'fengtou', 'propeller']
+    CAD_list = [filepath_b, filepath_f, filepath_h]
+
+    # 开始判断数据来源， 文件 OR 用户输入
+    if var_input == False:
+
+        # 开始生成界面GUI的数据
+        creat_parameter(False, WCM_state=True)
+
+        # 将导入的28个参数拼装成多维矩阵
+        # 预先定义好3个构件所需要的参数
+        size_list = [size_b, size_f, size_h]
+        mat_list = [
+              [desity_b, Elastic_b, Poisson_b, Conductivity_b, SpecificHeat_b, Expansion_b]
+            , [desity_f, Elastic_f, Poisson_f, Conductivity_f, SpecificHeat_f, Expansion_f]
+            , [desity_h, Elastic_h, Poisson_h, Conductivity_h, SpecificHeat_h, Expansion_h]
+        ]
+        # 依次调用3个构件，完成导入构件巴拉巴拉的功能
+        for i in range(len(part_list)):
+            cad_i = CAD_list[i]
+            part_i = part_list[i]
+            parthanzi_i = parthanzi_list[i]
+            mat_i = mat_list[i]
+            size_i = size_list[i]
+            imputCAD_property_instance_mesh(cad_i, part_i, mat_i, size_i, parthanzi_i)
+
+    # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    else:
+        # 用户导入外部txt文本数据
+        '''
+        mat_size_total是这样一个矩阵
+        mat_size_total=[
+                [''], 
+                ['1.23e-06', '235000', '0.33', '0.00043', '826', '0.00143', '5', ''], 
+                ['1.23e-06', '0.384', '0.3', '1', '1219', '0.000326', '5', ''],
+                ['0.00785', '200000', '0.3', '1.6578', '512', '1.22e-05', '3', ''], 
+                ['1.65e-06', '4000', '0.3', '0.001', '1500', '0.0001263', '5', '']
+                        ]
+        '''
+        mat_size_total = readTXT(inputfile, 1)
+
+        # 提取4个构件的网格尺寸
+        size_list = [
+            i[6] for i in mat_size_total
+        ]
+
+        # 提取4个构件的材料参数
+        mat_list = [
+            mat_size_total[0],
+            mat_size_total[1],
+            mat_size_total[2],
+            mat_size_total[3]
+        ]
+        for i in range(len(mat_size)):
+            cad_i = CAD_list[i]
+            part_i = part_list[i]
+            parthanzi_i = parthanzi_list[i]
+
+            # 用户输入的材料和网格参数如下：
+            mat_i = mat_list[i]
+            size_i = size_list[i]
+            imputCAD_property_instance_mesh(cad_i, part_i, mat_i, size_i, parthanzi_i)
+
+    # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    # 当用户勾选后，执行操作
+    if var_export:
+
+        # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        desity_b_data = desity_b
+        Elastic_b_data = Elastic_b
+        Poisson_b_data = Poisson_b
+        Conductivity_b_data = Conductivity_b
+        SpecificHeat_b_data = SpecificHeat_b
+        Expansion_b_data = Expansion_b
+        size_b_data = size_b
+        desity_f_data = desity_f
+        Elastic_f_data = Elastic_f
+        Poisson_f_data = Poisson_f
+        Conductivity_f_data = Conductivity_f
+        SpecificHeat_f_data = SpecificHeat_f
+        Expansion_f_data = Expansion_f
+        size_f_data = size_f
+        desity_h_data = desity_h
+        Elastic_h_data = Elastic_h
+        Poisson_h_data = Poisson_h
+        Conductivity_h_data = Conductivity_h
+        SpecificHeat_h_data = SpecificHeat_h
+        Expansion_h_data = Expansion_h
+        size_h_data = size_h
+        data = [
+            [desity_b_data, Elastic_b_data, Poisson_b_data, Conductivity_b_data, SpecificHeat_b_data,
+             Expansion_b_data,
+             size_b_data],
+            [desity_f_data, Elastic_f_data, Poisson_f_data, Conductivity_f_data, SpecificHeat_f_data,
+             Expansion_f_data,
+             size_f_data],
+            [desity_h_data, Elastic_h_data, Poisson_h_data, Conductivity_h_data, SpecificHeat_h_data,
+             Expansion_h_data,
+             size_h_data]
+        ]
+
+        # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        exportTXT(data,1, WCM_state=True)
+
+
 # 开始副函数 --2019年2月27日16:59:29 以前的版本，准备进行代码分解
 def imputCAD_property_instance_mesh(filepath, part, mat , size, part_hanzi):
     '''
