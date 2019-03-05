@@ -41,8 +41,8 @@ def part_var(
     filepath_c=None,
         filepath_b=None, filepath_f=None, filepath_h=None
     # 1-复合材料的材料参数
-    # desity_c=None, Elastic_c=None, Poisson_c=None, Conductivity_c=None,
-    #         SpecificHeat_c=None, Expansion_c=None,size_c=None
+    ,desity_c=None, Elastic_c=None, Poisson_c=None, Conductivity_c=None,
+            SpecificHeat_c=None, Expansion_c=None,size_c=None
     # 2-包覆层的材料参数
     ,desity_b=None, Elastic_b=None, Poisson_b=None, Conductivity_b=None, 
             SpecificHeat_b=None, Expansion_b=None,size_b=None
