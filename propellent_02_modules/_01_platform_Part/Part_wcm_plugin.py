@@ -82,13 +82,22 @@ class Part_wcm_plugin(AFXForm):
 
         self.radioButtonGroups = {}
 
-        # 2019年2月27日17:53:51 定义原始的版本
-        print('i am in part_wcm_plugin.py')
-        print(os.path.abspath(os.path.join(os.getcwd(), ".")))
-        #print(propellent_02_modules)
-        self.cmd = AFXGuiCommand(mode=self, method='Part_WCM_property',
+        # 2019年2月27日17:53:51 定义原始的版本，将窗口的命令发送到
+        self.cmd = AFXGuiCommand(mode=self, method='part_var',
             objectName='propellent_02_modules._01_platform_Part.Part_wcm_kernel', registerQuery=False)
         pickedDefault = ''
+
+        # 金属外壳的参数
+        self.filepath_cKw = AFXStringKeyword(self.cmd, 'filepath_c', True, CAD_path + 'composite.sat')
+        self.desity_cKw = AFXFloatKeyword(self.cmd, 'desity_c', True, 1.23E-006)
+        self.Elastic_cKw = AFXFloatKeyword(self.cmd, 'Elastic_c', True, 235000)
+        self.Poisson_cKw = AFXFloatKeyword(self.cmd, 'Poisson_c', True, 0.33)
+        self.Conductivity_cKw = AFXFloatKeyword(self.cmd, 'Conductivity_c', True, 0.00043)
+        self.SpecificHeat_cKw = AFXFloatKeyword(self.cmd, 'SpecificHeat_c', True, 826)
+        self.Expansion_cKw = AFXFloatKeyword(self.cmd, 'Expansion_c', True, 0.00143)
+        self.size_cKw = AFXFloatKeyword(self.cmd, 'size_c', True, 5)
+
+        # bfc propellant ft 构件的参数
         self.filepath_bKw = AFXStringKeyword(self.cmd, 'filepath_b', True, CAD_path + 'bfc.sat')
         self.desity_bKw = AFXFloatKeyword(self.cmd, 'desity_b', True, data_b_d)
         self.Elastic_bKw = AFXFloatKeyword(self.cmd, 'Elastic_b', True, data_b_e)
@@ -113,9 +122,12 @@ class Part_wcm_plugin(AFXForm):
         self.SpecificHeat_hKw = AFXFloatKeyword(self.cmd, 'SpecificHeat_h', True, data_h_s)
         self.Expansion_hKw = AFXFloatKeyword(self.cmd, 'Expansion_h', True, data_h_ep)
         self.size_hKw = AFXFloatKeyword(self.cmd, 'size_h', True, data_h_mesh_size)
+        
+        # 开关参数
         self.var_exportKw = AFXBoolKeyword(self.cmd, 'var_export', AFXBoolKeyword.TRUE_FALSE,True, False)
         self.var_inputKw = AFXBoolKeyword(self.cmd, 'var_input', AFXBoolKeyword.TRUE_FALSE,True, False)
         self.inputfileKw = AFXStringKeyword(self.cmd, 'inputfile', True, None)
+        self.var_WCMKw = AFXStringKeyword(self.cmd, 'var_WCM', True, False)
 
 
 

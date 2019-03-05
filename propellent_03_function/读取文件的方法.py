@@ -240,7 +240,7 @@ def readTXT(txtname, plug_type):
     # os.remove(file)
 
 path = r"D:\temp\abaqus_plugins\propellant\propellent_04_data\Tie_v2019-03-05_08-59-45.txt"
-data = readTXT(path, 2)
+# data = readTXT(path, 2)
 # print(type(data[1]))
-print(data)
+# print(data)
 # print(data[1][3])

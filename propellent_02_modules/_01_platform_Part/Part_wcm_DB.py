@@ -79,7 +79,59 @@ class Part_wcm_DB(AFXDataDialog):
             x=0, y=0, w=0, h=0, pl=DEFAULT_SPACING, pr=DEFAULT_SPACING,
             pt=DEFAULT_SPACING, pb=DEFAULT_SPACING)
 
-        # 开始创建多个子标签页的内容的标题等等
+        # 复合材料壳体
+        tabItem = FXTabItem(p=TabBook_1, text='\xb8\xb4\xba\xcf\xb2\xc4\xc1\xcf\xbf\xc7\xcc\xe5', ic=None,
+                            opts=TAB_TOP_NORMAL,
+                            x=0, y=0, w=0, h=0, pl=6, pr=6, pt=DEFAULT_PAD, pb=DEFAULT_PAD)
+        TabItem_1 = FXVerticalFrame(p=TabBook_1,
+                                    opts=FRAME_RAISED | FRAME_THICK | LAYOUT_FILL_X,
+                                    x=0, y=0, w=0, h=0, pl=DEFAULT_SPACING, pr=DEFAULT_SPACING,
+                                    pt=DEFAULT_SPACING, pb=DEFAULT_SPACING, hs=DEFAULT_SPACING, vs=DEFAULT_SPACING)
+        l = FXLabel(p=TabItem_1, text='\xc7\xeb\xb5\xbc\xc8\xeb\xb9\xb9\xbc\xfe\xa3\xba', opts=JUSTIFY_LEFT)
+        HFrame_1 = FXHorizontalFrame(p=TabItem_1, opts=0, x=0, y=0, w=0, h=0,
+                                     pl=0, pr=0, pt=0, pb=0)
+
+        fileHandler = part_DBFileHandler(form, 'filepath_c', 'ACIS SAT(*.sat*)')
+        fileTextHf = FXHorizontalFrame(p=HFrame_1, opts=0, x=0, y=0, w=0, h=0,
+                                       pl=0, pr=0, pt=0, pb=0, hs=DEFAULT_SPACING, vs=DEFAULT_SPACING)
+        fileTextHf.setSelector(99)
+        AFXTextField(p=fileTextHf, ncols=12,
+                     labelText='\xb8\xb4\xba\xcf\xb2\xc4\xc1\xcf\xc4\xa3\xd0\xcd\xc2\xb7\xbe\xb6\xa3\xa8\xbd\xf6\xd6\xa7\xb3\xd6SAT\xb8\xf1\xca\xbd\xce\xc4\xbc\xfe\xa3\xa9:',
+                     tgt=form.filepath_cKw, sel=0,
+                     opts=AFXTEXTFIELD_STRING | LAYOUT_CENTER_Y)
+        icon = afxGetIcon('fileOpen', AFX_ICON_SMALL)
+        FXButton(p=fileTextHf, text='	Select File\nFrom Dialog', ic=icon, tgt=fileHandler, sel=AFXMode.ID_ACTIVATE,
+                 opts=BUTTON_NORMAL | LAYOUT_CENTER_Y, x=0, y=0, w=0, h=0, pl=1, pr=1, pt=1, pb=1)
+        VAligner_1 = AFXVerticalAligner(p=HFrame_1, opts=0, x=0, y=0, w=0, h=0,
+                                        pl=0, pr=0, pt=0, pb=0)
+        if isinstance(TabItem_1, FXHorizontalFrame):
+            FXVerticalSeparator(p=TabItem_1, x=0, y=0, w=0, h=0, pl=2, pr=2, pt=2, pb=2)
+        else:
+            FXHorizontalSeparator(p=TabItem_1, x=0, y=0, w=0, h=0, pl=2, pr=2, pt=2, pb=2)
+        l = FXLabel(p=TabItem_1, text='\xb2\xc4\xc1\xcf\xca\xf4\xd0\xd4\xb8\xb3\xd3\xe8', opts=JUSTIFY_LEFT)
+        HFrame_3 = FXHorizontalFrame(p=TabItem_1, opts=0, x=0, y=0, w=0, h=0,
+                                     pl=0, pr=0, pt=0, pb=0)
+        self.dc = AFXTextField(p=HFrame_3, ncols=12, labelText='\xc3\xdc\xb6\xc8:', tgt=form.desity_cKw, sel=0)
+        self.ec = AFXTextField(p=HFrame_3, ncols=12, labelText='\xb5\xaf\xd0\xd4\xc4\xa3\xc1\xbf:',
+                               tgt=form.Elastic_cKw, sel=0)
+        self.pc = AFXTextField(p=HFrame_3, ncols=12, labelText='\xb2\xb4\xcb\xc9\xb1\xc8:', tgt=form.Poisson_cKw, sel=0)
+        HFrame_4 = FXHorizontalFrame(p=TabItem_1, opts=0, x=0, y=0, w=0, h=0,
+                                     pl=0, pr=0, pt=0, pb=0)
+        self.cc = AFXTextField(p=HFrame_4, ncols=12, labelText='\xc8\xc8\xb4\xab\xb5\xbc\xc2\xca\xcf\xb5\xca\xfd:',
+                               tgt=form.Conductivity_cKw, sel=0)
+        self.sc = AFXTextField(p=HFrame_4, ncols=12, labelText='\xb1\xc8\xc8\xc8\xc8\xdd\xcf\xb5\xca\xfd:',
+                               tgt=form.SpecificHeat_cKw, sel=0)
+        self.exc = AFXTextField(p=HFrame_4, ncols=12, labelText='\xc8\xc8\xc5\xf2\xd5\xcd\xcf\xb5\xca\xfd:',
+                                tgt=form.Expansion_cKw, sel=0)
+        if isinstance(TabItem_1, FXHorizontalFrame):
+            FXVerticalSeparator(p=TabItem_1, x=0, y=0, w=0, h=0, pl=2, pr=2, pt=2, pb=2)
+        else:
+            FXHorizontalSeparator(p=TabItem_1, x=0, y=0, w=0, h=0, pl=2, pr=2, pt=2, pb=2)
+        l = FXLabel(p=TabItem_1, text='\xcd\xf8\xb8\xf1\xbb\xae\xb7\xd6', opts=JUSTIFY_LEFT)
+        self.mc = AFXTextField(p=TabItem_1, ncols=12, labelText='\xc8\xab\xbe\xd6\xcd\xf8\xb8\xf1\xb3\xdf\xb4\xe7:',
+                               tgt=form.size_cKw, sel=0)
+
+        # 3个构件的窗体显示
         tabItem = FXTabItem(p=TabBook_1, text='\xb0\xfc\xb8\xb2\xb2\xe3', ic=None, opts=TAB_TOP_NORMAL,
             x=0, y=0, w=0, h=0, pl=6, pr=6, pt=DEFAULT_PAD, pb=DEFAULT_PAD)
 
