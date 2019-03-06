@@ -8,8 +8,8 @@ import sys
 import datetime
 
 from propellent_03_function.propellent_03_function import *
-from propellent_03_function.propellant_output_pick import *
-from propellent_03_function.propellant_input_tie import *
+# from propellent_03_function.propellant_output_pick import *
+# from propellent_03_function.propellant_input_tie import *
 
 
 
