@@ -96,7 +96,7 @@ def warp_kernel_input(F,thickness,width,Cpu_num, var_export=False, var_input=Fal
         print('This {}th iteration calculation'.format(count + 1))
         count += 1
         # 修改复合材料终止时刻的温度为end_temp
-        mdb.models['Model-1'].predefinedFields['Predefined Field-' + part_list[0] + '-load'].setValuesInStep(
+        mdb.models['Model-1'].predefinedFields['Predefined Field-' + instance_list[0] + '-load'].setValuesInStep(
             stepName='Step-1', magnitudes=(end_temp_new,))
         print('    The current temprature is {}K'.format(end_temp_new))
 

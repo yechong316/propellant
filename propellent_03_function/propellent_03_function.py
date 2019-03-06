@@ -22,8 +22,8 @@ import mesh
 from propellent_03_function import *
 
 # 定义参数文本、子程序文本的默认地址
-userfile_path = os.path.abspath(os.path.join(os.getcwd(), "")) + '\\abaqus_plugins\\propellant\\propellent_05_Subfile\\'
-data_path = os.path.abspath(os.path.join(os.getcwd(), "")) + '\\abaqus_plugins\\propellant\\propellent_04_data\\'
+userfile_path = os.path.abspath(os.path.join(os.getcwd(), "")) + """\\abaqus_plugins\\propellant\\propellent_05_Subfile\\"""
+data_path = os.path.abspath(os.path.join(os.getcwd(), "")) + """\\abaqus_plugins\\propellant\\propellent_04_data\\"""
 
 # 以下代码是提取当前模型的所有part的名称，并将tank的名称添加到现有part_list
 part_list = ['unknown', 'bfc', 'fengtou', 'propeller']
@@ -33,22 +33,23 @@ for part, num in zip(part_model, range(len(part_list))):
     if part != 'bfc' and part != 'fengtou' and part != 'propeller':
         part_list[0] = part_model[num]
 
-class Part(object):
-    '''
-    本类中储存所有ABAQUS关于PART模块中的所有操作
-    '''
-    def __init__(self, part, part_path):
-        self.part = part
-        self.part_path = part_path
-
-    def import_part(self, part, part_path):
-        # 导入构件,默认为sat文件
-        acis = mdb.openAcis(part_path, scaleFromFile=OFF)
-        mdb.models['Model-1'].PartFromGeometryFile(name=part, geometryFile=acis,
-        combine=False, dimensionality=THREE_D, type=DEFORMABLE_BODY)
-        print('{} has been imported to CAE!'.format(part))
+# class Part(object):
+#     '''
+#     本类中储存所有ABAQUS关于PART模块中的所有操作
+#     '''
+#     def __init__(self, part, part_path):
+#         self.part = part
+#         self.part_path = part_path
+#
+#     def import_part(self, part, part_path):
+#         # 导入构件,默认为sat文件
+#         acis = mdb.openAcis(part_path, scaleFromFile=OFF)
+#         mdb.models['Model-1'].PartFromGeometryFile(name=part, geometryFile=acis,
+#         combine=False, dimensionality=THREE_D, type=DEFORMABLE_BODY)
+#         print('{} has been imported to CAE!'.format(part))
 
 def FaceIndex2region(indexlist, num):
+
     '''
     根据面的索引号序列，返回一个sideface，供上级程序建立一个region面，生成绑定关系或者
     面上的载荷的等
@@ -308,20 +309,26 @@ def del_mat_property(mat_name):
 
 
 # 固化工艺和温度冲击工艺可以共用，对每个实体生成初始温度场，温度值导入
-def generate_init_temprature(intialtemp):
+def generate_init_temprature(instances, intialtemp):
+    print('The Amp of temprature is {}'.format(intialtemp))
+
     a = mdb.models['Model-1'].rootAssembly
     # 依次调用4个构件,将提取的cell累加,定义初始温度场中
-    instance_total = mdb.models['Model-1'].rootAssembly.instances
-    for i in [key for key in instance_total.keys()]:
-       c1 = a.instances[i].cells
-       pickedCells1 = c1[:]
-       a.Set(cells=pickedCells1, name='Set-' + i)
-       region = a.sets['Set-' + i]
-       mdb.models['Model-1'].Temperature(name='Predefined Field-' + i, createStepName='Initial',
-                                         region=region, distributionType=UNIFORM,
-                                         crossSectionDistribution=CONSTANT_THROUGH_THICKNESS,
-                                         magnitudes=(intialtemp,))
-       print('    Generating initial temprature field in the {}!'.format(i))
+    # instance_total = mdb.models['Model-1'].rootAssembly.instances
+    count = 1
+    for i in instances:
+
+        print('    This is {}th iter!'.format(count))
+        count += 1
+        c1 = a.instances[i].cells
+        pickedCells1 = c1[:]
+        a.Set(cells=pickedCells1, name='Set-' + i)
+        region = a.sets['Set-' + i]
+        mdb.models['Model-1'].Temperature(name='Predefined Field-' + i, createStepName='Initial',
+                                          region=region, distributionType=UNIFORM,
+                                          crossSectionDistribution=CONSTANT_THROUGH_THICKNESS,
+                                          magnitudes=(intialtemp,))
+        print('    Generating initial temprature field in the {}!'.format(i))
 
 
 def initThermal_mesh(part,start_temp):
@@ -643,14 +650,17 @@ def exportTXT(data_total,plug_type, WCM_state=False):
         data_txt_name = data_path + 'Warp_v' + time_property + '.txt'
         fileObject = open(data_txt_name, 'w')
         fileObject.write('使用说明：每一行的数据分别对应预紧力，'
-                         '纤维铺层厚度，纤维宽度，CPU核数')
-        fileObject.write('\n')
+                         '纤维铺层厚度，纤维宽度，CPU核数\n')
+        fileObject.write('预紧力:')
         fileObject.write(str(data_total[0]))
         fileObject.write('\n')
+        fileObject.write('纤维铺层厚度:')
         fileObject.write(str(data_total[1]))
         fileObject.write('\n')
+        fileObject.write('纤维宽度:')
         fileObject.write(str(data_total[2]))
         fileObject.write('\n')
+        fileObject.write('CPU核数:')
         fileObject.write(str(data_total[3]))
         fileObject.close()
         # 打印已成功导出参数
@@ -984,6 +994,16 @@ def generate_tie(*args):
             mdb.models['Model-1'].constraints[tie_name_mid].swapSurfaces()
         print('    %s is successfully created!!' % tie_name_mid)
 
+#############################################
+# 导入用户选择面的索引号，生成一个region
+#############################################
+def generate_region(instance_name, instance_index):
+    a = mdb.models['Model-1'].rootAssembly
+    side1Faces = []  # 主面
+    for index in instance_index:  #index = 2
+        side1Faces.append(a.instances[instance_name].faces[index : index + 1])
+    region = a.Surface(side1Faces=side1Faces, name='Sur_' + instance_name)
+    return region
 
 # ###################################################################
 # 提取复合材料实体名称（因为其他3个构件的名称不变，所以不需要考虑）

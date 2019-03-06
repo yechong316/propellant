@@ -8,20 +8,13 @@ import sys
 import datetime
 
 from propellent_03_function.propellent_03_function import *
-# from propellent_03_function.propellant_output_pick import *
-# from propellent_03_function.propellant_input_tie import *
-
-
 
 '''
 本插件应用于温度冲击试验，当完成构件导入，tie绑定关系建立后，使用此插件进行温度冲击
 相关仿真流程的定义，程序实现方法：首先判断是否导出数据，之后是否导入数据
 '''
-# old_job_path = os.path.abspath(os.path.join(os.getcwd(), "")) + '\\abaqus_plugins\\propellant\\propellent_07_job\\'
-# os.chdir(old_job_path)
 
 sys.path.append('E:\\propellant_v0125-1100\\propellent_07_job')
-# print('i am in thermal_kernel.py,job path : %s'%new_job_path)
 #
 ##############
 # 以下代码是提取当前模型的所有instance的名称，并将tank的名称添加到现有instance_list
@@ -34,22 +27,16 @@ for instance, num in zip(instance_model, range(len(part_list))):
 
 
 #开始主函数
-def temprature_shock_input(timePeriod1=None,intialtemp=None, hermal_zaihe_list=None,Composite_outface=None,Cpu_num=None, var_export=False, var_input=False, inputfile=None
-           ):
+def temprature_shock_input(timePeriod1=None,intialtemp=None, hermal_zaihe_list=None,
+           Composite_outface=None,Cpu_num=None, var_export=False, var_input=False, inputfile=None):
 
-    # print('THERMAL CONTACK CODES IS STARTING!')
     if var_export:
-        # print('Export data!')
-        # print(sys._getframe().f_lineno)
         data_thermal = [timePeriod1,intialtemp, hermal_zaihe_list,Composite_outface,Cpu_num]
-        #print('CURRENT TOTAL DATA IS: %s'%data_thermal)
         exportTXT(data_thermal, 3)
 
     # g根据数据类型进行调用
     if var_input:
         input_data_thermal = readTXT(inputfile, 3)
-        # print('INPUT_DATA_THERMAL :')
-        # print(input_data_thermal)
         Thermal_kernel_input(
             float(input_data_thermal[0]),
             float(input_data_thermal[1]),
@@ -63,7 +50,7 @@ def temprature_shock_input(timePeriod1=None,intialtemp=None, hermal_zaihe_list=N
         )
 
 
-def Thermal_kernel_input(timePeriod1, intialtemp, hermal_zaihe_list, Composite_outface, Cpu_num,
+def Thermal_kernel_input(timePeriod1, intialtemp, hermal_zaihe_list, Composite_outface_index, Cpu_num,
                          var_export=False):
     '''
     ABAQUS后台执行的命令核心脚本，本质上，上面的函数只是一个判断函数，这个才是核心
@@ -87,18 +74,22 @@ def Thermal_kernel_input(timePeriod1, intialtemp, hermal_zaihe_list, Composite_o
                                                       initialInc=1,
                                                       minInc=1e-5, maxInc=timePeriod1 / 10, deltmx=100)
     mdb.models['Model-1'].fieldOutputRequests['F-Output-1'].setValues(variables=('S', 'E', 'LE', 'U', 'NT'))
-
     # 定义最外表面温度冲击载荷幅值曲线，和边界条件
-    mdb.models['Model-1'].TabularAmplitude(name='thermal_Amp', timeSpan=STEP,
-                                           smooth=SOLVER_DEFAULT, data=hermal_zaihe_list)
+    mdb.models['Model-1'].TabularAmplitude(name='Amp-1', timeSpan=STEP,
+                                           smooth=SOLVER_DEFAULT, data=hermal_zaihe_list )
+    # mdb.models['Model-1'].TabularAmplitude(name='thermal_Amp', timeSpan=STEP,
+    #                                        smooth=SOLVER_DEFAULT, data=hermal_zaihe_list)
 
+    instances = gain_name_of_composte_instance()#保存当前所有的instances，其中第一个是外壳
+    shell_name = instances[0] #保存当前所有的instances，其中第一个是外壳
+    region_outface = generate_region(shell_name, Composite_outface_index)
     mdb.models['Model-1'].TemperatureBC(name='BC-thermal', createStepName='Step-1',
-                                        region=index2tie(master=Composite_outface, num_M=0,var_set_face='S'),
-                                        fixed=OFF, distributionType=UNIFORM,
-                                        fieldName='', magnitude=1.0, amplitude='thermal_Amp')
+                                        region=region_outface,fixed=OFF, distributionType=UNIFORM,
+                                        fieldName='', magnitude=1.0, amplitude='Amp-1')
+    print('TempratureBC is successfully generated!')
 
     # 搜索当前模型的所有实体，建立初始温度场
-    generate_init_temprature(intialtemp)
+    generate_init_temprature(instances, intialtemp)
     
     for i in part_list:
         # 给每个构件赋予热传递单元属性

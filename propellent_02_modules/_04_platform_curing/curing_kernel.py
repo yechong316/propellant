@@ -65,7 +65,8 @@ def curing_kernel_input(timePeriod1,intialtemp,table_list,Composite_outface_inde
     print('The data of DISP and FILM have been successfully writed to *.for!')
 
     # 给4个构件增加初始温度场
-    generate_init_temprature(intialtemp)
+    instances = gain_name_of_composte_instance()#保存当前所有的instances，其中第一个是外壳
+    generate_init_temprature(instances, intialtemp)
 
     # # 给每个构件赋予热传递单元属性
     for i in part_list:
@@ -86,6 +87,8 @@ def curing_kernel_input(timePeriod1,intialtemp,table_list,Composite_outface_inde
         creat_user_composite(m)
 
     # 首先定义分析步信息生成一个热传递耦合分析步固化工艺总时长
+    mdb.models['Model-1'].TabularAmplitude(name='Amp-1', timeSpan=STEP,
+                                           smooth=SOLVER_DEFAULT, data=table_list )
     mdb.models['Model-1'].HeatTransferStep(name='Step-1', previous='Initial',
                                            timePeriod=timePeriod1, maxNumInc=10000, initialInc=10.0, minInc=1e-05,
                                            maxInc=timePeriod1, deltmx=1000.0)
@@ -96,7 +99,7 @@ def curing_kernel_input(timePeriod1,intialtemp,table_list,Composite_outface_inde
     mdb.models['Model-1'].TemperatureBC(name='BC-thermal', createStepName='Step-1',
                                         region=index2tie(master=Composite_outface_index, num_M=0,var_set_face='S'),
                                         fixed=OFF, distributionType=UNIFORM,
-                                        fieldName='', magnitude=1.0, amplitude='thermal_Amp')
+                                        fieldName='', magnitude=1.0, amplitude='Amp-1')
     # 
     # 热对流工况
     mdb.models['Model-1'].FilmCondition(name='Int-1', createStepName='Step-1',
