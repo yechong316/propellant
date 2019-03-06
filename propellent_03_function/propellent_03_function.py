@@ -961,20 +961,23 @@ def generate_tie(*args):
         # assert len(i[0][0]) == 2, "i is not ('unknown', [2, 3, 15, 18])"
         instance_M, instance_S = i[0][0][0], i[0][1][0]
         index_M, index_S = i[0][0][1], i[0][1][1]
-        p = i[1]
+        position = i[1]
         var_swap = i[2]
         side1Faces_M = []  # 主面
-        for index in range(len(index_M)):  #index = 2
+        for index in index_M:  #index = 2
             side1Faces_M.append(a.instances[instance_M].faces[index : index + 1])
+        region_M = a.Surface(side1Faces=side1Faces_M, name='Sur_' + instance_M + instance_S + '_M')
         
         side1Faces_S = []  # 从面
-        for index in range(len(index_S)):
+        for index in index_S:
             side1Faces_S.append(a.instances[instance_S].faces[index : index + 1])
+        region_S = a.Surface(side1Faces=side1Faces_S, name='Sur_' + instance_M + instance_S + '_S')
 
+        # 分别定义绑定对的两个面
         tie_name_mid = 'Constraint_' + instance_M + '_' + instance_S
-        mdb.models['Model-1'].Tie(name=tie_name_mid, master=side1Faces_M,
-                                  slave=side1Faces_S, positionToleranceMethod=SPECIFIED,
-                                  positionTolerance=p,
+        mdb.models['Model-1'].Tie(name=tie_name_mid, master=region_M,
+                                  slave=region_S, positionToleranceMethod=SPECIFIED,
+                                  positionTolerance=position,
                                   adjust=ON, tieRotations=ON, thickness=ON)
         # 交互绑定对的主从面
         if var_swap == True:

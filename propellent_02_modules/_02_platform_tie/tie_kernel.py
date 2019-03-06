@@ -35,7 +35,9 @@ def tie_input(
     if var_input:
         input_data = readTXT(inputfile, 2)
         instance_list = gain_name_of_composte_instance()
+        print('instance_list is :{}'.format(instance_list))
         tie_data = construced_tie_data_matrix(instance_list, input_data)
+        print('tie_data is :{}'.format(tie_data))
         generate_tie(tie_data)
 
     else:
