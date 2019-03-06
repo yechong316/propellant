@@ -33,13 +33,17 @@ for part, num in zip(part_model, range(len(part_list))):
     if part != 'bfc' and part != 'fengtou' and part != 'propeller':
         part_list[0] = part_model[num]
 
-# 以下代码是提取当前模型的所有instance的名称，并将tank的名称添加到现有instance_list
-instance_list = ['unknown', 'bfc-1', 'fengtou-1', 'propeller-1']
-instance_total = mdb.models['Model-1'].rootAssembly.instances
-instance_model = [key for key in instance_total.keys()]
-for instance in instance_model:
-    if instance not in instance_list:
-        instance_list[0] = instance
+# # 以下代码是提取当前模型的所有instance的名称，并将tank的名称添加到现有instance_list
+# instance_list = ['unknown', 'bfc-1', 'fengtou-1', 'propeller-1']
+# instance_total = mdb.models['Model-1'].rootAssembly.instances
+# instance_model = [key for key in instance_total.keys()]
+# for instance in instance_model:
+#     if instance not in instance_list:
+#         instance_list[0] = instance
+
+# print('instance_list is : {}'.format(instance_list))
+
+
 
 class Part(object):
     '''
@@ -66,6 +70,14 @@ def FaceIndex2region(indexlist, num):
     '''
     a = mdb.models['Model-1'].rootAssembly
     side1Faces = []
+    # 以下代码是提取当前模型的所有instance的名称，并将tank的名称添加到现有instance_list
+    instance_list = ['unknown', 'bfc-1', 'fengtou-1', 'propeller-1']
+    instance_total = mdb.models['Model-1'].rootAssembly.instances
+    instance_model = [key for key in instance_total.keys()]
+    for instance in instance_model:
+        if instance not in instance_list:
+            instance_list[0] = instance
+
     for i in range(len(indexlist)):
         side1Faces.append(a.instances[instance_list[num]].faces[indexlist[i]:indexlist[i] + 1])
     return side1Faces
@@ -249,6 +261,14 @@ def generate_pickCells(part) :
     :return:
     '''
     a = mdb.models['Model-1'].rootAssembly
+    # 以下代码是提取当前模型的所有instance的名称，并将tank的名称添加到现有instance_list
+    instance_list = ['unknown', 'bfc-1', 'fengtou-1', 'propeller-1']
+    instance_total = mdb.models['Model-1'].rootAssembly.instances
+    instance_model = [key for key in instance_total.keys()]
+    for instance in instance_model:
+        if instance not in instance_list:
+            instance_list[0] = instance
+
     c1 = a.instances[instance_list[num]].cells
     pickedCells1 = c1[:]
 
@@ -324,6 +344,14 @@ def generate_init_temprature(intialtemp):
     num_3 = 0
     # 依次调用4个构件,将提取的cell累加,定义初始温度场中
     # print('instance_list is :'.format(instance_list))
+    # 以下代码是提取当前模型的所有instance的名称，并将tank的名称添加到现有instance_list
+    instance_list = ['unknown', 'bfc-1', 'fengtou-1', 'propeller-1']
+    instance_total = mdb.models['Model-1'].rootAssembly.instances
+    instance_model = [key for key in instance_total.keys()]
+    for instance in instance_model:
+        if instance not in instance_list:
+            instance_list[0] = instance
+
     for i in instance_list:
 
        a = mdb.models['Model-1'].rootAssembly
@@ -469,6 +497,14 @@ def creat_initThermal(part) :
     输出：无返回值
     '''
     a = mdb.models['Model-1'].rootAssembly
+    # 以下代码是提取当前模型的所有instance的名称，并将tank的名称添加到现有instance_list
+    instance_list = ['unknown', 'bfc-1', 'fengtou-1', 'propeller-1']
+    instance_total = mdb.models['Model-1'].rootAssembly.instances
+    instance_model = [key for key in instance_total.keys()]
+    for instance in instance_model:
+        if instance not in instance_list:
+            instance_list[0] = instance
+
     c1 = a.instances[instance_list[0]].cells
     pickedCells1 = c1[:]
 
@@ -920,6 +956,14 @@ def index2tie(master,slave=None,pos=None,var=None,
 
         # 开始提取主从面的sideface
         a = mdb.models['Model-1'].rootAssembly
+        # 以下代码是提取当前模型的所有instance的名称，并将tank的名称添加到现有instance_list
+        instance_list = ['unknown', 'bfc-1', 'fengtou-1', 'propeller-1']
+        instance_total = mdb.models['Model-1'].rootAssembly.instances
+        instance_model = [key for key in instance_total.keys()]
+        for instance in instance_model:
+            if instance not in instance_list:
+                instance_list[0] = instance
+
         side1Faces_M = []  #主面
         for i in range(len(master)):
             side1Faces_M.append(a.instances[instance_list[num_M]].faces[master[i]:master[i] + 1])
