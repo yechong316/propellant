@@ -242,7 +242,7 @@ def str2bool(str):
 inputfile = r"D:\temp\abaqus_plugins\propellant\propellent_04_data\Tie_v2019-01-27_23-27-40.txt"
 input_data = readTXT(inputfile, 2)
 
-instance_list = gain_name_of_composte_instance()
+instance_list =  ['unknown', 'bfc-1', 'fengtou-1', 'propeller-1']
 tie_instance = [
     [instance_list[0], instance_list[1]],
     [instance_list[1], instance_list[2]],

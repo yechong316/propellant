@@ -404,9 +404,6 @@ def Face2str_indes(face):
         # print(i.index)
         list.append(i.index)
     str2 = ' '.join([str(x) for x in list])
-    # print('Face has been transfer str_index')
-    # print(list)
-    # print(str2)
     current += 1
     return str2
 
@@ -529,7 +526,7 @@ def exportTXT(data_total,plug_type, WCM_state=False):
         ]
 
         # 定义一个数据文本
-        fi
+        # fi
         data_txt_name = file_name + time_property + '.txt'
         data_file = data_path + data_txt_name
 
@@ -951,14 +948,21 @@ def generate_instance_sideface(instance, face_index):
 
 # 导入主从面的sideface， 容差，可是否切换至
 def generate_tie(*args):
-    for i in args:
+    a = mdb.models['Model-1'].rootAssembly
+    for i in args[0]:# 关键词参数会自动拼装成元组，所以这里取索引0，
         # i 为[[('unknown', [2, 3, 15, 18]), ('bfc-1', [0, 1, 5, 6])], 0.1, True]
         # i[0] = [('unknown', [2, 3, 15, 18]), ('bfc-1', [0, 1, 5, 6])]
         # i[0][0] = ('unknown', [2, 3, 15, 18]),
         # i[0][0][0] = unknown'
         # i[0][0][1] = [2, 3, 15, 18]
+        assert len(i) == 3, "i is not [[('unknown', [2, 3, 15, 18]), ('bfc-1', [0, 1, 5, 6])], 0.1, True]"
+        assert len(i[0]) == 2, "i is not [('unknown', [2, 3, 15, 18]), ('bfc-1', [0, 1, 5, 6])]"
+        assert len(i[0][0]) == 2, "i is not ('unknown', [2, 3, 15, 18])"
+        # assert len(i[0][0]) == 2, "i is not ('unknown', [2, 3, 15, 18])"
         instance_M, instance_S = i[0][0][0], i[0][1][0]
         index_M, index_S = i[0][0][1], i[0][1][1]
+        p = i[1]
+        var_swap = i[2]
         side1Faces_M = []  # 主面
         for index in range(len(index_M)):  #index = 2
             side1Faces_M.append(a.instances[instance_M].faces[index : index + 1])
@@ -967,15 +971,15 @@ def generate_tie(*args):
         for index in range(len(index_S)):
             side1Faces_S.append(a.instances[instance_S].faces[index : index + 1])
 
-    tie_name_mid = 'Constraint_' + instance_M + '_' + instance_S
-    mdb.models['Model-1'].Tie(name=tie_name_mid, master=side1Faces_M,
-                              slave=side1Faces_S, positionToleranceMethod=SPECIFIED,
-                              positionTolerance=p,
-                              adjust=ON, tieRotations=ON, thickness=ON)
-    # 交互绑定对的主从面
-    if var_swap == True:
-        mdb.models['Model-1'].constraints[tie_name_mid].swapSurfaces()
-    print('    %s is successfully created!!' % tie_name_mid)
+        tie_name_mid = 'Constraint_' + instance_M + '_' + instance_S
+        mdb.models['Model-1'].Tie(name=tie_name_mid, master=side1Faces_M,
+                                  slave=side1Faces_S, positionToleranceMethod=SPECIFIED,
+                                  positionTolerance=p,
+                                  adjust=ON, tieRotations=ON, thickness=ON)
+        # 交互绑定对的主从面
+        if var_swap == True:
+            mdb.models['Model-1'].constraints[tie_name_mid].swapSurfaces()
+        print('    %s is successfully created!!' % tie_name_mid)
 
 
 # ###################################################################
