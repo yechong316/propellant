@@ -97,34 +97,12 @@ def Thermal_kernel_input(timePeriod1, intialtemp, hermal_zaihe_list, Composite_o
                                         fixed=OFF, distributionType=UNIFORM,
                                         fieldName='', magnitude=1.0, amplitude='thermal_Amp')
 
-    # 依次调用4个构件,赋予热传递单元属性和初始温度场
-
-    # 将所有构件储存到a中，依次提取
-    p_total = mdb.models['Model-1'].parts
-    part_list = [key for key in p_total.keys()]
-    # part_list = ['Tank', 'bfc', 'fengtou', 'propeller']
-    num_3 = 0
-    for i in instance_list:
-        # 4个构件的cell累加
-        if num_3 == 0:
-            num_3 = 1
-            pickedCells = creat_initThermal(i)
-        else:
-            pickedCells += creat_initThermal(i)
+    # 搜索当前模型的所有实体，建立初始温度场
+    generate_init_temprature(intialtemp)
     
     for i in part_list:
-        # 给每个构件赋予热传递单元属性,初始温度场
+        # 给每个构件赋予热传递单元属性
         creat_thermal_force_element(i)
-    a = mdb.models['Model-1'].rootAssembly
-
-    
-    # c1 = a.instances[instance_list[0]].cells
-    # pickedCells1 = c1[:]
-    a.Set(cells=pickedCells, name='Set-total')
-    region_total = a.sets['Set-total']
-    mdb.models['Model-1'].Temperature(name='Predefined Field-total', createStepName='Initial',
-                                      region=region_total, distributionType=UNIFORM,
-                                      crossSectionDistribution=CONSTANT_THROUGH_THICKNESS, magnitudes=(intialtemp,))
 
     # 05-提交计算查看结果
     Job_name = 'thermal-' + datetime.datetime.now().strftime('%Y-%m-%d-%H-%M-%S')

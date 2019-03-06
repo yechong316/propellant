@@ -33,18 +33,6 @@ for part, num in zip(part_model, range(len(part_list))):
     if part != 'bfc' and part != 'fengtou' and part != 'propeller':
         part_list[0] = part_model[num]
 
-# # 以下代码是提取当前模型的所有instance的名称，并将tank的名称添加到现有instance_list
-# instance_list = ['unknown', 'bfc-1', 'fengtou-1', 'propeller-1']
-# instance_total = mdb.models['Model-1'].rootAssembly.instances
-# instance_model = [key for key in instance_total.keys()]
-# for instance in instance_model:
-#     if instance not in instance_list:
-#         instance_list[0] = instance
-
-# print('instance_list is : {}'.format(instance_list))
-
-
-
 class Part(object):
     '''
     本类中储存所有ABAQUS关于PART模块中的所有操作
@@ -254,25 +242,6 @@ def creat_C3D8R_element(part):
     #p.generateMesh()
     print('    {} has been assigned '.format(part))
 
-# 定义初始温度场
-def generate_pickCells(part) :
-    '''
-    :param part:
-    :return:
-    '''
-    a = mdb.models['Model-1'].rootAssembly
-    # 以下代码是提取当前模型的所有instance的名称，并将tank的名称添加到现有instance_list
-    instance_list = ['unknown', 'bfc-1', 'fengtou-1', 'propeller-1']
-    instance_total = mdb.models['Model-1'].rootAssembly.instances
-    instance_model = [key for key in instance_total.keys()]
-    for instance in instance_model:
-        if instance not in instance_list:
-            instance_list[0] = instance
-
-    c1 = a.instances[instance_list[num]].cells
-    pickedCells1 = c1[:]
-
-    return pickedCells1
 
 # 定义复合材料的子程序属性
 def creat_user_composite(mat):
@@ -338,23 +307,12 @@ def del_mat_property(mat_name):
         del mdb.models['Model-1'].materials[mat_name].expansion
 
 
-# 固化工艺和温度冲击工艺可以共用此喊
+# 固化工艺和温度冲击工艺可以共用，对每个实体生成初始温度场，温度值导入
 def generate_init_temprature(intialtemp):
     a = mdb.models['Model-1'].rootAssembly
-    num_3 = 0
     # 依次调用4个构件,将提取的cell累加,定义初始温度场中
-    # print('instance_list is :'.format(instance_list))
-    # 以下代码是提取当前模型的所有instance的名称，并将tank的名称添加到现有instance_list
-    instance_list = ['unknown', 'bfc-1', 'fengtou-1', 'propeller-1']
     instance_total = mdb.models['Model-1'].rootAssembly.instances
-    instance_model = [key for key in instance_total.keys()]
-    for instance in instance_model:
-        if instance not in instance_list:
-            instance_list[0] = instance
-
-    for i in instance_list:
-
-       a = mdb.models['Model-1'].rootAssembly
+    for i in [key for key in instance_total.keys()]:
        c1 = a.instances[i].cells
        pickedCells1 = c1[:]
        a.Set(cells=pickedCells1, name='Set-' + i)
@@ -957,19 +915,14 @@ def index2tie(master,slave=None,pos=None,var=None,
         # 开始提取主从面的sideface
         a = mdb.models['Model-1'].rootAssembly
         # 以下代码是提取当前模型的所有instance的名称，并将tank的名称添加到现有instance_list
-        instance_list = ['unknown', 'bfc-1', 'fengtou-1', 'propeller-1']
         instance_total = mdb.models['Model-1'].rootAssembly.instances
         instance_model = [key for key in instance_total.keys()]
-        for instance in instance_model:
-            if instance not in instance_list:
-                instance_list[0] = instance
-
         side1Faces_M = []  #主面
         for i in range(len(master)):
-            side1Faces_M.append(a.instances[instance_list[num_M]].faces[master[i]:master[i] + 1])
+            side1Faces_M.append(a.instances[instance_model[num_M]].faces[master[i]:master[i] + 1])
         side1Faces_S = []  #从面
         for i in range(len(slave)):
-            side1Faces_S.append(a.instances[instance_list[num_S]].faces[slave[i]:slave[i] + 1])
+            side1Faces_S.append(a.instances[instance_model[num_S]].faces[slave[i]:slave[i] + 1])
 
         # 分别定义绑定对的两个面
         region_Master_cb = a.Surface(side1Faces=side1Faces_M, name=name_mid + '_M')
