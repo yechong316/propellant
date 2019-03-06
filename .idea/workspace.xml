@@ -9,82 +9,62 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.7995674">
-      <split-first>
-        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/propellent_03_function/propellent_03_function.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="133">
-                  <caret line="310" column="4" selection-start-line="310" selection-start-column="4" selection-end-line="310" selection-end-column="4" />
-                  <folding>
-                    <element signature="e#147#162#0" expanded="true" />
-                    <element signature="e#13379#13863#0" />
-                    <element signature="e#13889#13959#0" />
-                    <element signature="e#14008#14886#0" />
-                    <element signature="e#30021#30484#1" />
-                    <element signature="e#30595#31140#0" />
-                    <element signature="e#30936#31140#0" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/propellent_02_modules/_03_platform_thermal/temprature_shock_kernel.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="432">
-                  <caret line="76" column="43" lean-forward="true" selection-start-line="76" selection-start-column="43" selection-end-line="76" selection-end-column="43" />
-                  <folding>
-                    <element signature="e#15#35#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/propellent_02_modules/_01_platform_Part/Part_wcm_DB.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="607">
-                  <caret line="70" column="27" selection-start-line="70" selection-start-column="27" selection-end-line="70" selection-end-column="27" />
-                  <folding>
-                    <element signature="e#202#645#1" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/propellent_02_modules/_04_platform_curing/curing_kernel.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="302">
-                  <caret line="67" column="40" selection-start-line="67" selection-start-column="40" selection-end-line="67" selection-end-column="40" />
-                  <folding>
-                    <element signature="e#36#56#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-first>
-      <split-second>
-        <leaf>
-          <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/propellent_02_modules/_02_platform_tie/tie_kernel.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="188">
-                  <caret line="35" column="54" lean-forward="true" selection-start-line="35" selection-start-column="54" selection-end-line="35" selection-end-column="54" />
-                  <folding>
-                    <element signature="e#66#86#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-second>
-    </splitter>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/propellent_03_function/propellent_03_function.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="345">
+              <caret line="966" column="41" selection-start-line="966" selection-start-column="41" selection-end-line="966" selection-end-column="41" />
+              <folding>
+                <element signature="e#147#162#0" expanded="true" />
+                <element signature="e#9343#10357#0" />
+                <element signature="e#12641#13235#0" />
+                <element signature="e#13279#13347#0" />
+                <element signature="e#13379#13863#0" />
+                <element signature="e#13889#13959#0" />
+                <element signature="e#14008#14886#0" />
+                <element signature="e#15545#16412#0" />
+                <element signature="e#16458#19554#0" />
+                <element signature="e#22331#29592#0" />
+                <element signature="e#22529#24023#0" />
+                <element signature="e#30021#30484#1" />
+                <element signature="e#30595#31140#0" />
+                <element signature="e#30696#30888#0" />
+                <element signature="e#30936#31140#0" />
+                <element signature="e#31159#31190#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/propellent_03_function/将tieindex和实体组装成字典.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="138">
+              <caret line="245" selection-start-line="245" selection-end-line="257" selection-end-column="1" />
+              <folding>
+                <element signature="e#153#7355#0" />
+                <element signature="e#351#1845#0" />
+                <element signature="e#7403#7997#0" />
+                <element signature="e#8040#8108#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/propellent_02_modules/_03_platform_thermal/temprature_shock_kernel.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="118">
+              <caret line="67" column="7" lean-forward="true" selection-start-line="67" selection-start-column="7" selection-end-line="67" selection-end-column="7" />
+              <folding>
+                <element signature="e#15#35#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -95,13 +75,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>'-1'</find>
-      <find>List_row</find>
-      <find>input_data</find>
-      <find>data</find>
-      <find>b</find>
-      <find>part_hanzi</find>
-      <find>Part</find>
       <find>inputfile</find>
       <find>\xb8\xb4\xba\xcf\xb2\xc4\xc1\xcf</find>
       <find>\xb0\xfc\xb8\xb2\xb2\xe3</find>
@@ -113,18 +86,25 @@
       <find>shell</find>
       <find>imputCAD_property_instance_mesh</find>
       <find>abaqus_plugin</find>
-      <find>str2bool</find>
-      <find>read</find>
       <find>'CP_' +</find>
       <find>name_mid</find>
       <find>indexlist</find>
       <find>C3D8R</find>
-      <find>instance</find>
       <find>propellant_output_pick</find>
       <find>instance_list</find>
-      <find>generate</find>
       <find>gene</find>
+      <find>generate</find>
+      <find>sideface</find>
       <find>instance_total</find>
+      <find>read</find>
+      <find>str_indes2Face</find>
+      <find>str2bool</find>
+      <find>instance</find>
+      <find>input_data</find>
+      <find>compostie</find>
+      <find>dict(</find>
+      <find>tie</find>
+      <find>_tie</find>
     </findStrings>
     <replaceStrings>
       <replace>len(part_list)</replace>
@@ -137,6 +117,8 @@
       <replace>name_tie</replace>
       <replace>slave</replace>
       <replace>instance_model</replace>
+      <replace>instance_list</replace>
+      <replace>instance_M</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -164,10 +146,11 @@
         <option value="$PROJECT_DIR$/propellent_02_modules/_01_platform_Part/Part_wcm_DB.py" />
         <option value="$PROJECT_DIR$/propellent_02_modules/_01_platform_Part/Part_wcm_kernel.py" />
         <option value="$PROJECT_DIR$/propellent_03_function/读取文件的方法.py" />
-        <option value="$PROJECT_DIR$/propellent_02_modules/_02_platform_tie/tie_kernel.py" />
-        <option value="$PROJECT_DIR$/propellent_03_function/propellent_03_function.py" />
         <option value="$PROJECT_DIR$/propellent_02_modules/_03_platform_thermal/temprature_shock_kernel.py" />
         <option value="$PROJECT_DIR$/propellent_02_modules/_04_platform_curing/curing_kernel.py" />
+        <option value="$PROJECT_DIR$/propellent_02_modules/_02_platform_tie/tie_kernel.py" />
+        <option value="$PROJECT_DIR$/propellent_03_function/propellent_03_function.py" />
+        <option value="$PROJECT_DIR$/propellent_03_function/将tieindex和实体组装成字典.py" />
       </list>
     </option>
   </component>
@@ -194,12 +177,6 @@
               <item name="propellant" type="b2602c69:ProjectViewProjectNode" />
               <item name="propellant" type="462c0819:PsiDirectoryNode" />
               <item name="propellent_02_modules" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="propellant" type="b2602c69:ProjectViewProjectNode" />
-              <item name="propellant" type="462c0819:PsiDirectoryNode" />
-              <item name="propellent_02_modules" type="462c0819:PsiDirectoryNode" />
-              <item name="_02_platform_tie" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="propellant" type="b2602c69:ProjectViewProjectNode" />
@@ -236,7 +213,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.读取文件的方法">
+  <component name="RunManager" selected="Python.将tieindex和实体组装成字典">
     <configuration name="读取文件的方法" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="propellant" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -279,8 +256,30 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="将tieindex和实体组装成字典" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="propellant" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/propellent_03_function" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/propellent_03_function/将tieindex和实体组装成字典.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.将tieindex和实体组装成字典" />
         <item itemvalue="Python.读取文件的方法" />
         <item itemvalue="Python.汉字gbk编码" />
       </list>
@@ -301,14 +300,13 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.12417437" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17899604" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.37057993" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.18387553" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.22630835" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.36916548" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -316,7 +314,7 @@
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Terminal" order="8" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
-      <window_info anchor="bottom" id="Python Console" order="10" weight="0.29420084" />
+      <window_info anchor="bottom" id="Python Console" order="10" weight="0.45120227" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -406,32 +404,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/propellent_02_modules/_02_platform_tie/tie_kernel.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="188">
-          <caret line="35" column="54" lean-forward="true" selection-start-line="35" selection-start-column="54" selection-end-line="35" selection-end-column="54" />
-          <folding>
-            <element signature="e#66#86#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/propellent_03_function/propellent_03_function.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="310" column="4" selection-start-line="310" selection-start-column="4" selection-end-line="310" selection-end-column="4" />
-          <folding>
-            <element signature="e#147#162#0" expanded="true" />
-            <element signature="e#13379#13863#0" />
-            <element signature="e#13889#13959#0" />
-            <element signature="e#14008#14886#0" />
-            <element signature="e#30021#30484#1" />
-            <element signature="e#30595#31140#0" />
-            <element signature="e#30936#31140#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/propellent_02_modules/_04_platform_curing/curing_kernel.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="302">
@@ -444,10 +416,58 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/propellent_02_modules/_03_platform_thermal/temprature_shock_kernel.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="432">
-          <caret line="76" column="43" lean-forward="true" selection-start-line="76" selection-start-column="43" selection-end-line="76" selection-end-column="43" />
+        <state relative-caret-position="118">
+          <caret line="67" column="7" lean-forward="true" selection-start-line="67" selection-start-column="7" selection-end-line="67" selection-end-column="7" />
           <folding>
             <element signature="e#15#35#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/propellent_02_modules/_02_platform_tie/tie_kernel.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="67">
+          <caret line="105" column="16" lean-forward="true" selection-start-line="105" selection-start-column="16" selection-end-line="105" selection-end-column="16" />
+          <folding>
+            <element signature="e#66#86#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/propellent_03_function/propellent_03_function.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="966" column="41" selection-start-line="966" selection-start-column="41" selection-end-line="966" selection-end-column="41" />
+          <folding>
+            <element signature="e#147#162#0" expanded="true" />
+            <element signature="e#9343#10357#0" />
+            <element signature="e#12641#13235#0" />
+            <element signature="e#13279#13347#0" />
+            <element signature="e#13379#13863#0" />
+            <element signature="e#13889#13959#0" />
+            <element signature="e#14008#14886#0" />
+            <element signature="e#15545#16412#0" />
+            <element signature="e#16458#19554#0" />
+            <element signature="e#22331#29592#0" />
+            <element signature="e#22529#24023#0" />
+            <element signature="e#30021#30484#1" />
+            <element signature="e#30595#31140#0" />
+            <element signature="e#30696#30888#0" />
+            <element signature="e#30936#31140#0" />
+            <element signature="e#31159#31190#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/propellent_03_function/将tieindex和实体组装成字典.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="138">
+          <caret line="245" selection-start-line="245" selection-end-line="257" selection-end-column="1" />
+          <folding>
+            <element signature="e#153#7355#0" />
+            <element signature="e#351#1845#0" />
+            <element signature="e#7403#7997#0" />
+            <element signature="e#8040#8108#0" />
           </folding>
         </state>
       </provider>

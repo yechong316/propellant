@@ -784,8 +784,6 @@ def readTXT(txtname, plug_type):
         for i in list:
             i.replace('\n', '')
         print('Finish gain the thermal data from txt!')
-        # print('Thermal Data is :')
-        # print(list)
         return list
 
     # 固化工艺
@@ -917,15 +915,15 @@ def index2tie(master,slave=None,pos=None,var=None,
         # 以下代码是提取当前模型的所有instance的名称，并将tank的名称添加到现有instance_list
         instance_total = mdb.models['Model-1'].rootAssembly.instances
         instance_model = [key for key in instance_total.keys()]
-        side1Faces_M = []  #主面
+        side1Faces = []  #主面
         for i in range(len(master)):
-            side1Faces_M.append(a.instances[instance_model[num_M]].faces[master[i]:master[i] + 1])
+            side1Faces.append(a.instances[instance_model[num_M]].faces[master[i]:master[i] + 1])
         side1Faces_S = []  #从面
         for i in range(len(slave)):
             side1Faces_S.append(a.instances[instance_model[num_S]].faces[slave[i]:slave[i] + 1])
 
         # 分别定义绑定对的两个面
-        region_Master_cb = a.Surface(side1Faces=side1Faces_M, name=name_mid + '_M')
+        region_Master_cb = a.Surface(side1Faces=side1Faces, name=name_mid + '_M')
         region_Slave_cb = a.Surface(side1Faces=side1Faces_S, name=name_mid + '_S')
 
         # 定义绑定对的名称
@@ -939,6 +937,92 @@ def index2tie(master,slave=None,pos=None,var=None,
         if var == True:
             mdb.models['Model-1'].constraints[tie_name_mid].swapSurfaces()
         print('    %s is successful!!' % tie_name_mid)
+
+# 获取XXX实体上面的XXXsideface
+def generate_instance_sideface(instance, face_index):
+    a = mdb.models['Model-1'].rootAssembly
+    # 以下代码是提取当前模型的所有instance的名称，并将tank的名称添加到现有instance_list
+    # instance_total = mdb.models['Model-1'].rootAssembly.instances
+    # instance_model = [key for key in instance_total.keys()]
+    side1Faces = []  # 主面
+    for i in range(len(face_index)):
+        side1Faces.append(a.instances[instance].faces[face_index[i]:face_index[i] + 1])
+    return [instance, side1Faces]
+
+# 导入主从面的sideface， 容差，可是否切换至
+def generate_tie(*args):
+    for i in args:
+        # i 为[[('unknown', [2, 3, 15, 18]), ('bfc-1', [0, 1, 5, 6])], 0.1, True]
+        # i[0] = [('unknown', [2, 3, 15, 18]), ('bfc-1', [0, 1, 5, 6])]
+        # i[0][0] = ('unknown', [2, 3, 15, 18]),
+        # i[0][0][0] = unknown'
+        # i[0][0][1] = [2, 3, 15, 18]
+        instance_M, instance_S = i[0][0][0], i[0][1][0]
+        index_M, index_S = i[0][0][1], i[0][1][1]
+        side1Faces_M = []  # 主面
+        for index in range(len(index_M)):  #index = 2
+            side1Faces_M.append(a.instances[instance_M].faces[index : index + 1])
+        
+        side1Faces_S = []  # 从面
+        for index in range(len(index_S)):
+            side1Faces_S.append(a.instances[instance_S].faces[index : index + 1])
+
+    tie_name_mid = 'Constraint_' + instance_M + '_' + instance_S
+    mdb.models['Model-1'].Tie(name=tie_name_mid, master=side1Faces_M,
+                              slave=side1Faces_S, positionToleranceMethod=SPECIFIED,
+                              positionTolerance=p,
+                              adjust=ON, tieRotations=ON, thickness=ON)
+    # 交互绑定对的主从面
+    if var_swap == True:
+        mdb.models['Model-1'].constraints[tie_name_mid].swapSurfaces()
+    print('    %s is successfully created!!' % tie_name_mid)
+
+    # side1Faces = []  # 主面
+    # for i in range(len(args)):
+    #     side1Faces.append(a.instances[instance].faces[face_index[i]:face_index[i] + 1])
+    #
+    #
+    # tie_name_mid = 'Constraint_' + instance_M + '_' + instance_S
+    # mdb.models['Model-1'].Tie(name=tie_name_mid, master=sideface_M,
+    #                           slave=sideface_S, positionToleranceMethod=SPECIFIED,
+    #                           positionTolerance=p,
+    #                           adjust=ON, tieRotations=ON, thickness=ON)
+    # # 交互绑定对的主从面
+    # if var_swap == True:
+    #     mdb.models['Model-1'].constraints[tie_name_mid].swapSurfaces()
+    # print('    %s is successful!!' % tie_name_mid)
+
+
+# 导入主从面的sideface， 容差，可是否切换至
+# def generate_tie(sideface_M, sideface_S, instance_M, instance_S, p, var_swap):
+#     tie_name_mid = 'Constraint_' + instance_M + '_' + instance_S
+#     mdb.models['Model-1'].Tie(name=tie_name_mid, master=sideface_M,
+#                               slave=sideface_S, positionToleranceMethod=SPECIFIED,
+#                               positionTolerance=p,
+#                               adjust=ON, tieRotations=ON, thickness=ON)
+#     # 交互绑定对的主从面
+#     if var_swap == True:
+#         mdb.models['Model-1'].constraints[tie_name_mid].swapSurfaces()
+#     print('    %s is successful!!' % tie_name_mid)
+
+# ###################################################################
+# 提取复合材料实体名称（因为其他3个构件的名称不变，所以不需要考虑）
+# 当然，后续项目有需要自然可以增加
+# ###################################################################
+def gain_name_of_composte_instance():
+    # 以下代码是提取当前模型的所有instance的名称，并将tank的名称添加到现有instance_list
+    instance_list = ['unknown', 'bfc-1', 'fengtou-1', 'propeller-1']
+    instance_total = mdb.models['Model-1'].rootAssembly.instances
+    instance_model = [key for key in instance_total.keys()]
+    for instance in instance_model:
+        if instance not in instance_list:
+            instance_list[0] = instance
+    return instance_list
+
+
+
+
+
 
 
 def Face2str_indes(face):
