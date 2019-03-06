@@ -79,7 +79,7 @@ def curing_kernel_input(timePeriod1,intialtemp,table_list,Composite_outface_inde
     # 将3个构件的材料属性除去，仅仅保留其他属性
     mats_list = []
     for mat in mats_model:
-        if mat != 'bfc' and mat != 'fengtou' and mat != 'propeller':
+        if mat not in mats_init:
             mats_list.append(mat)
 
     for m in mats_list:

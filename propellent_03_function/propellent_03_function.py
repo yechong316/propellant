@@ -214,7 +214,7 @@ def assign_DC3D8_element(part):
     p.setElementType(regions=region_h,
                      elemTypes=(elemType1, elemType2,elemType3))
     p.generateMesh()
-    print('    {} has been assigned heat transfer element property!'.format(part))
+    print('    {} has been assigned DC3D8R element property!'.format(part))
 
 # 定义静态通用单元
 def creat_C3D8R_element(part):
@@ -249,7 +249,7 @@ def generate_pickCells(part) :
     :return:
     '''
     a = mdb.models['Model-1'].rootAssembly
-    c1 = a.instances[instance_list[0]].cells
+    c1 = a.instances[instance_list[num]].cells
     pickedCells1 = c1[:]
 
     return pickedCells1
@@ -324,19 +324,19 @@ def generate_init_temprature(intialtemp):
     #part_list = ['Tank', 'bfc', 'fengtou', 'propeller']
     num_3 = 0
     # 依次调用4个构件,将提取的cell累加,定义初始温度场中
-    for i in part_list:
-        # 4个构件的cell累加
-        if num_3 == 0:
-            num_3 = 1
-            pickedCells = generate_pickCells(i)
-        else:
-            pickedCells += generate_pickCells(i)
-    a.Set(cells=pickedCells, name='Set-total')
-    region_total = a.sets['Set-total']
-    mdb.models['Model-1'].Temperature(name='Predefined Field-total', createStepName='Initial',
-                                      region=region_total, distributionType=UNIFORM,
-                                      crossSectionDistribution=CONSTANT_THROUGH_THICKNESS, magnitudes=(intialtemp,))
-    print('Generating initial temprature field in the all parts!')
+    for i in instance_list:
+
+       a = mdb.models['Model-1'].rootAssembly
+       c1 = a.instances[i].cells
+       pickedCells1 = c1[:]
+       a.Set(cells=pickedCells1, name='Set-' + i)
+       region = a.sets['Set-' + i]
+       mdb.models['Model-1'].Temperature(name='Predefined Field-' + i, createStepName='Initial',
+                                         region=region, distributionType=UNIFORM,
+                                         crossSectionDistribution=CONSTANT_THROUGH_THICKNESS,
+                                         magnitudes=(intialtemp,))
+       print('    Generating initial temprature field in the {}!'.format(i))
+
 
 def initThermal_mesh(part,start_temp):
     mdb.models['Model-1'].materials['bfc'].elastic.setValues(table=((7.8, 0.3),))
