@@ -171,7 +171,7 @@ def curing_kernel_input(timePeriod1,intialtemp,table_list,Composite_outface_inde
 
     # 给每个构件赋予静态通用单元属性
     for i in part_list:
-        creat_static_element(i)
+        creat_C3D8R_element(i)
 
     mdb.models['Model-static'].Temperature(name='Predefined Field-total',
                                            createStepName='Initial', distributionType=FROM_FILE,

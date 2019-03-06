@@ -31,15 +31,16 @@ def tie_input(
         exportTXT(data_tie, 2)
 
     # 根据var_input的布尔值，绝对采用何种数据来源
+    print('Beginning creat tie constraint!')
     if var_input:
         # print('Starting Use Tie_kernel_sub Function!')
         # 从文本中读取数据，并进行字符串数据转变 面索引号序列，浮点位置容差，布尔判断
         input_data = readTXT(inputfile, 2)
 
-        index2tie(input_data[0][0], input_data[0][1], [0][2], input_data[0][3],0,1),
-        index2tie(input_data[1][0], input_data[1][1], [1][2], input_data[1][3],1,2),
-        index2tie(input_data[2][0], input_data[2][1], [2][2], input_data[2][3],1,3),
-        index2tie(input_data[3][0], input_data[3][1], [3][2], input_data[3][3],3,2),
+        index2tie(input_data[0][0], input_data[0][1], input_data[0][2], input_data[0][3],0,1),
+        index2tie(input_data[1][0], input_data[1][1], input_data[1][2], input_data[1][3],1,2),
+        index2tie(input_data[2][0], input_data[2][1], input_data[2][2], input_data[2][3],1,3),
+        index2tie(input_data[3][0], input_data[3][1], input_data[3][2], input_data[3][3],3,2),
 
     else:
         #根据用户输入的数据后台操作
@@ -48,6 +49,6 @@ def tie_input(
         index2tie(pick_face2index_list(Master_bh), pick_face2index_list(Slave_bh), Position_bh, var_bh, 1, 3),
         index2tie(pick_face2index_list(Master_hf), pick_face2index_list(Slave_hf), Position_hf, var_hf, 3, 2)
 
-    print('END OF TIE KERNEL')
+    print('Finish creat tie constraint!')
 
 

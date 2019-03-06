@@ -217,7 +217,7 @@ def assign_DC3D8_element(part):
     print('    {} has been assigned heat transfer element property!'.format(part))
 
 # 定义静态通用单元
-def creat_static_element(part):
+def creat_C3D8R_element(part):
     '''
     对当前单元赋予静态分析类型
     :param part:
@@ -922,11 +922,11 @@ def index2tie(master,slave=None,pos=None,var=None,
         a = mdb.models['Model-1'].rootAssembly
         side1Faces_M = []  #主面
         for i in range(len(master)):
-            side1Faces_M.append(a.instances[instance_list[num_M]].faces[indexlist[i]:indexlist[i] + 1])
+            side1Faces_M.append(a.instances[instance_list[num_M]].faces[master[i]:master[i] + 1])
         side1Faces_S = []  #从面
-        for i in range(len(master)):
-            side1Faces_S.append(a.instances[instance_list[num_S]].faces[indexlist[i]:indexlist[i] + 1])
-        
+        for i in range(len(slave)):
+            side1Faces_S.append(a.instances[instance_list[num_S]].faces[slave[i]:slave[i] + 1])
+
         # 分别定义绑定对的两个面
         region_Master_cb = a.Surface(side1Faces=side1Faces_M, name=name_mid + '_M')
         region_Slave_cb = a.Surface(side1Faces=side1Faces_S, name=name_mid + '_S')
