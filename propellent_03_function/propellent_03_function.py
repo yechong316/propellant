@@ -977,33 +977,6 @@ def generate_tie(*args):
         mdb.models['Model-1'].constraints[tie_name_mid].swapSurfaces()
     print('    %s is successfully created!!' % tie_name_mid)
 
-    # side1Faces = []  # 主面
-    # for i in range(len(args)):
-    #     side1Faces.append(a.instances[instance].faces[face_index[i]:face_index[i] + 1])
-    #
-    #
-    # tie_name_mid = 'Constraint_' + instance_M + '_' + instance_S
-    # mdb.models['Model-1'].Tie(name=tie_name_mid, master=sideface_M,
-    #                           slave=sideface_S, positionToleranceMethod=SPECIFIED,
-    #                           positionTolerance=p,
-    #                           adjust=ON, tieRotations=ON, thickness=ON)
-    # # 交互绑定对的主从面
-    # if var_swap == True:
-    #     mdb.models['Model-1'].constraints[tie_name_mid].swapSurfaces()
-    # print('    %s is successful!!' % tie_name_mid)
-
-
-# 导入主从面的sideface， 容差，可是否切换至
-# def generate_tie(sideface_M, sideface_S, instance_M, instance_S, p, var_swap):
-#     tie_name_mid = 'Constraint_' + instance_M + '_' + instance_S
-#     mdb.models['Model-1'].Tie(name=tie_name_mid, master=sideface_M,
-#                               slave=sideface_S, positionToleranceMethod=SPECIFIED,
-#                               positionTolerance=p,
-#                               adjust=ON, tieRotations=ON, thickness=ON)
-#     # 交互绑定对的主从面
-#     if var_swap == True:
-#         mdb.models['Model-1'].constraints[tie_name_mid].swapSurfaces()
-#     print('    %s is successful!!' % tie_name_mid)
 
 # ###################################################################
 # 提取复合材料实体名称（因为其他3个构件的名称不变，所以不需要考虑）
@@ -1019,6 +992,27 @@ def gain_name_of_composte_instance():
             instance_list[0] = instance
     return instance_list
 
+
+# # # #######################################################################
+# 将得到的数据与实体list进行组装，成为一个4 * 4 * （2 + 2 + 1+ 1）维度的矩阵
+# 维度依次为，绑定对组数，每对绑定对主从面容差var， 主面实体主面索引号。。。
+# # # #######################################################################
+def construced_tie_data_matrix(name, data):
+    
+    tie_instance = [
+        [name[0], name[1]],
+        [name[1], name[2]],
+        [name[1], name[3]],
+        [name[3], name[2]]
+    ]
+
+    tie_data = [
+        [zip(tie_instance[0], [data[0][0], data[0][1]]), data[0][2], data[0][3]],
+        [zip(tie_instance[1], [data[1][0], data[1][1]]), data[1][2], data[1][3]],
+        [zip(tie_instance[2], [data[2][0], data[2][1]]), data[2][2], data[2][3]],
+        [zip(tie_instance[3], [data[3][0], data[3][1]]), data[3][2], data[3][3]]
+    ]
+    return tie_data
 
 
 

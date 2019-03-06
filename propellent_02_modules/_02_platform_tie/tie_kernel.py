@@ -33,78 +33,10 @@ def tie_input(
     # 根据var_input的布尔值，绝对采用何种数据来源
     print('Beginning creat tie constraint!')
     if var_input:
-
-        # ############################################################
-        # 本部分功能总结：
-        # 1. 读取文件数据（已转化abaqus可以识别的格式）
-        # 2.获取当前模型复合材料的实体名称
-        # 3.分别寻找主从面的sideface
-        # 4.建立绑定关系
-        # 5.开始重复4组tie对
-        # ############################################################
-
-        # 复合材料 -包覆层
-        # 1. 读取文件数据（已转化abaqus可以识别的格式）----
         input_data = readTXT(inputfile, 2)
-        index_M,  index_S= input_data[0][0], input_data[0][1]
-
-        # 2.获取当前模型复合材料的实体名称
         instance_list = gain_name_of_composte_instance()
-        ins_M, ins_S = instance_list[0], instance_list[1]
-        tie_name = 'CP_ ' + ins_M + '_' + ins_S
-
-        # 3.分别寻找主从面的sideface
-        sideface_M = generate_instance_sideface(ins_M, index_M)
-        sideface_S = generate_instance_sideface(ins_S, index_S)
-
-        #4.建立绑定关系
-        generate_tie(tie_name, sideface_M, sideface_S)
-
-        # 包覆层 - 封头
-        # 1. 读取文件数据（已转化abaqus可以识别的格式）----
-        index_M, index_S = input_data[1][0], input_data[1][1]
-
-        # 2.获取当前模型复合材料的实体名称
-        ins_M, ins_S = instance_list[1], instance_list[2]
-        tie_name = 'CP_ ' + ins_M + '_' + ins_S
-
-        # 3.分别寻找主从面的sideface
-        sideface_M = generate_instance_sideface(ins_M, index_M)
-        sideface_S = generate_instance_sideface(ins_S, index_S)
-
-        # 4.建立绑定关系
-        generate_tie(tie_name, sideface_M, sideface_S)
-
-        # 封头 - 推进剂
-        # 1. 读取文件数据（已转化abaqus可以识别的格式）----
-        index_M, index_S = input_data[2][0], input_data[2][1]
-
-        # 2.获取当前模型复合材料的实体名称
-        ins_M, ins_S = instance_list[2], instance_list[3]
-        tie_name = 'CP_ ' + ins_M + '_' + ins_S
-
-        # 3.分别寻找主从面的sideface
-        sideface_M = generate_instance_sideface(ins_M, index_M)
-        sideface_S = generate_instance_sideface(ins_S, index_S)
-
-        # 4.建立绑定关系
-        generate_tie(tie_name, sideface_M, sideface_S)
-
-        # 推进剂 - 封头
-        # 1. 读取文件数据（已转化abaqus可以识别的格式）----
-        index_M, index_S = input_data[3][0], input_data[3][1]
-
-        # 2.获取当前模型复合材料的实体名称
-        ins_M, ins_S = instance_list[3], instance_list[2]
-        tie_name = 'CP_ ' + ins_M + '_' + ins_S
-
-        # 3.分别寻找主从面的sideface
-        sideface_M = generate_instance_sideface(ins_M, index_M)
-        sideface_S = generate_instance_sideface(ins_S, index_S)
-
-        # 4.建立绑定关系
-        generate_tie(tie_name, sideface_M, sideface_S)
-
+        tie_data = construced_tie_data_matrix(instance_list, input_data)
+        generate_tie(tie_data)
 
     else:
         #根据用户输入的数据后台操作
