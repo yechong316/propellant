@@ -209,11 +209,11 @@ def assign_DC3D8_element(part):
 
     # region为获取名为Set-composite的集合
     region_h = p.sets['Set-' + part]
-    p.setMeshControls(regions=pickedCells_h, elemShape=HEX, technique=SWEEP,
-                      algorithm=ADVANCING_FRONT)
+    # p.setMeshControls(regions=pickedCells_h, elemShape=HEX, technique=SWEEP,
+    #                   algorithm=ADVANCING_FRONT)
     p.setElementType(regions=region_h,
                      elemTypes=(elemType1, elemType2,elemType3))
-    p.generateMesh()
+    # p.generateMesh()
     print('    {} has been assigned DC3D8R element property!'.format(part))
 
 # 定义静态通用单元
@@ -321,9 +321,9 @@ def del_mat_property(mat_name):
 # 固化工艺和温度冲击工艺可以共用此喊
 def generate_init_temprature(intialtemp):
     a = mdb.models['Model-1'].rootAssembly
-    #part_list = ['Tank', 'bfc', 'fengtou', 'propeller']
     num_3 = 0
     # 依次调用4个构件,将提取的cell累加,定义初始温度场中
+    # print('instance_list is :'.format(instance_list))
     for i in instance_list:
 
        a = mdb.models['Model-1'].rootAssembly
