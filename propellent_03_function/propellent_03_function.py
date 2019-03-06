@@ -669,9 +669,8 @@ def exportTXT(data_total,plug_type, WCM_state=False):
 # 读取材料参数
 def readTXT(txtname, plug_type):
     '''
-    输入：文件路径，和插件类型
-    输出：从文本中读到数据，并返回给ABAQUS使用，并且数据类型转换为浮点、整型、序列等
-    功能：从文本读到数据，导出给ABAQUS使用
+    要求用户导入一个文件，然后根据不同的文件类型进行读取
+    plug_type = 1 表示插件1，等于2表示写入插件2，依次类推,返回没有任何换行符号的字符串
     '''
     # 将删去汉字等无用符号的文本存入到一个临时文件中
     file = 'data_temp.txt'
@@ -743,10 +742,14 @@ def readTXT(txtname, plug_type):
             data_tie.append(data_str)
 
         data = [
-            str_indes2Face(data_tie[0][0]), str_indes2Face(data_tie[0][1]), float(data_tie[0][2]),str2bool(data_tie[0][3]),
-            str_indes2Face(data_tie[1][0]), str_indes2Face(data_tie[1][1]), float(data_tie[1][2]),str2bool(data_tie[1][3]),
-            str_indes2Face(data_tie[2][0]), str_indes2Face(data_tie[2][1]), float(data_tie[2][2]),str2bool(data_tie[2][3]),
-            str_indes2Face(data_tie[3][0]), str_indes2Face(data_tie[3][1]), float(data_tie[3][2]),str2bool(data_tie[3][3]),
+            [str_indes2Face(data_tie[0][0]), str_indes2Face(data_tie[0][1]), float(data_tie[0][2]),
+             str2bool(data_tie[0][3])],
+            [str_indes2Face(data_tie[1][0]), str_indes2Face(data_tie[1][1]), float(data_tie[1][2]),
+             str2bool(data_tie[1][3])],
+            [str_indes2Face(data_tie[2][0]), str_indes2Face(data_tie[2][1]), float(data_tie[2][2]),
+             str2bool(data_tie[2][3])],
+            [str_indes2Face(data_tie[3][0]), str_indes2Face(data_tie[3][1]), float(data_tie[3][2]),
+             str2bool(data_tie[3][3])],
         ]
         return data
 

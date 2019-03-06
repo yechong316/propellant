@@ -119,10 +119,10 @@ def readTXT(txtname, plug_type):
             data_tie.append(data_str)
 
         data = [
-            str_indes2Face(data_tie[0][0]), str_indes2Face(data_tie[0][1]), float(data_tie[0][2]), str2bool(data_tie[0][3]),
-            str_indes2Face(data_tie[1][0]), str_indes2Face(data_tie[1][1]), float(data_tie[1][2]), str2bool(data_tie[1][3]),
-            str_indes2Face(data_tie[2][0]), str_indes2Face(data_tie[2][1]), float(data_tie[2][2]), str2bool(data_tie[2][3]),
-            str_indes2Face(data_tie[3][0]), str_indes2Face(data_tie[3][1]), float(data_tie[3][2]), str2bool(data_tie[3][3]),
+            [str_indes2Face(data_tie[0][0]), str_indes2Face(data_tie[0][1]), float(data_tie[0][2]), str2bool(data_tie[0][3])],
+            [str_indes2Face(data_tie[1][0]), str_indes2Face(data_tie[1][1]), float(data_tie[1][2]), str2bool(data_tie[1][3])],
+            [str_indes2Face(data_tie[2][0]), str_indes2Face(data_tie[2][1]), float(data_tie[2][2]), str2bool(data_tie[2][3])],
+            [str_indes2Face(data_tie[3][0]), str_indes2Face(data_tie[3][1]), float(data_tie[3][2]), str2bool(data_tie[3][3])],
         ]
         return data
 
