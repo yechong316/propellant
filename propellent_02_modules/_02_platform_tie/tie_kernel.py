@@ -5,8 +5,6 @@ from abaqusConstants import *
 
 # 将写好的函数调用起来
 from propellent_03_function.propellent_03_function import *
-# from propellent_03_function.propellant_input_tie import *
-# from propellent_03_function.propellant_output_pick import *
 
 '''
 本插件用于当构件导入之后，定义4个构件之间的tie绑定关系
@@ -37,11 +35,11 @@ def tie_input(
         # print('Starting Use Tie_kernel_sub Function!')
         # 从文本中读取数据，并进行字符串数据转变 面索引号序列，浮点位置容差，布尔判断
         input_data = readTXT(inputfile, 2)
-        
-        index2tie(str_indes2Face(input_data[0][0]), str_indes2Face(input_data[0][1]), float(input_data[0][2]), str2bool(input_data[0][3]),0,1),
-        index2tie(str_indes2Face(input_data[1][0]), str_indes2Face(input_data[1][1]), float(input_data[1][2]), str2bool(input_data[1][3]),1,2),
-        index2tie(str_indes2Face(input_data[2][0]), str_indes2Face(input_data[2][1]), float(input_data[2][2]), str2bool(input_data[2][3]),1,3),
-        index2tie(str_indes2Face(input_data[3][0]), str_indes2Face(input_data[3][1]), float(input_data[3][2]), str2bool(input_data[3][3]),3,2),
+
+        index2tie(input_data[0][0], input_data[0][1], [0][2], input_data[0][3],0,1),
+        index2tie(input_data[1][0], input_data[1][1], [1][2], input_data[1][3],1,2),
+        index2tie(input_data[2][0], input_data[2][1], [2][2], input_data[2][3],1,3),
+        index2tie(input_data[3][0], input_data[3][1], [3][2], input_data[3][3],3,2),
 
     else:
         #根据用户输入的数据后台操作

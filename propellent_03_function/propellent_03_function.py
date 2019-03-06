@@ -669,8 +669,9 @@ def exportTXT(data_total,plug_type, WCM_state=False):
 # 读取材料参数
 def readTXT(txtname, plug_type):
     '''
-    要求用户导入一个文件，然后根据不同的文件类型进行读取
-    plug_type = 1 表示插件1，等于2表示写入插件2，依次类推,返回没有任何换行符号的字符串
+    输入：文件路径，和插件类型
+    输出：从文本中读到数据，并返回给ABAQUS使用，并且数据类型转换为浮点、整型、序列等
+    功能：从文本读到数据，导出给ABAQUS使用
     '''
     # 将删去汉字等无用符号的文本存入到一个临时文件中
     file = 'data_temp.txt'
@@ -698,8 +699,21 @@ def readTXT(txtname, plug_type):
             data_str = filter(None, data_None_str)
             data = map(float, data_str)
             mat_size.append(data)
+            # for j in data_str:
+            #     data_str
+            # mat_size.append(map(float, data_str))
+            # for j in range(len(data_total[i])):
+
+            # print('before:', type(data_str[i]))
+            # map(float, filter(None, data_str[i]))
+
+            # print('after:', type(data_str[i]))
+        #  jiang
+
+        # for i in range(1, len(list_source)):
+        #     mat_size.append(map(float, filter(None, list_source[i])))
         F1.close()
-        print('The data from {} has been imported to CAE!'.format(txtname))
+        # print('The data from {} has been imported to CAE!'.format(txtname))
         return mat_size
 
     # 绑定关系
@@ -719,35 +733,22 @@ def readTXT(txtname, plug_type):
         # 将处理后的数据写入到临时文本，然后将存到list_source中
         with open(file, 'w') as fpw:
             fpw.write(data_origin)
-        data_total = data_origin
+        # data_total = data_origin
         F1 = open(file, "r")
         data_total = F1.readlines()
-        list_source = []
-        for i in range(len(data_total)):
-            data_str = data_total[i].strip().split("、")  # 每一行split后是一个列表
-            list_source.append(data_str)
+        data_tie = []
+        for i in range(1, len(data_total)):
+            data_None_str = data_total[i].strip().split("、")  # 每一行split后是一个列表
+            data_str = filter(None, data_None_str)
+            data_tie.append(data_str)
 
-        # 将此一维序列转变为 4 × 4 的序列，供主程序使用
-        lsit_final = []
-        for i in range(len(list_source)):
-            # for j in range(len(list_source[i])):
-            if list_source[i] != ['']:
-                lsit_final.append(list_source[i])
-        tie_list1 = [
-            [[], [], [], []],
-            [[], [], [], []],
-            [[], [], [], []],
-            [[], [], [], []]
+        data = [
+            str_indes2Face(data_tie[0][0]), str_indes2Face(data_tie[0][1]), float(data_tie[0][2]),str2bool(data_tie[0][3]),
+            str_indes2Face(data_tie[1][0]), str_indes2Face(data_tie[1][1]), float(data_tie[1][2]),str2bool(data_tie[1][3]),
+            str_indes2Face(data_tie[2][0]), str_indes2Face(data_tie[2][1]), float(data_tie[2][2]),str2bool(data_tie[2][3]),
+            str_indes2Face(data_tie[3][0]), str_indes2Face(data_tie[3][1]), float(data_tie[3][2]),str2bool(data_tie[3][3]),
         ]
-        for i in range(len(lsit_final)):
-            for j in range(len(lsit_final[i])):
-                if lsit_final[i][j] != '':
-                    tie_list1[i][j] = lsit_final[i][j]
-
-        print('END OF READING DATA TIE!')
-        # print('Input Data is :')
-        # print(tie_list1)
-        return tie_list1
+        return data
 
     # 温度冲击
     elif plug_type == 3:
@@ -858,7 +859,8 @@ def readTXT(txtname, plug_type):
         F1.close()
         return list
     # F1.close()
-    print('The data of warp has been import to CAE!')
+
+    print('The data from {} has been imported to CAE!'.format(txtname))
     # os.remove(file)
 
 

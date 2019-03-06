@@ -239,8 +239,9 @@ def readTXT(txtname, plug_type):
     print('The data from {} has been imported to CAE!'.format(txtname))
     # os.remove(file)
 
-path = r"D:\temp\abaqus_plugins\propellant\propellent_04_data\Tie_v2019-03-05_08-59-45.txt"
-# data = readTXT(path, 2)
+path = r"D:\temp\abaqus_plugins\propellant\propellent_04_data\Tie_v2019-01-27_23-27-40.txt"
+data = readTXT(path, 2)
 # print(type(data[1]))
-# print(data)
-# print(data[1][3])
+print(data)
+print(data[1][3])
+print(type(data[1][3]))
