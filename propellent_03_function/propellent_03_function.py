@@ -37,9 +37,9 @@ for part, num in zip(part_model, range(len(part_list))):
 instance_list = ['unknown', 'bfc-1', 'fengtou-1', 'propeller-1']
 instance_total = mdb.models['Model-1'].rootAssembly.instances
 instance_model = [key for key in instance_total.keys()]
-for instance, num in zip(instance_model, range(len(part_list))):
+for instance in instance_model:
     if instance != 'bfc-1' and instance != 'fengtou-1' and instance != 'propeller-1':
-        instance_list[0] = instance_model[num]
+        instance_list[0] = instance
 
 class Part(object):
     '''
@@ -486,15 +486,15 @@ def exportTXT(data_total,plug_type, WCM_state=False):
     :return:
     '''
     time_property = datetime.datetime.now().strftime('%Y-%m-%d_%H-%M-%S')
-    if WCM_state:
-        partlist = ['包覆层:', '封头:', '推进剂:']
-        file_name = 'Property_WCM_v'
-    else:
-        partlist = ['复合材料壳体:', '包覆层:', '封头:', '推进剂:']
-        file_name = 'Property_v'
 
     # 导入构件
     if plug_type == 1:
+        if WCM_state:
+            partlist = ['包覆层:', '封头:', '推进剂:']
+            file_name = 'Property_WCM_v'
+        else:
+            partlist = ['复合材料壳体:', '包覆层:', '封头:', '推进剂:']
+            file_name = 'Property_v'
         data_txt_name = file_name + time_property + '.txt'
         data_file = data_path + data_txt_name
 
@@ -515,6 +515,12 @@ def exportTXT(data_total,plug_type, WCM_state=False):
 
     # 绑定关系
     elif plug_type == 2:
+        if WCM_state:
+            partlist = ['包覆层:', '封头:', '推进剂:']
+            file_name = 'Tie_WCM_v'
+        else:
+            partlist = ['复合材料壳体:', '包覆层:', '封头:', '推进剂:']
+            file_name = 'Tie_v'
         # print('Tie_data is exporting...')
         for i in range(len(data_total)):
             for j in range(len(data_total[i])):
@@ -529,7 +535,8 @@ def exportTXT(data_total,plug_type, WCM_state=False):
         ]
 
         # 定义一个数据文本
-        data_txt_name = 'Tie_v' + time_property + '.txt'
+        fi
+        data_txt_name = file_name + time_property + '.txt'
         data_file = data_path + data_txt_name
 
         # 逐步写入的文本的抬头，每行的起始信息：利于用户读懂该文件
