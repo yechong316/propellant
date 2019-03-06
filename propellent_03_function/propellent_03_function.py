@@ -38,7 +38,7 @@ instance_list = ['unknown', 'bfc-1', 'fengtou-1', 'propeller-1']
 instance_total = mdb.models['Model-1'].rootAssembly.instances
 instance_model = [key for key in instance_total.keys()]
 for instance in instance_model:
-    if instance != 'bfc-1' and instance != 'fengtou-1' and instance != 'propeller-1':
+    if instance not in instance_list:
         instance_list[0] = instance
 
 class Part(object):
@@ -751,6 +751,7 @@ def readTXT(txtname, plug_type):
             [str_indes2Face(data_tie[3][0]), str_indes2Face(data_tie[3][1]), float(data_tie[3][2]),
              str2bool(data_tie[3][3])],
         ]
+        # print('The data[3][3]  of tie is :',data[3][3])
         return data
 
     # 温度冲击
@@ -915,11 +916,20 @@ def index2tie(master,slave=None,pos=None,var=None,
     else:
         #print('user input two faces!')
         # 定义绑定对的名称
-        name_mid = part_list[num_M] + '_' + part_list[num_S]
+        name_mid = 'CP_' + part_list[num_M] + '_' + part_list[num_S]
 
+        # 开始提取主从面的sideface
+        a = mdb.models['Model-1'].rootAssembly
+        side1Faces_M = []  #主面
+        for i in range(len(master)):
+            side1Faces_M.append(a.instances[instance_list[num_M]].faces[indexlist[i]:indexlist[i] + 1])
+        side1Faces_S = []  #从面
+        for i in range(len(master)):
+            side1Faces_S.append(a.instances[instance_list[num_S]].faces[indexlist[i]:indexlist[i] + 1])
+        
         # 分别定义绑定对的两个面
-        region_Master_cb = a.Surface(side1Faces=FaceIndex2region(master, num_M), name='CP_' + name_mid + '_M')
-        region_Slave_cb = a.Surface(side1Faces=FaceIndex2region(slave, num_S), name='CP_' + name_mid + '_S')
+        region_Master_cb = a.Surface(side1Faces=side1Faces_M, name=name_mid + '_M')
+        region_Slave_cb = a.Surface(side1Faces=side1Faces_S, name=name_mid + '_S')
 
         # 定义绑定对的名称
         tie_name_mid = 'Constraint_' + part_list[num_M] + '_' + part_list[num_S]

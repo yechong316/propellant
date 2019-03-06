@@ -243,5 +243,5 @@ path = r"D:\temp\abaqus_plugins\propellant\propellent_04_data\Tie_v2019-01-27_23
 data = readTXT(path, 2)
 # print(type(data[1]))
 print(data)
-print(data[1][3])
+print(len((data[1][0])))
 print(type(data[1][3]))
