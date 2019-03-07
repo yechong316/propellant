@@ -18,3 +18,8 @@ desity_f =0.00785, Elastic_f =  200000, Poisson_f = 0.3, Conductivity_f = 1.6578
 desity_h =1.65e-06, Elastic_h = 4000,   Poisson_h = 0.3, Conductivity_h = 0.001, SpecificHeat_h = 1500, Expansion_h = 0.0001263, size_h = 5
     , var_export=True, var_input=False, var_WCM=True, inputfile=None
 )
+
+temprature_shock_input(timePeriod1='1472',intialtemp='297',
+    hermal_zaihe_list=((0, 297), (20, 232), (740, 232), (741, 322), (1460, 322), (1461, 297)),
+           Composite_outface=3,Cpu_num=1, var_export=False, var_input=True,
+    inputfile=r"D:\temp\abaqus_plugins\propellant\propellent_04_data\Thermal_v2019-03-06_15-15-08.txt")

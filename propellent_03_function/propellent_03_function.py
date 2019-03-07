@@ -25,13 +25,18 @@ from propellent_03_function import *
 userfile_path = os.path.abspath(os.path.join(os.getcwd(), "")) + """\\abaqus_plugins\\propellant\\propellent_05_Subfile\\"""
 data_path = os.path.abspath(os.path.join(os.getcwd(), "")) + """\\abaqus_plugins\\propellant\\propellent_04_data\\"""
 
+# ###########################################################################
 # 以下代码是提取当前模型的所有part的名称，并将tank的名称添加到现有part_list
-part_list = ['unknown', 'bfc', 'fengtou', 'propeller']
-p_total = mdb.models['Model-1'].parts
-part_model = [key for key in p_total.keys()]
-for part, num in zip(part_model, range(len(part_list))):
-    if part != 'bfc' and part != 'fengtou' and part != 'propeller':
-        part_list[0] = part_model[num]
+# ###########################################################################
+def get_all_part_name():
+
+    part_list = [0, 'bfc', 'fengtou', 'propeller']
+    p_total = mdb.models['Model-1'].parts
+    part_model = [key for key in p_total.keys()]
+    for part, num in zip(part_model, range(len(part_list))):
+        if part != 'bfc' and part != 'fengtou' and part != 'propeller':
+            part_list[0] = part_model[num]
+    return part_list
 
 # class Part(object):
 #     '''
@@ -995,7 +1000,7 @@ def generate_tie(*args):
         print('    %s is successfully created!!' % tie_name_mid)
 
 #############################################
-# 导入用户选择面的索引号，生成一个region
+# interaction模块 导入用户选择面的索引号，生成一个region，注意，此region用于surface
 #############################################
 def generate_region(instance_name, instance_index):
     a = mdb.models['Model-1'].rootAssembly
@@ -1004,6 +1009,18 @@ def generate_region(instance_name, instance_index):
         side1Faces.append(a.instances[instance_name].faces[index : index + 1])
     region = a.Surface(side1Faces=side1Faces, name='Sur_' + instance_name)
     return region
+
+#############################################
+#load模块 导入用户选择面的索引号，生成一个region，注意，此region用于set.即load模块
+#############################################
+def generate_set_region(instance_name, instance_index):
+    a = mdb.models['Model-1'].rootAssembly
+    side1Faces = []  # 主面
+    for index in instance_index:  #index = 2
+        side1Faces.append(a.instances[instance_name].faces[index : index + 1])
+    region = a.Set(faces=side1Faces, name='Sur_' + instance_name)
+    return region
+
 
 # ###################################################################
 # 提取复合材料实体名称（因为其他3个构件的名称不变，所以不需要考虑）

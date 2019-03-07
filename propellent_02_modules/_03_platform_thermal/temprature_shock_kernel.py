@@ -18,9 +18,10 @@ from propellent_03_function.propellent_03_function import *
 ##############
 # 以下代码是提取当前模型的所有instance的名称，并将tank的名称添加到现有instance_list
 instance_list = ['unknown', 'bfc-1', 'fengtou-1', 'propeller-1']
+
 instance_total = mdb.models['Model-1'].rootAssembly.instances
 instance_model = [key for key in instance_total.keys()]
-for instance, num in zip(instance_model, range(len(part_list))):
+for instance, num in zip(instance_model, range(len(instance_list))):
     if instance != 'bfc-1' and instance != 'fengtou-1' and instance != 'propeller-1':
         instance_list[0] = instance_model[num]
 
@@ -68,44 +69,40 @@ def Thermal_kernel_input(timePeriod1, intialtemp, hermal_zaihe_list, Composite_o
                 exit()
 
     print('Beginning analysis FEA of temprature shock of propellant!')
+    # exit()
     # 定义分析步参数和场变量值
     mdb.models['Model-1'].CoupledTempDisplacementStep(name='Step-1',
                                                       previous='Initial', timePeriod=timePeriod1, maxNumInc=1000,
                                                       initialInc=1,
                                                       minInc=1e-5, maxInc=timePeriod1 / 10, deltmx=100)
-    print('step is ok')
+    # exit()
     mdb.models['Model-1'].fieldOutputRequests['F-Output-1'].setValues(variables=('S', 'E', 'LE', 'U', 'NT'))
-    print('filed is ok')
+    # exit()
     # 定义最外表面温度冲击载荷幅值曲线，和边界条件
     mdb.models['Model-1'].TabularAmplitude(name='Amp-1', timeSpan=STEP,
                                            smooth=SOLVER_DEFAULT, data=hermal_zaihe_list )
-    print('amp is ok')
     # mdb.models['Model-1'].TabularAmplitude(name='thermal_Amp', timeSpan=STEP,
     #                                        smooth=SOLVER_DEFAULT, data=hermal_zaihe_list)
 
     instances = gain_name_of_composte_instance()#保存当前所有的instances，其中第一个是外壳
-    print(instances)
     shell_name = instances[0] #保存当前所有的instances，其中第一个是外壳
-    region_outface = generate_region(shell_name, Composite_outface_index)
+    region_outface = generate_set_region(shell_name, Composite_outface_index)
     # 以上代码全部正常运行
-    print(region_outface)
     mdb.models['Model-1'].TemperatureBC(name='BC-thermal', createStepName='Step-1',
                                         region=region_outface,fixed=OFF, distributionType=UNIFORM,
                                         fieldName='', magnitude=1.0, amplitude='Amp-1')
-    exit()
-    # print()
     print('TempratureBC is successfully generated!')
 
     # 搜索当前模型的所有实体，建立初始温度场
     generate_init_temprature(instances, intialtemp)
-    exit()
-    
+    # exit()
+    part_list = get_all_part_name()
     for i in part_list:
         # 给每个构件赋予热传递单元属性
         creat_thermal_force_element(i)
 
     # 05-提交计算查看结果
-    exit()
+    # exit()
     Job_name = 'thermal-' + datetime.datetime.now().strftime('%Y-%m-%d-%H-%M-%S')
     mdb.Job(name=Job_name, model='Model-1', description='', type=ANALYSIS,
             atTime=None, waitMinutes=0, waitHours=0, queue=None, memory=90,

@@ -67,7 +67,7 @@ def curing_kernel_input(timePeriod1,intialtemp,table_list,Composite_outface_inde
     # 给4个构件增加初始温度场
     instances = gain_name_of_composte_instance()#保存当前所有的instances，其中第一个是外壳
     generate_init_temprature(instances, intialtemp)
-
+    part_list = get_all_part_name()
     # # 给每个构件赋予热传递单元属性
     for i in part_list:
         assign_DC3D8_element(i)
@@ -173,6 +173,7 @@ def curing_kernel_input(timePeriod1,intialtemp,table_list,Composite_outface_inde
     mdb.models['Model-static'].fieldOutputRequests['F-Output-1'].setValues(variables=('S', 'E', 'U', 'NT'))
 
     # 给每个构件赋予静态通用单元属性
+    part_list = get_all_part_name()
     for i in part_list:
         creat_C3D8R_element(i)
 

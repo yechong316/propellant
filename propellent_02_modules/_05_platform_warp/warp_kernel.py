@@ -15,15 +15,6 @@ import datetime
 from propellent_03_function.propellent_03_function import *
 job_path = os.getcwd() + '\\'
 
-# 以下代码是提取当前模型的所有instance的名称，并将tank的名称添加到现有instance_list
-instance_list = ['unknown', 'bfc-1', 'fengtou-1', 'propeller-1']
-instance_total = mdb.models['Model-1'].rootAssembly.instances
-instance_model = [key for key in instance_total.keys()]
-for instance, num in zip(instance_model, range(len(part_list))):
-    if instance != 'bfc-1' and instance != 'fengtou-1' and instance != 'propeller-1':
-        instance_list[0] = instance_model[num]
-
-
 def warp(F,thickness,width,Cpu_num, var_export=False, var_input=False, inputfile=None ):
     # print('warp is active!')
     if var_export:
@@ -51,11 +42,7 @@ def warp_kernel_input(F,thickness,width,Cpu_num, var_export=False, var_input=Fal
     a = mdb.models['Model-1'].rootAssembly
 
     # 以下代码是提取当前模型的所有part的名称，并将tank的名称添加到现有part_list
-    part_list = ['unknown', 'bfc', 'fengtou', 'propeller']
-    part_model = [key for key in mdb.models['Model-1'].parts.keys()]
-    for part, num in zip(part_model, range(len(part_list))):
-        if part != 'bfc' and part != 'fengtou' and part != 'propeller':
-            part_list[0] = part_model[num]
+    part_list = get_all_part_name()
 
     num_3 = 0
     # 依次调用4个构件,将提取的cell累加,定义初始温度场中
@@ -68,6 +55,7 @@ def warp_kernel_input(F,thickness,width,Cpu_num, var_export=False, var_input=Fal
 
     # 依次抽取每个instance，施加初始温度场
     a = mdb.models['Model-1'].rootAssembly
+    instance_list = gain_name_of_composte_instance()#保存当前所有的instances，其中第一个是外壳
     for i in instance_list:
         c = a.instances[i].cells
         pickedCells = c[:]
@@ -91,6 +79,7 @@ def warp_kernel_input(F,thickness,width,Cpu_num, var_export=False, var_input=Fal
 
     # 定义计数器,监控当前迭代轮数，不再容差范围内循环，在就跳出
     count = 0
+    # instance_list = gain_name_of_composte_instance()#保存当前所有的instances，其中第一个是外壳
     while abs(1 - avg_S22 / true_S22) >= 0.05:
 
         print('This {}th iteration calculation'.format(count + 1))
