@@ -95,16 +95,18 @@ def curing_kernel_input(timePeriod1,intialtemp,table_list,Composite_outface_inde
     mdb.models['Model-1'].fieldOutputRequests['F-Output-1'].setValues(variables=('NT', 'HFL', 'RFL', 'SDV',))
 
     # *******************复合材料壳体施加外表面载荷
-    # 外表面temprature工况
+    instances = gain_name_of_composte_instance()#保存当前所有的instances，其中第一个是外壳
+    shell_name = instances[0] #保存当前所有的instances，其中第一个是外壳
+    set_outface = generate_set_region(shell_name, Composite_outface_index)
+    # 以上代码全部正常运行
     mdb.models['Model-1'].TemperatureBC(name='BC-thermal', createStepName='Step-1',
-                                        region=index2tie(master=Composite_outface_index, num_M=0,var_set_face='S'),
-                                        fixed=OFF, distributionType=UNIFORM,
+                                        region=set_outface,fixed=OFF, distributionType=UNIFORM,
                                         fieldName='', magnitude=1.0, amplitude='Amp-1')
     # 
     # 热对流工况
+    face_outface = generate_surface_region(shell_name, Composite_outface_index)
     mdb.models['Model-1'].FilmCondition(name='Int-1', createStepName='Step-1',
-         surface=index2tie(master=Composite_outface_index, num_M=0,var_set_face= 'F'),
-         definition=USER_SUB, filmCoeff=1.0, sinkTemperature=1.0,
+         surface=face_outface,definition=USER_SUB, filmCoeff=1.0, sinkTemperature=1.0,
          sinkDistributionType=UNIFORM, sinkFieldName='')
 
     # 提交计算，注意要选择子程序

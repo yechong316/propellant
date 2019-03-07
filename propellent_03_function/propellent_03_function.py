@@ -1002,7 +1002,7 @@ def generate_tie(*args):
 #############################################
 # interaction模块 导入用户选择面的索引号，生成一个region，注意，此region用于surface
 #############################################
-def generate_region(instance_name, instance_index):
+def generate_surface_region(instance_name, instance_index):
     a = mdb.models['Model-1'].rootAssembly
     side1Faces = []  # 主面
     for index in instance_index:  #index = 2
