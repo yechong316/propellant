@@ -1025,7 +1025,7 @@ def gain_name_of_composte_instance():
 # 维度依次为，绑定对组数，每对绑定对主从面容差var， 主面实体主面索引号。。。
 # # # #######################################################################
 def construced_tie_data_matrix(name, data):
-    
+    #     instance_list = ['unknown', 'bfc-1', 'fengtou-1', 'propeller-1']
     tie_instance = [
         [name[0], name[1]],
         [name[1], name[2]],

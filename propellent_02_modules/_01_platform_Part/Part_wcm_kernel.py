@@ -9,20 +9,38 @@
     其中，因使用WCM插件生成复合材料，故本脚本删去与复合材料相关的所有程序
 '''
 # 导入ABAQUS必备的方法包
+import sys
+abaqus_path = ['D:\\SIMULIA\\Abaqus\\6.14-4\\code\\python2.7\\lib',
+               'D:\\SIMULIA\\Abaqus\\6.14-4\\tools\\SMApy\\python2.7\\lib',
+               'D:\\SIMULIA\\Abaqus\\6.14-4\\code\\bin',
+               'D:\\SIMULIA\\Abaqus\\6.14-4\\tools\\SMApy\\python2.7\\lib\\lib-tk',
+               'D:\\SIMULIA\\Abaqus\\6.14-4\\tools\\SMApy\\python2.7\\lib\\site-packages',
+               'D:\\SIMULIA\\Abaqus\\6.14-4\\tools\\SMApy\\python2.7\\lib\\site-packages\\win32',
+               'D:\\SIMULIA\\Abaqus\\6.14-4\\tools\\SMApy\\python2.7\\lib\\site-packages\\win32\\lib',
+               'D:\\SIMULIA\\Abaqus\\6.14-4\\tools\\SMApy\\python2.7\\lib\\site-packages\\Pythonwin',
+               'D:\\SIMULIA\\Abaqus\\6.14-4\\tools\\SMApy\\python2.7\\DLLs',
+               'D:\\Temp',
+               'D:\\SIMULIA\\Abaqus\\6.14-4\\code\\bin\\python27.zip',
+               'D:\\SIMULIA\\Abaqus\\6.14-4\\tools\\SMApy\\python2.7',
+               'D:\\SIMULIA\\Abaqus\\6.14-4\\tools\\SMApy\\python2.7\\lib\\site-packages\\win32',
+               'D:\\SIMULIA\\Abaqus\\6.14-4\\tools\\SMApy\\python2.7\\lib\\site-packages\\win32\\lib',
+               'D:\\SIMULIA\\Abaqus\\6.14-4\\tools\\SMApy\\python2.7\\lib\\site-packages\\Pythonwin',
+               'D:\\SIMULIA\\Abaqus\\6.14-4\\code\\bin', '.',
+               'd:\\SIMULIA\\Abaqus\\6.14-4\\code\\python2.7\\lib\\abaqus_plugins\\bin']
 from abaqus import *
 from abaqusConstants import *
 from caeModules import *
 from driverUtils import executeOnCaeStartup
 import mesh
-
-# 导入自带的库
-import datetime
 import os
-import sys
 
 # 导入自定义的方法包
-from propellent_03_function.propellent_03_function import *
+# cae使用
+# from propellent_03_function import *
 
+# kernel命令
+from propellent_03_function.propellent_03_function import *
+#
 this_path = os.path.abspath(os.path.join(os.getcwd(), "")) + '\\abaqus_plugins\\propellant'
 
 os.chdir = (this_path)
@@ -38,20 +56,15 @@ input
 '''
 def part_var(
     # 3个构件文件路径
-    filepath_c=None,
-        filepath_b=None, filepath_f=None, filepath_h=None
+    filepath_c=None,filepath_b=None, filepath_f=None, filepath_h=None
     # 1-复合材料的材料参数
-    ,desity_c=None, Elastic_c=None, Poisson_c=None, Conductivity_c=None,
-            SpecificHeat_c=None, Expansion_c=None,size_c=None
+    ,desity_c=None, Elastic_c=None, Poisson_c=None, Conductivity_c=None,SpecificHeat_c=None, Expansion_c=None,size_c=None
     # 2-包覆层的材料参数
-    ,desity_b=None, Elastic_b=None, Poisson_b=None, Conductivity_b=None, 
-            SpecificHeat_b=None, Expansion_b=None,size_b=None
+    ,desity_b=None, Elastic_b=None, Poisson_b=None, Conductivity_b=None, SpecificHeat_b=None, Expansion_b=None,size_b=None
     # 3-封头的材料参数
-    ,desity_f=None, Elastic_f=None, Poisson_f = None, Conductivity_f = None, 
-            SpecificHeat_f = None, Expansion_f = None, size_f = None
+    ,desity_f=None, Elastic_f=None, Poisson_f=None, Conductivity_f = None,SpecificHeat_f = None, Expansion_f = None, size_f = None
     # 4-推进剂的材料参数                                                                                                                                   
-    ,desity_h = None, Elastic_h = None, Poisson_h = None, Conductivity_h = None, 
-            SpecificHeat_h = None, Expansion_h = None, size_h = None
+    ,desity_h=None, Elastic_h=None, Poisson_h=None, Conductivity_h = None,SpecificHeat_h = None, Expansion_h = None, size_h = None
     # 开关函数
      ,var_export=False, var_input=False, var_WCM=False, inputfile=None
 ):
@@ -68,6 +81,16 @@ def part_var(
         #     数据导入导出
         , var_export=False, var_input=False ,inputfile = None
         )
+        if var_export:
+            data = [
+                # 2-包覆层的材料参数
+                [desity_b, Elastic_b, Poisson_b, Conductivity_b, SpecificHeat_b, Expansion_b, size_b],
+                # 3-封头的材料参数
+                [desity_f, Elastic_f, Poisson_f, Conductivity_f, SpecificHeat_f, Expansion_f, size_f],
+                # 4-火药的材料参数
+                [desity_h, Elastic_h, Poisson_h, Conductivity_h, SpecificHeat_h, Expansion_h, size_h],
+            ]
+            exportTXT(data, 1, WCM_state=var_WCM)
     else:
         Part_iron_kernel(
         # 4个构件文件路径
@@ -83,6 +106,20 @@ def part_var(
         #     数据导入导出
         , var_export=False, var_input=False ,inputfile = None
         )
+        if var_export:
+            data = [
+                # 1-复合材料的材料参数
+                [desity_c, Elastic_c, Poisson_c, Conductivity_c, SpecificHeat_c, Expansion_c, size_c],
+                # 2-包覆层的材料参数
+                [desity_b, Elastic_b, Poisson_b, Conductivity_b, SpecificHeat_b, Expansion_b, size_b],
+                # 3-封头的材料参数
+                [desity_f, Elastic_f, Poisson_f, Conductivity_f, SpecificHeat_f, Expansion_f, size_f],
+                # 4-火药的材料参数
+                [desity_h, Elastic_h, Poisson_h, Conductivity_h, SpecificHeat_h, Expansion_h, size_h],
+            ]
+            exportTXT(data, 1)
+
+
 
 
 # 当采用复合材料做推进剂外壳时
@@ -125,16 +162,6 @@ def Part_WCM_kernel(
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     else:
         # 用户导入外部txt文本数据
-        '''
-        mat_size_total是这样一个矩阵
-        mat_size_total=[
-                [''], 
-                ['1.23e-06', '235000', '0.33', '0.00043', '826', '0.00143', '5', ''], 
-                ['1.23e-06', '0.384', '0.3', '1', '1219', '0.000326', '5', ''],
-                ['0.00785', '200000', '0.3', '1.6578', '512', '1.22e-05', '3', ''], 
-                ['1.65e-06', '4000', '0.3', '0.001', '1500', '0.0001263', '5', '']
-                        ]
-        '''
         mat_size_total = readTXT(inputfile, 1)
 
         # 提取4个构件的网格尺寸
@@ -149,43 +176,14 @@ def Part_WCM_kernel(
             mat_i = mat_list[i]
             size_i = size_list[i]
             imputCAD_property_instance_mesh(cad_i, part_i, mat_i, size_i)
-
-    # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    # 当用户勾选后，执行操作
     if var_export:
-
-        # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-        desity_b_data = desity_b
-        Elastic_b_data = Elastic_b
-        Poisson_b_data = Poisson_b
-        Conductivity_b_data = Conductivity_b
-        SpecificHeat_b_data = SpecificHeat_b
-        Expansion_b_data = Expansion_b
-        size_b_data = size_b
-        desity_f_data = desity_f
-        Elastic_f_data = Elastic_f
-        Poisson_f_data = Poisson_f
-        Conductivity_f_data = Conductivity_f
-        SpecificHeat_f_data = SpecificHeat_f
-        Expansion_f_data = Expansion_f
-        size_f_data = size_f
-        desity_h_data = desity_h
-        Elastic_h_data = Elastic_h
-        Poisson_h_data = Poisson_h
-        Conductivity_h_data = Conductivity_h
-        SpecificHeat_h_data = SpecificHeat_h
-        Expansion_h_data = Expansion_h
-        size_h_data = size_h
+        print('xxx')
         data = [
-            [desity_b_data, Elastic_b_data, Poisson_b_data, Conductivity_b_data, SpecificHeat_b_data,
-             Expansion_b_data,
-             size_b_data],
-            [desity_f_data, Elastic_f_data, Poisson_f_data, Conductivity_f_data, SpecificHeat_f_data,
-             Expansion_f_data,
-             size_f_data],
-            [desity_h_data, Elastic_h_data, Poisson_h_data, Conductivity_h_data, SpecificHeat_h_data,
-             Expansion_h_data,
-             size_h_data]
+              desity_b, Elastic_b, Poisson_b, Conductivity_b, SpecificHeat_b, Expansion_b, size_b
+            # 3-封头的材料参数
+            , desity_f, Elastic_f, Poisson_f, Conductivity_f, SpecificHeat_f, Expansion_f, size_f
+            # 4-火药的材料参数
+            , desity_h, Elastic_h, Poisson_h, Conductivity_h, SpecificHeat_h, Expansion_h, size_h
         ]
 
         # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -215,7 +213,7 @@ def Part_iron_kernel(
     # 开始判断数据来源， 文件 OR 用户输入
     if var_input == False:
         # 开始生成界面GUI的数据
-        creat_parameter(False)
+        # creat_parameter(False)
         # 将导入的28个参数拼装成多维矩阵预先定义好3个构件所需要的参数
         size_list = [size_c, size_b, size_f, size_h]
         mat_list = [
@@ -235,16 +233,6 @@ def Part_iron_kernel(
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     else:
         # 用户导入外部txt文本数据
-        '''
-        mat_size_total是这样一个矩阵
-        mat_size_total=[
-                [''], 
-                ['1.23e-06', '235000', '0.33', '0.00043', '826', '0.00143', '5', ''], 
-                ['1.23e-06', '0.384', '0.3', '1', '1219', '0.000326', '5', ''],
-                ['0.00785', '200000', '0.3', '1.6578', '512', '1.22e-05', '3', ''], 
-                ['1.65e-06', '4000', '0.3', '0.001', '1500', '0.0001263', '5', '']
-                        ]
-        '''
         mat_size_total = readTXT(inputfile, 1)
 
         # 提取4个构件的网格尺寸
@@ -264,38 +252,14 @@ def Part_iron_kernel(
     # 当用户勾选后，执行操作
     if var_export:
 
-        # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-        desity_b_data = desity_b
-        Elastic_b_data = Elastic_b
-        Poisson_b_data = Poisson_b
-        Conductivity_b_data = Conductivity_b
-        SpecificHeat_b_data = SpecificHeat_b
-        Expansion_b_data = Expansion_b
-        size_b_data = size_b
-        desity_f_data = desity_f
-        Elastic_f_data = Elastic_f
-        Poisson_f_data = Poisson_f
-        Conductivity_f_data = Conductivity_f
-        SpecificHeat_f_data = SpecificHeat_f
-        Expansion_f_data = Expansion_f
-        size_f_data = size_f
-        desity_h_data = desity_h
-        Elastic_h_data = Elastic_h
-        Poisson_h_data = Poisson_h
-        Conductivity_h_data = Conductivity_h
-        SpecificHeat_h_data = SpecificHeat_h
-        Expansion_h_data = Expansion_h
-        size_h_data = size_h
         data = [
-            [desity_b_data, Elastic_b_data, Poisson_b_data, Conductivity_b_data, SpecificHeat_b_data,
-             Expansion_b_data,
-             size_b_data],
-            [desity_f_data, Elastic_f_data, Poisson_f_data, Conductivity_f_data, SpecificHeat_f_data,
-             Expansion_f_data,
-             size_f_data],
-            [desity_h_data, Elastic_h_data, Poisson_h_data, Conductivity_h_data, SpecificHeat_h_data,
-             Expansion_h_data,
-             size_h_data]
+              desity_c, Elastic_c, Poisson_c, Conductivity_c, SpecificHeat_c, Expansion_c, size_c
+            # 2-包覆层的材料参数
+            , desity_b, Elastic_b, Poisson_b, Conductivity_b, SpecificHeat_b, Expansion_b, size_b
+            # 3-封头的材料参数
+            , desity_f, Elastic_f, Poisson_f, Conductivity_f, SpecificHeat_f, Expansion_f, size_f
+            # 4-火药的材料参数
+            , desity_h, Elastic_h, Poisson_h, Conductivity_h, SpecificHeat_h, Expansion_h, size_h
         ]
 
         # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -360,7 +324,7 @@ def imputCAD_property_instance_mesh(part_path, part, mat , size):
                                                     elemType3))
     p.seedPart(size=size, deviationFactor=0.1, minSizeFactor=0.1)
     p.generateMesh()
-    print('    Mesh {} successfully!'.format(part))
+    # print('    Mesh {} successfully!'.format(part))
 
 # 开始导入构件
 def ImputCAD(filepath, name):

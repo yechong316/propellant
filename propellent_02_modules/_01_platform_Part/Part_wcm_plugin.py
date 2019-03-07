@@ -313,6 +313,7 @@ class Part_wcm_plugin(AFXForm):
             return False
         else:
             return True
+
     def okToCancel(self):
 
         # No need to close the dialog when a file operation (such
