@@ -1,7 +1,9 @@
 # -*- coding: utf-8 -*-
-from abaqusGui import *
-from abaqusConstants import ALL
-import osutils, os, sys
+# from abaqusGui import *
+# from abaqusConstants import ALL
+# import osutils, os, sys
+import abaqus_gui
+
 
 reload(sys)
 sys.setdefaultencoding('utf-8')
@@ -54,6 +56,7 @@ class Platform_total_plugin(AFXForm):
         # No need to close the dialog when a file operation (such
         # as New or Open) or model change is executed.
         #
+
         return False
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

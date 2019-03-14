@@ -27,8 +27,8 @@ if var_data().extract_var == 'GUI':
     data_f_ep = Data_GUI().f_ep
     data_f_mesh_size = Data_GUI().f_mesh_size
     data_h_d = Data_GUI().h_d
-    data_h_e = Data_GUI().h_e
-    data_h_p = Data_GUI().h_p
+    # data_h_e = Data_GUI().h_e
+    # data_h_p = Data_GUI().h_p
     data_h_c = Data_GUI().h_c
     data_h_s = Data_GUI().h_s
     data_h_ep = Data_GUI().h_ep
@@ -51,8 +51,8 @@ elif var_data().extract_var == 'file':
     data_f_ep = Data_file().f_ep
     data_f_mesh_size = Data_file().f_mesh_size
     data_h_d = Data_file().h_d
-    data_h_e = Data_file().h_e
-    data_h_p = Data_file().h_p
+    # data_h_e = Data_file().h_e
+    # data_h_p = Data_file().h_p
     data_h_c = Data_file().h_c
     data_h_s = Data_file().h_s
     data_h_ep = Data_file().h_ep
@@ -84,6 +84,9 @@ class Part_wcm_plugin(AFXForm):
 
         # 2019年2月27日17:53:51 定义原始的版本
         self.cmd = AFXGuiCommand(mode=self, method='part_var',
+            objectName='propellent_02_modules._01_platform_Part.Part_wcm_kernel', registerQuery=False)
+
+        self.cmd_h = AFXGuiCommand(mode=self, method='part_var',
             objectName='propellent_02_modules._01_platform_Part.Part_wcm_kernel', registerQuery=False)
         pickedDefault = ''
 
@@ -120,8 +123,8 @@ class Part_wcm_plugin(AFXForm):
         # 推进剂
         self.filepath_hKw = AFXStringKeyword(self.cmd, 'filepath_h', True, CAD_path + 'propeller.sat')
         self.desity_hKw = AFXFloatKeyword(self.cmd, 'desity_h', True, data_h_d)
-        self.Elastic_hKw = AFXFloatKeyword(self.cmd, 'Elastic_h', True, data_h_e)
-        self.Poisson_hKw = AFXFloatKeyword(self.cmd, 'Poisson_h', True, data_h_p)
+        # self.Elastic_hKw = AFXFloatKeyword(self.cmd, 'Elastic_h', True, data_h_e)
+        # self.Poisson_hKw = AFXFloatKeyword(self.cmd, 'Poisson_h', True, data_h_p)
         self.Conductivity_hKw = AFXFloatKeyword(self.cmd, 'Conductivity_h', True, data_h_c)
         self.SpecificHeat_hKw = AFXFloatKeyword(self.cmd, 'SpecificHeat_h', True, data_h_s)
         self.Expansion_hKw = AFXFloatKeyword(self.cmd, 'Expansion_h', True, data_h_ep)
@@ -132,6 +135,12 @@ class Part_wcm_plugin(AFXForm):
         self.var_inputKw = AFXBoolKeyword(self.cmd, 'var_input', AFXBoolKeyword.TRUE_FALSE,True, False)
         self.inputfileKw = AFXStringKeyword(self.cmd, 'inputfile', True, None)
         self.var_WCMKw = AFXBoolKeyword(self.cmd, 'var_WCM', AFXBoolKeyword.TRUE_FALSE, True, False)
+
+    #     推进剂弹性模量
+        self.elastic_tempKw = AFXTableKeyword(self.cmd_h, 'elastic_temp', True)
+        self.elastic_tempKw.setColumnType(0, AFXTABLE_TYPE_FLOAT)
+        self.elastic_tempKw.setColumnType(1, AFXTABLE_TYPE_FLOAT)
+        self.elastic_tempKw.setColumnType(2, AFXTABLE_TYPE_FLOAT)
         
 
 
@@ -230,11 +239,11 @@ class Part_wcm_plugin(AFXForm):
                                # '封头弹性模量必须为正数，请重新输入！'
                                b'\xb7\xe2\xcd\xb7\xb5\xc4\xb5\xaf\xd0\xd4\xc4\xa3\xc1\xbf\xb1\xd8\xd0\xeb\xce\xaa\xd5\xfd\xca\xfd\xa3\xac\xc7\xeb\xd6\xd8\xd0\xc2\xca\xe4\xc8\xeb\xa3\xa1')
             return False
-        elif self.Elastic_hKw.getValue() <= 0:
-            showAFXErrorDialog(getAFXApp().getAFXMainWindow(),
-                               # '火药弹性模量必须为正数，请重新输入！'
-                               b'\xbb\xf0\xd2\xa9\xb5\xc4\xb5\xaf\xd0\xd4\xc4\xa3\xc1\xbf\xb1\xd8\xd0\xeb\xce\xaa\xd5\xfd\xca\xfd\xa3\xac\xc7\xeb\xd6\xd8\xd0\xc2\xca\xe4\xc8\xeb\xa3\xa1')
-            return False
+        # elif self.Elastic_hKw.getValue() <= 0:
+        #     showAFXErrorDialog(getAFXApp().getAFXMainWindow(),
+        #                        # '火药弹性模量必须为正数，请重新输入！'
+        #                        b'\xbb\xf0\xd2\xa9\xb5\xc4\xb5\xaf\xd0\xd4\xc4\xa3\xc1\xbf\xb1\xd8\xd0\xeb\xce\xaa\xd5\xfd\xca\xfd\xa3\xac\xc7\xeb\xd6\xd8\xd0\xc2\xca\xe4\xc8\xeb\xa3\xa1')
+        #     return False
         # 4个构件泊松比警告提示
         elif self.Poisson_bKw.getValue() <= 0:
             showAFXErrorDialog(getAFXApp().getAFXMainWindow(),
@@ -248,12 +257,12 @@ class Part_wcm_plugin(AFXForm):
                                b'\xb7\xe2\xcd\xb7\xb5\xc4\xb2\xb4\xcb\xc9\xb1\xc8\xb1\xd8\xd0\xeb\xce\xaa\xd5\xfd\xca\xfd'
                                )
             return False
-        elif self.Poisson_hKw.getValue() <= 0:
-            showAFXErrorDialog(getAFXApp().getAFXMainWindow(),
-                               # '火药的泊松比必须为正数，请重新输入！'
-                               b'\xbb\xf0\xd2\xa9\xb5\xc4\xb2\xb4\xcb\xc9\xb1\xc8\xb1\xd8\xd0\xeb\xce\xaa\xd5\xfd\xca\xfd'
-                               )
-            return False
+        # elif self.Poisson_hKw.getValue() <= 0:
+        #     showAFXErrorDialog(getAFXApp().getAFXMainWindow(),
+        #                        # '火药的泊松比必须为正数，请重新输入！'
+        #                        b'\xbb\xf0\xd2\xa9\xb5\xc4\xb2\xb4\xcb\xc9\xb1\xc8\xb1\xd8\xd0\xeb\xce\xaa\xd5\xfd\xca\xfd'
+        #                        )
+        #     return False
         # 4个构件热传导警告提示
         elif self.Conductivity_bKw.getValue() <= 0:
             showAFXErrorDialog(getAFXApp().getAFXMainWindow(),

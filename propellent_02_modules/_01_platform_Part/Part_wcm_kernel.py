@@ -64,10 +64,14 @@ def part_var(
     # 3-封头的材料参数
     ,desity_f=None, Elastic_f=None, Poisson_f=None, Conductivity_f = None,SpecificHeat_f = None, Expansion_f = None, size_f = None
     # 4-推进剂的材料参数                                                                                                                                   
-    ,desity_h=None, Elastic_h=None, Poisson_h=None, Conductivity_h = None,SpecificHeat_h = None, Expansion_h = None, size_h = None
+    ,desity_h=None,                                 Conductivity_h = None,SpecificHeat_h = None, Expansion_h = None, size_h = None
     # 开关函数
      ,var_export=False, var_input=False, var_WCM=False, inputfile=None
+        ,elastic_temp=None
 ):
+    # elastic_temp
+    Elastic_h = 2e5
+    Poisson_h = 0.3
     if var_WCM:
         Part_WCM_kernel(
         # 3个构件文件路径
@@ -79,7 +83,7 @@ def part_var(
         # 4-火药的材料参数
         ,desity_h, Elastic_h, Poisson_h, Conductivity_h, SpecificHeat_h, Expansion_h, size_h
         #     数据导入导出
-        , var_export=False, var_input=False ,inputfile = None
+        , var_export=False, var_input=False ,inputfile =None,elastic_temp=None
         )
         if var_export:
             data = [
@@ -88,7 +92,7 @@ def part_var(
                 # 3-封头的材料参数
                 [desity_f, Elastic_f, Poisson_f, Conductivity_f, SpecificHeat_f, Expansion_f, size_f],
                 # 4-火药的材料参数
-                [desity_h, Elastic_h, Poisson_h, Conductivity_h, SpecificHeat_h, Expansion_h, size_h],
+                [desity_h, elastic_temp, 0.3, Conductivity_h, SpecificHeat_h, Expansion_h, size_h],
             ]
             exportTXT(data, 1, WCM_state=var_WCM)
     else:
@@ -104,7 +108,7 @@ def part_var(
         # 4-火药的材料参数
         ,desity_h, Elastic_h, Poisson_h, Conductivity_h, SpecificHeat_h, Expansion_h, size_h
         #     数据导入导出
-        , var_export=False, var_input=False ,inputfile = None
+        , var_export=False, var_input=False ,inputfile = None, elastic_temp=None
         )
         if var_export:
             data = [
@@ -115,7 +119,7 @@ def part_var(
                 # 3-封头的材料参数
                 [desity_f, Elastic_f, Poisson_f, Conductivity_f, SpecificHeat_f, Expansion_f, size_f],
                 # 4-火药的材料参数
-                [desity_h, Elastic_h, Poisson_h, Conductivity_h, SpecificHeat_h, Expansion_h, size_h],
+                [desity_h, elastic_temp, 0.3, Conductivity_h, SpecificHeat_h, Expansion_h, size_h],
             ]
             exportTXT(data, 1)
 
@@ -133,7 +137,7 @@ def Part_WCM_kernel(
         # 4-火药的材料参数
         ,desity_h, Elastic_h, Poisson_h, Conductivity_h, SpecificHeat_h, Expansion_h, size_h
         # 读取文件和输出参数
-        ,var_export=False, var_input=False, var_WCM=False, inputfile=None
+        ,var_export=False, var_input=False, var_WCM=False, inputfile=None, elastic_temp=None
 ):
     # 定义3个构件公用的参数，根据inputfile是否为空，取决于后续程序调用哪些参数
     part_list = ['bfc', 'fengtou', 'propeller']
@@ -142,7 +146,7 @@ def Part_WCM_kernel(
     # 开始判断数据来源， 文件 OR 用户输入
     if var_input == False:
         # 开始生成界面GUI的数据
-        creat_parameter(False, WCM_state=True)
+        # creat_parameter(False, WCM_state=True)
 
         # 将导入的28个参数拼装成多维矩阵预先定义好3个构件所需要的参数
         size_list = [size_b, size_f, size_h]
@@ -176,14 +180,20 @@ def Part_WCM_kernel(
             mat_i = mat_list[i]
             size_i = size_list[i]
             imputCAD_property_instance_mesh(cad_i, part_i, mat_i, size_i)
+
+    mdb.models['Model-1'].materials['propeller'].Elastic(temperatureDependency=ON,
+    table=(
+    	(5143.68, 0.271, 306.0), (4292.46, 0.271, 316.0), (3530.65, 0.271,
+    326.0)
+    ))
     if var_export:
-        print('xxx')
+        # print('xxx')
         data = [
               desity_b, Elastic_b, Poisson_b, Conductivity_b, SpecificHeat_b, Expansion_b, size_b
             # 3-封头的材料参数
             , desity_f, Elastic_f, Poisson_f, Conductivity_f, SpecificHeat_f, Expansion_f, size_f
             # 4-火药的材料参数
-            , desity_h, Elastic_h, Poisson_h, Conductivity_h, SpecificHeat_h, Expansion_h, size_h
+            , desity_h, elastic_temp, Conductivity_h, SpecificHeat_h, Expansion_h, size_h
         ]
 
         # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -205,7 +215,7 @@ def Part_iron_kernel(
         ,desity_h, Elastic_h, Poisson_h, Conductivity_h, SpecificHeat_h, Expansion_h, size_h
 
         # 读取文件和输出参数
-        ,var_export=False, var_input=False,inputfile=None
+        ,var_export=False, var_input=False,inputfile=None, elastic_temp=None
 ):
     # 定义3个构件公用的参数，根据inputfile是否为空，取决于后续程序调用哪些参数
     part_list = ['composite', 'bfc', 'fengtou', 'propeller']
@@ -247,6 +257,12 @@ def Part_iron_kernel(
             mat_i = mat_list[i]
             size_i = size_list[i]
             imputCAD_property_instance_mesh(cad_i, part_i, mat_i, size_i)
+
+    mdb.models['Model-1'].materials['propeller'].Elastic(temperatureDependency=ON,
+    table=(
+    	(5143.68, 0.271, 306.0), (4292.46, 0.271, 316.0), (3530.65, 0.271,
+    326.0)
+    ))
 
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     # 当用户勾选后，执行操作
