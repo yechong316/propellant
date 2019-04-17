@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
-# from abaqusGui import *
-# from abaqusConstants import ALL
-# import osutils, os, sys
-import abaqus_gui
+from abaqusGui import *
+from abaqusConstants import ALL
+import osutils, os, sys
 
 
-reload(sys)
-sys.setdefaultencoding('utf-8')
+
+# reload(sys)
+# sys.setdefaultencoding('utf-8')
 
 
 ###########################################################################
