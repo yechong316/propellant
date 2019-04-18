@@ -18,7 +18,7 @@ class Composite_plugin(AFXForm):
         AFXForm.__init__(self, owner)
         self.radioButtonGroups = {}
 
-        self.cmd_composite = AFXGuiCommand(mode=self, method='Property',
+        self.cmd_composite = AFXGuiCommand(mode=self, method='orthotropic_mat',
         objectName='propellent_02_modules._01_platform_Part.Part_wcm_kernel',
         registerQuery=False)
         pickedDefault = ''

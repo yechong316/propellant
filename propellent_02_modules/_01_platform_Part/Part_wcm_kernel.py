@@ -56,3 +56,8 @@ def part_var(
         p.SetSectionAssignment()
 
 
+def orthotropic_mat(name, desity, elastic, conductivity, expansion, specific):
+
+    mat = Property_ORT(name)
+    mat.ort_property(desity, elastic, conductivity, expansion, specific)
+
