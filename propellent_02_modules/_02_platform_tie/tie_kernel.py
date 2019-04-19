@@ -1,10 +1,11 @@
 # coding:utf-8                                 
                  
-from abaqus import *                
+from abaqus import *
 from abaqusConstants import *
 
 # 将写好的函数调用起来
 from propellent_03_function.propellent_03_function import *
+from propellent_03_function.ABAQUSFunction import *
 
 '''
 本插件用于当构件导入之后，定义4个构件之间的tie绑定关系
@@ -18,35 +19,34 @@ def tie_input(
         Master_hf=None,Slave_hf=None,Position_hf=None,var_hf=None,
         var_export=False, var_input=False, inputfile=None
                    ):
-    # 当用户勾选此选项，数据导出，
-    if var_export:
-        data_tie = [
-            [Master_cb, Slave_cb, Position_cb, var_cb],
-            [Master_bf, Slave_bf, Position_bf, var_bf],
-            [Master_bh, Slave_bh, Position_bh, var_bh],
-            [Master_hf, Slave_hf, Position_hf, var_hf]
-        ]
 
-        # 开始导出数据
-        exportTXT(data_tie, 2)
-
-    # 根据var_input的布尔值，绝对采用何种数据来源
-    print('Beginning creat tie constraint!')
+    tie_pair = [
+        ['shell', 'bfc'],
+        ['bfc', 'fengtou'],
+        ['bfc', 'propeller'],
+        ['propeller', 'fengtou']
+    ]
     if var_input:
-        input_data = readTXT(inputfile, 2)
-        instance_list = gain_name_of_composte_instance()
-        # print('instance_list is :{}'.format(instance_list))
-        tie_data = construced_tie_data_matrix(instance_list, input_data)
-        # print('tie_data is :{}'.format(tie_data))
-        generate_tie(tie_data)
+
+        input_tie_data = Read()
+        data_tie = input_tie_data.plug_2(inputfile)
 
     else:
-        #根据用户输入的数据后台操作
-        index2tie(pick_face2index_list(Master_cb), pick_face2index_list(Slave_cb), Position_cb, var_cb, 0, 1),
-        index2tie(pick_face2index_list(Master_bf), pick_face2index_list(Slave_bf), Position_bf, var_bf, 1, 2),
-        index2tie(pick_face2index_list(Master_bh), pick_face2index_list(Slave_bh), Position_bh, var_bh, 1, 3),
-        index2tie(pick_face2index_list(Master_hf), pick_face2index_list(Slave_hf), Position_hf, var_hf, 3, 2)
+        data_tie = [
+            [pick_face2index_list(Master_cb), pick_face2index_list(Slave_cb), Position_cb, var_cb],
+            [pick_face2index_list(Master_bf), pick_face2index_list(Slave_bf), Position_bf, var_bf],
+            [pick_face2index_list(Master_bh), pick_face2index_list(Slave_bh), Position_bh, var_bh],
+            [pick_face2index_list(Master_hf), pick_face2index_list(Slave_hf), Position_hf, var_hf]
+        ]
 
-    print('Finish creat tie constraint!')
+    # 依次建立绑定关系
+    for data, part_name in zip(data_tie, tie_pair):
+
+        tie = Tie()
+        region_master = tie.creat_surface(part_name[0], data[0], 'M')
+        region_slave = tie.creat_surface(part_name[1], data[1], 'S')
+        tie.creat_tie(region_master, region_slave, data[2], data[3])
+
+    if var_export: exportTXT(data_tie, 2)
 
 

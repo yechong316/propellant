@@ -316,3 +316,60 @@ class Read:
 
         print('The data from {} has been imported to CAE!'.format(txtname))
         # os.remove(file)
+
+
+class Tie:
+
+    def creat_surface(self, name, index, surface_type):
+        '''
+        
+        :param name: 主面的instance的索引号
+        :param index: 主面的索引号，必须是int，必须是整型序列
+        :return: 
+        '''
+        side1Faces = [ a.instances[name].faces[index[i]:index[i] + 1] for i in range(len(index)) ]  #主面
+        region_Surface = a.Surface(side1Faces=side1Faces, name=name + '_' + surface_type)
+        self.surface_name = name + '_' + surface_type
+
+        return region_Surface
+
+    def creat_tie(self, tie_name, region_Master_cb, region_Slave_cb, pos, var):
+
+        # 定义绑定对的名称
+        mdb.models['Model-1'].Tie(name=tie_name, master=region_Master_cb,
+                                  slave=region_Slave_cb, positionToleranceMethod=SPECIFIED,
+                                  positionTolerance=pos,
+                                  adjust=ON, tieRotations=ON, thickness=ON)
+
+        # 交互绑定对的主从面
+        if var == True:
+            mdb.models['Model-1'].constraints[tie_name].swapSurfaces()
+        print('    %s is successful!!' % tie_name)
+
+
+tie = Tie()
+
+master_surface = tie.creat_surface('sell', [])
+master_surface = tie.creat_surface('sell', [])
+tie.creat_tie(master_surface, master_surface, 1, True)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

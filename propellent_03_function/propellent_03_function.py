@@ -681,11 +681,8 @@ def pick_face2index_list(pick):
     :param pick: mdb.[model_name].part[].face[]
     :return:
     '''
-    #print('pick is %s', pick)
-    _index_list = []
-    for i in pick:
-        _index_list.append(i.index)
-    return _index_list
+
+    return [i.index for i in pick ]
 
 def index2tie(master,slave=None,pos=None,var=None,
               num_M=None,num_S=None, var_set_face=None):
