@@ -142,13 +142,4 @@ def warp_kernel_input(F,thickness,width,Cpu_num, var_export=False, var_input=Fal
 
         # 计算完毕后根据S22求新一轮迭代所需要的终止温度
         end_temp_new = start_temp - (start_temp - end_temp_new) / avg_S22 * true_S22
-        # print('this is %d end_temp_new:%d' % (count, end_temp_new))
-        # print('%d :courrent bitch is over '%count)
-        # 仿照ABAQUS内置逻辑，如果当前迭代次数超过4次，默认初始值设置不合理，请重新设置
-        # if count > 5:
-        #     # print('Initial value is not reasonable,Please reset parameter!')
-        #     break
-        # myodb.close()
-        # else:
-        # print('Result is good,Please look the %s' % odb_name)
     print('Finish calcute compostie, please check in {}'.format(odb_name))

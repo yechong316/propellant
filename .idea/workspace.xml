@@ -2,10 +2,28 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1afbe1bf-c14f-4ae6-959b-2f0173b73b2a" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/propellent_02_modules/_01_platform_Part/ABAQUSFunction.py" beforeDir="false" afterPath="$PROJECT_DIR$/propellent_02_modules/_01_platform_Part/ABAQUSFunction.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/propellent_02_modules/_02_platform_tie/tie_kernel.py" beforeDir="false" afterPath="$PROJECT_DIR$/propellent_02_modules/_02_platform_tie/tie_kernel.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/propellant.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/propellant.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Platform_totalDB.py" beforeDir="false" afterPath="$PROJECT_DIR$/Platform_totalDB.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/propellent_02_modules/_01_platform_Part/ABAQUSFunction.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/propellent_02_modules/_01_platform_Part/Part_wcm_DB.py" beforeDir="false" afterPath="$PROJECT_DIR$/propellent_02_modules/_01_platform_Part/Part_wcm_DB.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/propellent_02_modules/_01_platform_Part/Part_wcm_kernel.py" beforeDir="false" afterPath="$PROJECT_DIR$/propellent_02_modules/_01_platform_Part/Part_wcm_kernel.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/propellent_02_modules/_01_platform_Part/Part_wcm_plugin.py" beforeDir="false" afterPath="$PROJECT_DIR$/propellent_02_modules/_01_platform_Part/Part_wcm_plugin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/propellent_02_modules/_03_platform_thermal/temprature_shock_kernel.py" beforeDir="false" afterPath="$PROJECT_DIR$/propellent_02_modules/_03_platform_thermal/temprature_shock_kernel.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/propellent_02_modules/_05_platform_warp/warp_kernel.py" beforeDir="false" afterPath="$PROJECT_DIR$/propellent_02_modules/_05_platform_warp/warp_kernel.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/propellent_03_function/ABAQUSFunction.py" beforeDir="false" afterPath="$PROJECT_DIR$/propellent_03_function/ABAQUSFunction.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/propellent_03_function/propellent_03_function.py" beforeDir="false" afterPath="$PROJECT_DIR$/propellent_03_function/propellent_03_function.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/propellent_03_function/data_temp.txt" beforeDir="false" afterPath="$PROJECT_DIR$/propellent_03_function/data_temp.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/propellent_03_function/define_user_sub_total.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/propellent_03_function/fuc_part.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/propellent_03_function/将tieindex和实体组装成字典.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/propellent_04_data/Property_v2019-01-29_23-02-13.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/propellent_04_data/Property_v2019-01-30_12-11-35.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/propellent_04_data/Property_v2019-03-07_09-34-20.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/propellent_04_data/Property_v2019-03-07_09-39-19.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/propellent_04_data/Property_v2019-03-07_09-42-51.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/propellent_04_data/Property_v2019-03-07_10-32-49.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/propellent_07_job/propellant_2019-03-03_23-31-17.cae" beforeDir="false" afterPath="$PROJECT_DIR$/propellent_07_job/propellant_2019-03-03_23-31-17.cae" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -14,71 +32,81 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.4286658">
-      <split-first>
-        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/propellent_02_modules/_01_platform_Part/Part_wcm_kernel.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="330">
-                  <caret line="44" selection-start-line="44" selection-end-line="44" selection-end-column="56" />
-                  <folding>
-                    <element signature="e#16#36#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/propellent_02_modules/_02_platform_tie/tie_kernel.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="240">
-                  <caret line="35" column="26" lean-forward="true" selection-start-line="35" selection-start-column="26" selection-end-line="35" selection-end-column="26" />
-                  <folding>
-                    <element signature="e#66#86#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/propellent_03_function/propellent_03_function.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-671">
-                  <caret line="683" lean-forward="true" selection-start-line="683" selection-end-line="683" />
-                  <folding>
-                    <element signature="e#12830#13424#0" />
-                    <element signature="e#13468#13536#0" />
-                    <element signature="e#16024#16891#0" />
-                    <element signature="e#24218#24422#0" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-first>
-      <split-second>
-        <leaf>
-          <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/propellent_03_function/ABAQUSFunction.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="191">
-                  <caret line="233" column="14" selection-start-line="233" selection-start-column="14" selection-end-line="233" selection-end-column="14" />
-                  <folding>
-                    <element signature="e#15#35#0" expanded="true" />
-                    <element signature="e#759#827#0" />
-                    <element signature="e#94#3586#0" />
-                    <element signature="e#3610#4969#0" />
-                    <element signature="e#5184#6298#0" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-second>
-    </splitter>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/propellent_03_function/ABAQUSFunction.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-378">
+              <caret line="55" column="28" selection-start-line="55" selection-start-column="28" selection-end-line="55" selection-end-column="28" />
+              <folding>
+                <element signature="e#15#35#0" expanded="true" />
+                <element signature="e#121#715#0" />
+                <element signature="e#759#827#0" />
+                <element signature="e#4483#6227#0" />
+                <element signature="e#6246#12871#0" />
+                <element signature="e#12890#13915#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/propellent_02_modules/_01_platform_Part/Part_wcm_kernel.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="155">
+              <caret line="63" column="13" lean-forward="true" selection-start-line="63" selection-start-column="13" selection-end-line="63" selection-end-column="13" />
+              <folding>
+                <element signature="e#236#256#0" expanded="true" />
+                <element signature="e#1328#1444#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/删除pyc.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="107">
+              <caret line="16" column="26" lean-forward="true" selection-start-line="16" selection-start-column="26" selection-end-line="16" selection-end-column="26" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/.PyCharmCE2018.3/system/python_stubs/-704344267/builtins.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="226">
+              <caret line="5729" column="6" selection-start-line="5729" selection-start-column="6" selection-end-line="5729" selection-end-column="6" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/propellent_02_modules/_05_platform_warp/warp_kernel.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="992">
+              <caret line="144" column="31" selection-start-line="144" selection-start-column="31" selection-end-line="144" selection-end-column="31" />
+              <folding>
+                <element signature="e#150#170#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/propellent_02_modules/_01_platform_Part/Part_wcm_plugin.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="425">
+              <caret line="106" column="40" lean-forward="true" selection-start-line="106" selection-start-column="40" selection-end-line="106" selection-end-column="40" />
+              <folding>
+                <element signature="e#379#1073#0" />
+                <element signature="e#1131#1831#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -93,36 +121,68 @@
       <find>tie_name_mid</find>
       <find>master</find>
       <find>str_indes2Face</find>
+      <find>= None</find>
+      <find>elastic_tempKw</find>
+      <find>Elastic_fKw</find>
+      <find>desity_hKw</find>
+      <find>data_h_d</find>
+      <find>data_h_e</find>
+      <find>data_h_p</find>
+      <find>p</find>
+      <find>file</find>
+      <find>input_part</find>
+      <find>cmd</find>
+      <find>DTXT IS SUCCESSFUL STARTING!!!')</find>
+      <find>CAD_path</find>
+      <find>shellS</find>
+      <find>AFXStringKeyword</find>
+      <find>arg1</find>
+      <find>Current</find>
+      <find>Part()</find>
+      <find>Part(</find>
+      <find>pyc</find>
+      <find>cmd_h</find>
+      <find>Part</find>
     </findStrings>
     <replaceStrings>
       <replace>data</replace>
       <replace>tie_name</replace>
       <replace>index</replace>
     </replaceStrings>
+    <dirStrings>
+      <dir>D:\temp\abaqus_plugins\propellant</dir>
+      <dir>D:\temp\abaqus_plugins\propellant\propellent_03_function</dir>
+    </dirStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/propellent_03_function/ABAQUSFunction.py" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/propellent_02_modules/_01_platform_Part/composite/composite_plugin.py" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/propellent_02_modules/_02_platform_tie/tie_kernel.py" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/propellent_02_modules/_01_platform_Part/Part_wcm_plugin.py" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/propellent_02_modules/_01_platform_Part/ABAQUSFunction.py" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/propellent_02_modules/_05_platform_warp/warp_kernel.py" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/propellent_03_function/propellent_03_function.py" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/propellent_02_modules/_01_platform_Part/composite/composite_plugin.py" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/propellent_02_modules/_01_platform_Part/Part_wcm_plugin.py" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/propellent_02_modules/_01_platform_Part/Part_wcm_DB.py" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/propellent_02_modules/_01_platform_Part/Part_wcm_kernel.py" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/propellent_03_function/ABAQUSFunction.py" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/propellent_02_modules/_02_platform_tie/tie_kernel.py" root0="SKIP_INSPECTION" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/temp.py" />
         <option value="$PROJECT_DIR$/propellent_02_modules/_01_platform_Part/composite/composite_plugin.py" />
-        <option value="$PROJECT_DIR$/propellent_02_modules/_01_platform_Part/Part_wcm_kernel.py" />
-        <option value="$PROJECT_DIR$/propellent_02_modules/_01_platform_Part/Part_wcm_plugin.py" />
         <option value="$PROJECT_DIR$/propellent_02_modules/_01_platform_Part/ABAQUSFunction.py" />
-        <option value="$PROJECT_DIR$/propellent_02_modules/_02_platform_tie/tie_kernel.py" />
-        <option value="$PROJECT_DIR$/propellent_03_function/ABAQUSFunction.py" />
         <option value="$PROJECT_DIR$/propellent_03_function/propellent_03_function.py" />
+        <option value="$PROJECT_DIR$/propellent_02_modules/_02_platform_tie/tie_kernel.py" />
+        <option value="$PROJECT_DIR$/propellent_02_modules/_03_platform_thermal/temprature_shock_kernel.py" />
+        <option value="$PROJECT_DIR$/propellent_02_modules/_01_platform_Part/Part_wcm_DB.py" />
+        <option value="$PROJECT_DIR$/propellent_02_modules/_05_platform_warp/warp_kernel.py" />
+        <option value="$PROJECT_DIR$/Platform_totalDB.py" />
+        <option value="$PROJECT_DIR$/删除pyc.py" />
+        <option value="$PROJECT_DIR$/propellent_02_modules/_01_platform_Part/Part_wcm_plugin.py" />
+        <option value="$PROJECT_DIR$/propellent_02_modules/_01_platform_Part/Part_wcm_kernel.py" />
+        <option value="$PROJECT_DIR$/propellent_03_function/ABAQUSFunction.py" />
       </list>
     </option>
   </component>
@@ -140,6 +200,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -147,26 +208,15 @@
               <item name="propellant" type="b2602c69:ProjectViewProjectNode" />
               <item name="propellant" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="propellant" type="b2602c69:ProjectViewProjectNode" />
-              <item name="propellant" type="462c0819:PsiDirectoryNode" />
-              <item name="propellent_02_modules" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="propellant" type="b2602c69:ProjectViewProjectNode" />
-              <item name="propellant" type="462c0819:PsiDirectoryNode" />
-              <item name="propellent_02_modules" type="462c0819:PsiDirectoryNode" />
-              <item name="_02_platform_tie" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/propellent_03_function" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -180,7 +230,28 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Python.删除pyc">
+    <configuration name="删除pyc" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="propellant" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/删除pyc.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="temp" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="propellant" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -204,6 +275,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.删除pyc" />
         <item itemvalue="Python.temp" />
       </list>
     </recent_temporary>
@@ -234,114 +306,148 @@
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" weight="0.07001321" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.10237781" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.15014164" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.44334278" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" weight="0.3286119" />
-      <window_info anchor="bottom" id="Version Control" order="7" weight="0.3286119" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="8" visible="true" weight="0.11473088" />
-      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
-      <window_info anchor="bottom" id="Python Console" order="10" weight="0.13597734" />
+      <window_info anchor="bottom" id="Version Control" order="6" weight="0.3286119" />
+      <window_info anchor="bottom" id="Terminal" order="7" weight="0.1145686" />
+      <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
+      <window_info anchor="bottom" id="Python Console" order="9" weight="0.16572239" />
+      <window_info anchor="bottom" id="TODO" order="10" weight="0.3286119" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
     </layout>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/propellent_02_modules/_03_platform_thermal/temprature_shock_kernel.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-720" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/propellent_02_modules/_01_platform_Part/Part_wcm_DB.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/temp.py" />
     <entry file="file://$PROJECT_DIR$/propellent_03_function/__init__.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/propellent_02_modules/_01_platform_Part/composite/composite_plugin.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="416">
-          <caret line="27" column="64" selection-start-line="27" selection-start-column="60" selection-end-line="27" selection-end-column="64" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/propellent_02_modules/_01_platform_Part/Part_wcm_plugin.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="24" column="29" selection-start-line="24" selection-start-column="29" selection-end-line="24" selection-end-column="29" />
-          <folding>
-            <element signature="e#1135#1839#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/propellent_02_modules/_01_platform_Part/Part_wcm_kernel.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="44" selection-start-line="44" selection-end-line="44" selection-end-column="56" />
-          <folding>
-            <element signature="e#16#36#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/propellent_02_modules/_01_platform_Part/ABAQUSFunction.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="320" selection-start-line="320" selection-end-line="346" selection-end-column="50" />
-          <folding>
-            <element signature="e#15#35#0" expanded="true" />
-            <element signature="e#93#3601#0" />
-            <element signature="e#3626#5014#0" />
-            <element signature="e#3927#4479#0" />
-            <element signature="e#4535#5014#0" />
-            <element signature="e#5033#11655#0" />
-            <element signature="e#11674#12992#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/propellent_03_function/ABAQUSFunction.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="191">
-          <caret line="233" column="14" selection-start-line="233" selection-start-column="14" selection-end-line="233" selection-end-column="14" />
-          <folding>
-            <element signature="e#15#35#0" expanded="true" />
-            <element signature="e#759#827#0" />
-            <element signature="e#94#3586#0" />
-            <element signature="e#3610#4969#0" />
-            <element signature="e#5184#6298#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/propellent_02_modules/_02_platform_tie/tie_kernel.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="35" column="26" lean-forward="true" selection-start-line="35" selection-start-column="26" selection-end-line="35" selection-end-column="26" />
+        <state relative-caret-position="570">
+          <caret line="34" column="20" lean-forward="true" selection-start-line="34" selection-start-column="20" selection-end-line="34" selection-end-column="20" />
           <folding>
             <element signature="e#66#86#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/propellent_02_modules/_03_platform_thermal/temprature_shock_kernel.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="453">
+          <caret line="51" selection-start-line="51" selection-end-line="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/propellent_02_modules/_01_platform_Part/ABAQUSFunction.py" />
+    <entry file="file://$PROJECT_DIR$/propellent_02_modules/_01_platform_Part/Part_wcm_DB.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="8112">
+          <caret line="344" column="28" selection-start-line="344" selection-start-column="28" selection-end-line="344" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/propellent_03_function/propellent_03_function.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-671">
-          <caret line="683" lean-forward="true" selection-start-line="683" selection-end-line="683" />
+        <state relative-caret-position="150">
+          <caret line="687" column="45" lean-forward="true" selection-start-line="687" selection-start-column="45" selection-end-line="687" selection-end-column="45" />
           <folding>
             <element signature="e#12830#13424#0" />
             <element signature="e#13468#13536#0" />
             <element signature="e#16024#16891#0" />
-            <element signature="e#24218#24422#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/propellent_02_modules/_05_platform_warp/warp_kernel.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="992">
+          <caret line="144" column="31" selection-start-line="144" selection-start-column="31" selection-end-line="144" selection-end-column="31" />
+          <folding>
+            <element signature="e#150#170#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/propellent_02_modules/_01_platform_Part/composite/compositeDB.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-864" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/propellent_02_modules/_01_platform_Part/composite/composite_plugin.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-880">
+          <caret line="27" column="64" selection-start-line="27" selection-start-column="60" selection-end-line="27" selection-end-column="64" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Platform_totalDB.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-318">
+          <caret line="105" column="13" lean-forward="true" selection-start-line="105" selection-start-column="13" selection-end-line="105" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Platform_total_plugin.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-576" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/删除pyc.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="107">
+          <caret line="16" column="26" lean-forward="true" selection-start-line="16" selection-start-column="26" selection-end-line="16" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.PyCharmCE2018.3/system/python_stubs/-704344267/builtins.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="226">
+          <caret line="5729" column="6" selection-start-line="5729" selection-start-column="6" selection-end-line="5729" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/propellent_02_modules/_01_platform_Part/Part_wcm_plugin.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="106" column="40" lean-forward="true" selection-start-line="106" selection-start-column="40" selection-end-line="106" selection-end-column="40" />
+          <folding>
+            <element signature="e#379#1073#0" />
+            <element signature="e#1131#1831#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/propellent_02_modules/_01_platform_Part/Part_wcm_kernel.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="155">
+          <caret line="63" column="13" lean-forward="true" selection-start-line="63" selection-start-column="13" selection-end-line="63" selection-end-column="13" />
+          <folding>
+            <element signature="e#236#256#0" expanded="true" />
+            <element signature="e#1328#1444#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/propellent_03_function/ABAQUSFunction.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-378">
+          <caret line="55" column="28" selection-start-line="55" selection-start-column="28" selection-end-line="55" selection-end-column="28" />
+          <folding>
+            <element signature="e#15#35#0" expanded="true" />
+            <element signature="e#121#715#0" />
+            <element signature="e#759#827#0" />
+            <element signature="e#4483#6227#0" />
+            <element signature="e#6246#12871#0" />
+            <element signature="e#12890#13915#0" />
           </folding>
         </state>
       </provider>

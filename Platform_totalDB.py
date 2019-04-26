@@ -9,7 +9,7 @@ import os, sys
 thisPath = os.path.abspath(__file__)
 thisDir = os.path.dirname(thisPath)
 
-print(os.path.abspath(os.path.join(os.getcwd(), ".")))
+# print(os.path.abspath(os.path.join(os.getcwd(), ".")))
 
 # 导入5个启动插件的包，注意是plugin文件
 from propellent_02_modules._01_platform_Part.Part_wcm_plugin import Part_wcm_plugin
@@ -103,38 +103,6 @@ class Platform_totalDB(AFXDataDialog):
 
         self.form = form
   
-  # 定义插件的状态
-    #def processUpdates(self):
-        # if self.form.keyword01Kw.getValue() == True and self.form.keyword02Kw.getValue() == False and self.form.keyword03Kw.getValue() == False:
-        # #if '\xce\xc2\xb6\xc8\xb3\xe5\xbb\xf7' == True:
-        #     self.FXButton1.setButtonStyle(BUTTON_NORMAL)
-        #     self.FXButton2.setButtonStyle(BUTTON_AUTOGRAY)
-        #     self.FXButton3.setButtonStyle(BUTTON_AUTOGRAY)
-        #     #self.FXCheckButton1.enable()
-        #     #self.FXCheckButton2.disable()
-        #     # self.FXCheckButton3.disable()
-
-        # elif self.form.keyword01Kw.getValue() == False and self.form.keyword02Kw.getValue() == True and self.form.keyword03Kw.getValue() == False:
-        #     self.FXButton2.setButtonStyle(BUTTON_NORMAL)
-        #     self.FXButton1.setButtonStyle(BUTTON_AUTOGRAY)
-        #     self.FXButton3.setButtonStyle(BUTTON_AUTOGRAY)
-        #     self.FXCheckButton2.enable()
-        #     self.FXCheckButton1.disable()
-        #     self.FXCheckButton3.disable()
-        # elif self.form.keyword01Kw.getValue() == False and self.form.keyword02Kw.getValue() == False and self.form.keyword03Kw.getValue() == True:
-        #     self.FXButton3.setButtonStyle(BUTTON_NORMAL)
-        #     self.FXButton1.setButtonStyle(BUTTON_AUTOGRAY)
-        #     self.FXButton2.setButtonStyle(BUTTON_AUTOGRAY)
-        #     self.FXCheckButton3.enable()
-        #     self.FXCheckButton2.disable()
-        #     self.FXCheckButton1.disable()
-        # else:
-        #     self.FXButton3.setButtonStyle(BUTTON_NORMAL)
-        #     self.FXButton1.setButtonStyle(BUTTON_NORMAL)
-        #     self.FXButton2.setButtonStyle(BUTTON_NORMAL)
-        #     self.FXCheckButton3.enable()
-        #     self.FXCheckButton2.enable()
-        #     self.FXCheckButton1.enable()
 #定义插件 1 的启动方法
     def onCmdID_1(self, sender, sel, ptr):
         if SELID(sel) == self.ID_1:

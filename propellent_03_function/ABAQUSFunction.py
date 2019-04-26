@@ -45,22 +45,22 @@ class Part:
         assert type(name) == str, 'the type of {} is not str!'.format(name)
         self.name = name
 
-        print('Current part is {}'.format(self.name))
+        # print('Current part is {}'.format(self.name))
 
     def input_part(self, filepath):
-        assert os.path.exists(filepath), '{} not exists'.format(filepath)
-
+        # assert os.path.exists(filepath), '{} not exists'.format(filepath)
+        print('filepath IS :', filepath)
         acis = mdb.openAcis(filepath, scaleFromFile=OFF)
         mdb.models['Model-1'].PartFromGeometryFile(name=self.name, geometryFile=acis,
                                                    combine=False, dimensionality=THREE_D, type=DEFORMABLE_BODY)
-        print('   - {} has been imported to CAE ...'.format(self.name))
+        print('   - {} BEEN IMPORTED TO CAE ...'.format(self.name))
 
     def instance(self):
         a = mdb.models['Model-1'].rootAssembly
         p = mdb.models['Model-1'].parts[self.name]
         a.Instance(name=self.name + '-1', part=p, dependent=ON)
 
-        print('   - {} has been generated instance.'.format(self.name))
+        # print('   - {} has been generated instance.'.format(self.name))
 
     def setStaticEletype(self, ele_region):
         elemType1 = mesh.ElemType(elemCode=C3D8R, elemLibrary=STANDARD,
@@ -99,23 +99,27 @@ class Part:
         print('   - {} has been set CoupledTempDisplacement Eletype.'.format(self.name))
 
     def gene_mesh(self, size):
-        assert type(size) == float, 'the type of {} is not float!'.format(size)
+
+        assert type(size) == float or type(size) == int, 'the type of {} is not float!'.format(size)
         assert size > 0, '{} msut been positive number!'.format(size)
 
+        p = mdb.models['Model-1'].parts[self.name]
         p_cells = mdb.models['Model-1'].parts[self.name].cells[:]
         p.setMeshControls(regions=p_cells, elemShape=HEX, technique=SWEEP,
                           algorithm=ADVANCING_FRONT)
         p.seedPart(size=size, deviationFactor=0.1, minSizeFactor=0.1)
         p.generateMesh()
 
-        print('   - {} has been generated.'.format(self.name))
+        print('MODULE:MESH {} IS DONE!'.format(self.name))
 
     def get_set_region(self, index):
         assert type(index) == list, 'the type of {} is not list!'.format(index)
+        pass
 
     def get_name(self): return self.name
 
     def get_instance(self): return self.name + '-1'
+
 
 
 class Property:
@@ -126,6 +130,7 @@ class Property:
         # 材料属性生成
         mat_name = mdb.models['Model-1'].Material(name=name)
         self.mat_name = mat_name
+        self.name = name
 
     # 开始生成材料属性
     def creat_property(self, property_list):
@@ -136,30 +141,41 @@ class Property:
         self.mat_name.Density(table=((property_list[0],),))
 
         # 根据材料是否各项异性输入弹性模量
-        self.mat_name.Elastic(table=property_list[1])
+        self.mat_name.Elastic(table=((property_list[1], property_list[2]), ))
 
         # 根据材料是否各项异性输入热传导
-        self.mat_name.Conductivity(table=property_list[2])
+        self.mat_name.Conductivity(table=((property_list[3], ), ))
 
         # 输入比热容
-        self.mat_name.SpecificHeat(table=((property_list[3],),))
+        self.mat_name.SpecificHeat(table=((property_list[4],),))
 
         # 输入热膨胀
-        self.mat_name.Expansion(table=property_list[4])
+        self.mat_name.Expansion(table=((property_list[5], ), ))
 
-        print('   - Finish generating {} propertes...'.format(self.mat_name))
+        print('   - Finish generating {} propertes...'.format(self.name))
 
     def SetSectionAssignment(self):
-        pickedCells = mdb.models['Model-1'].parts[self.mat_name].cells[:]
 
-        p.Set(cells=pickedCells, name='Set_' + self.mat_name)
-        region = p.sets['Set_' + self.mat_name]
-        p.SectionAssignment(region=region, sectionName=self.mat_name + '-1', offset=0.0,
+        # 将构件作为一个集进行定义,
+        pickedCells = mdb.models['Model-1'].parts[self.name].cells[:]
+        p = mdb.models['Model-1'].parts[self.name]
+        p.Set(cells=pickedCells, name='Set_' + self.name)
+        region = p.sets['Set_' + self.name]
+
+        # 生成截面
+        mdb.models['Model-1'].HomogeneousSolidSection(name=self.name + '-1',
+                                                      material=self.name, thickness=None)
+
+        # 将截面属性赋予给前文定义的集(abaqus不可以直接给某一个构件赋予材料属性
+        # 必须先将构件定义为一个set,然后赋予到set上面
+        p.SectionAssignment(region=region, sectionName=self.name + '-1', offset=0.0,
                             offsetType=MIDDLE_SURFACE, offsetField='',
                             thicknessAssignment=FROM_SECTION)
 
-        print('   - {} has been set Assignment Section.'.format(self.mat_name))
+        print('   - {} has been set Assignment Section.'.format(self.name))
 
+class Property_ORT(Property):
+    pass
 
 class Read:
     '''
@@ -168,15 +184,19 @@ class Read:
     '''
 
     # 将删去汉字等无用符号的文本存入到一个临时文件中
-    file = 'data_temp.txt'
+    def __init__(self):
+
+        with open('data_temp.txt', 'w') as f:
+            pass
+
     def plug_1(self, txtname):
+        print(txtname)
 
         # assert os.path.exists(txtname), '{} not exists'.format(txtname)
-        with open(txtname, 'r') as f:
+        with open(txtname, 'r'
+                # , encoding='utf-8'
+                  ) as f:
             data_origin = f.read()
-
-        assert data_origin != None
-        # print('data_origin is : {}'.format(data_origin))
 
         # 导入构件
         # print('READTXT IS SUCCESSFUL STARTING!!!')
@@ -186,6 +206,8 @@ class Read:
         data_origin = data_origin.replace('包覆层:', '')
         data_origin = data_origin.replace('封头:', '')
         data_origin = data_origin.replace('推进剂:', '')
+
+        # assert os._exists(file) == True
         with open(file, 'w') as fpw:
             fpw.write(data_origin)
         with open(file, "r") as F1:
@@ -343,7 +365,7 @@ class Read:
         # F1.close()
 
         print('The data from {} has been imported to CAE!'.format(txtname))
-        # os.remove(file)
+        os.remove(file)
 
 
 class Tie:

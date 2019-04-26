@@ -55,21 +55,6 @@ def Thermal_kernel_input(timePeriod1, intialtemp, hermal_zaihe_list, Composite_o
     '''
     ABAQUS后台执行的命令核心脚本，本质上，上面的函数只是一个判断函数，这个才是核心
     '''
-    # 检查升降温曲线合法性，如果有负数，则退出程序
-    # print('thermal list is %s', hermal_zaihe_list)
-    print()
-    for i in range(len(hermal_zaihe_list[0])):
-        # print(sys._getframe().f_lineno)
-        for j in [0, 1]:
-            # print(hermal_zaihe_list[i][j])
-            if hermal_zaihe_list[i][j] < 0:
-                print(
-                    b'\xc9\xfd\xbd\xb5\xce\xc2\xc7\xfa\xcf\xdf\xc0\xeb\xc9\xa2\xca\xfd\xbe\xdd\xb5\xe3\xd6\xd0\xb2\xbb\xbf\xc9\xd2\xd4\xb4\xe6\xd4\xda\xb8\xba\xca\xfd!'
-                )
-                exit()
-
-    print('Beginning analysis FEA of temprature shock of propellant!')
-    # exit()
     # 定义分析步参数和场变量值
     mdb.models['Model-1'].CoupledTempDisplacementStep(name='Step-1',
                                                       previous='Initial', timePeriod=timePeriod1, maxNumInc=1000,
