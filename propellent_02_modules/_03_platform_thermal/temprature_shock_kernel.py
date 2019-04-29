@@ -7,6 +7,7 @@ import os
 import sys
 import datetime
 
+from propellent_03_function.ABAQUSFunction import *
 from propellent_03_function.propellent_03_function import *
 
 '''
@@ -36,7 +37,9 @@ def temprature_shock_input(timePeriod1=None,intialtemp=None, hermal_zaihe_list=N
 
     # g根据数据类型进行调用
     if var_input:
-        input_data_thermal = readTXT(inputfile, 3)
+
+        input_thermal_data = Read()
+        input_data_thermal = input_thermal_data.plug_3(inputfile)
         Thermal_kernel_input(
             float(input_data_thermal[0]),
             float(input_data_thermal[1]),
@@ -54,6 +57,8 @@ def Thermal_kernel_input(timePeriod1, intialtemp, hermal_zaihe_list, Composite_o
                          var_export=False):
     '''
     ABAQUS后台执行的命令核心脚本，本质上，上面的函数只是一个判断函数，这个才是核心
+    温度冲击工艺基本没什么可说的，4个实体给初始温度场，外壳的外表面给个温度冲击的曲线，热力耦合分析步提交
+    计算就ok
     '''
     # 定义分析步参数和场变量值
     mdb.models['Model-1'].CoupledTempDisplacementStep(name='Step-1',

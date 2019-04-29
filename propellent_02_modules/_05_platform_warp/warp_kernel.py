@@ -21,7 +21,8 @@ def warp(F,thickness,width,Cpu_num, var_export=False, var_input=False, inputfile
         data_thermal = [F,thickness,width,Cpu_num]
         exportTXT(data_thermal, 5)
     if var_input:
-        data_warp = readTXT(inputfile, 5)
+        input_warp_data = Read()
+        data_warp = input_warp_data.plug_5(inputfile)
         warp_kernel_input(
             map(float, data_warp[1])[0],
             map(float, data_warp[2])[0],

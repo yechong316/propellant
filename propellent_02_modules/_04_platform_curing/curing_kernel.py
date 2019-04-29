@@ -30,7 +30,9 @@ def curing_input(timePeriod1=None,intialtemp=None,table_list=None,Composite_outf
         exportTXT(data_thermal, 4)
 
     if var_input:
-        curing_Data = readTXT(inputfile,4)
+
+        input_curing_data = Read()
+        curing_Data = input_curing_data.plug_4(inputfile)
 
         # 开始调用副程序
         curing_kernel_input(
@@ -48,7 +50,11 @@ def curing_input(timePeriod1=None,intialtemp=None,table_list=None,Composite_outf
 def curing_kernel_input(timePeriod1,intialtemp,table_list,Composite_outface_index,Cpu_num
                 , var_export=False, var_input=False, inputfile=None):
     # **************************************************
-    # 注：Composite_outface_index是索引号，2019年3月5日09:41:37
+    # 固化反应的执行流程是：
+    #    1 。根据升降温曲线生成相应的子程序文件
+    #    2 。ABAQUS中材料。load。interraction中加入调用子程序的开关，在inp文件中加入固定的子程序语句
+    #    3 。建立热传递分析步，提交计算得到固化过程中的温度分布曲线，将分析步切换为静力分析分析步
+    #    4 。 提交计算得到结果
     # **************************************************
     # 根据升降温曲线生成子程序语句
     file_path = creat_thermal_user_data(table_list)

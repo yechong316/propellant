@@ -175,7 +175,24 @@ class Property:
         print('   - {} has been set Assignment Section.'.format(self.name))
 
 class Property_ORT(Property):
-    pass
+
+    def ort_property(self, desity, elastic, conductivity, expansion, specific):
+        # 生成密度
+        self.mat_name.Density(table=(desity,))
+
+        # 根据材料是否各项异性输入弹性模量
+        self.mat_name.Elastic(type=ENGINEERING_CONSTANTS, table=(elastic, ))
+
+        # 根据材料是否各项异性输入热传导
+        self.mat_name.Conductivity(type=ENGINEERING_CONSTANTS, table=(conductivity, ))
+
+        # 输入比热容
+        self.mat_name.SpecificHeat(table=specific,)
+
+        # 输入热膨胀
+        self.mat_name.Expansion(type=ENGINEERING_CONSTANTS, table=expansion, )
+
+        print('   - Finish generating {} propertes...'.format(self.name))
 
 class Read:
     '''
@@ -184,10 +201,6 @@ class Read:
     '''
 
     # 将删去汉字等无用符号的文本存入到一个临时文件中
-    def __init__(self):
-
-        with open('data_temp.txt', 'w') as f:
-            pass
 
     def plug_1(self, txtname):
         print(txtname)
@@ -207,10 +220,10 @@ class Read:
         data_origin = data_origin.replace('封头:', '')
         data_origin = data_origin.replace('推进剂:', '')
 
-        # assert os._exists(file) == True
-        with open(file, 'w') as fpw:
+        # assert os._exists('data_temp.txt') == True
+        with open('data_temp.txt', 'w') as fpw:
             fpw.write(data_origin)
-        with open(file, "r") as F1:
+        with open('data_temp.txt', "r") as F1:
             data_total = F1.readlines()
             data = []
             for i in range(1, len(data_total)):
@@ -222,7 +235,7 @@ class Read:
             # return self.data
 
     def mat(self):
-        return [i[:5] for i in self.data]
+        return [i[:6] for i in self.data]
 
     def mesh_size(self):
         return [i[6] for i in self.data]
@@ -240,10 +253,10 @@ class Read:
         data_origin = data_origin.replace('包覆层VS推进剂:', '')
 
         # 将处理后的数据写入到临时文本，然后将存到list_source中
-        with open(file, 'w') as fpw:
+        with open('data_temp.txt', 'w') as fpw:
             fpw.write(data_origin)
 
-        with open(file, "r") as F1:
+        with open('data_temp.txt', "r") as F1:
             data_total = F1.readlines()
 
         data_tie = []
@@ -278,10 +291,10 @@ class Read:
         data_origin = data_origin.replace('CPU核数:', '')
         # print('After delete:data_origin:')
         # print(data_origin)
-        with open(file, 'w') as fpw:
+        with open('data_temp.txt', 'w') as fpw:
             fpw.write(data_origin)
         data_total = data_origin
-        F1 = open(file, "r")
+        F1 = open('data_temp.txt', "r")
         data_total = F1.readlines()
         list_source = []
         for i in range(len(data_total)):
@@ -312,10 +325,10 @@ class Read:
         data_origin = data_origin.replace('复合材料外表面索引:', '')
         data_origin = data_origin.replace('CPU核数:', '')
         # print('After delete:data_origin:')
-        with open(file, 'w') as fpw:
+        with open('data_temp.txt', 'w') as fpw:
             fpw.write(data_origin)
         data_total = data_origin
-        F1 = open(file, "r")
+        F1 = open('data_temp.txt', "r")
         data_total = F1.readlines()
         list_source = []
         for i in range(len(data_total)):
@@ -344,10 +357,10 @@ class Read:
         data_origin = data_origin.replace('纤维宽度:', '')
         data_origin = data_origin.replace('CPU核数:', '')
         # print(data_origin)
-        with open(file, 'w') as fpw:
+        with open('data_temp.txt', 'w') as fpw:
             fpw.write(data_origin)
         # data_total = data_origin
-        F1 = open(file, "r")
+        F1 = open('data_temp.txt', "r")
         data_total = F1.readlines()
         list_source = []
         for i in range(len(data_total)):
@@ -365,10 +378,10 @@ class Read:
         # F1.close()
 
         print('The data from {} has been imported to CAE!'.format(txtname))
-        os.remove(file)
 
 
 class Tie:
+
 
     def creat_surface(self, name, index, surface_type):
         '''
@@ -377,6 +390,7 @@ class Tie:
         :param index: 主面的索引号，必须是int，必须是整型序列
         :return:
         '''
+        a = mdb.models['Model-1'].rootAssembly
         side1Faces = [a.instances[name + '-1'].faces[index[i]:index[i] + 1] for i in range(len(index))]  # 主面
         region_Surface = a.Surface(side1Faces=side1Faces, name=name + '_' + surface_type)
         self.surface_name = name + '_' + surface_type

@@ -15,7 +15,7 @@ from abaqus import *
 from abaqusConstants import *
 import os
 
-# from propellent_03_function.propellent_03_function import *
+from propellent_03_function.propellent_03_function import *
 from propellent_03_function.ABAQUSFunction import *
 
 def part_var(
