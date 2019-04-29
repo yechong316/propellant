@@ -31,8 +31,17 @@ for instance, num in zip(instance_model, range(len(instance_list))):
 def temprature_shock_input(timePeriod1=None,intialtemp=None, hermal_zaihe_list=None,
            Composite_outface=None,Cpu_num=None, var_export=False, var_input=False, inputfile=None):
 
+    data_thermal = [timePeriod1, intialtemp, hermal_zaihe_list, Composite_outface, Cpu_num]
+
+    assert timePeriod1 > 0, 'THE TIME MUST BEEN GREATER THAN 0'
+    assert intialtemp > 0, 'THE INITIAL TEMPRRATURE MUST BEEN GREATER THAN 0'
+    for i in hermal_zaihe_list:
+        for j in i:
+            assert j > 0, 'The Rise temperature curve do not exit nagetive or zero'
+    assert type(Cpu_num) == int, 'The type of number of CPUs must been int.'
+
     if var_export:
-        data_thermal = [timePeriod1,intialtemp, hermal_zaihe_list,Composite_outface,Cpu_num]
+
         exportTXT(data_thermal, 3)
 
     # g根据数据类型进行调用
@@ -60,6 +69,8 @@ def Thermal_kernel_input(timePeriod1, intialtemp, hermal_zaihe_list, Composite_o
     温度冲击工艺基本没什么可说的，4个实体给初始温度场，外壳的外表面给个温度冲击的曲线，热力耦合分析步提交
     计算就ok
     '''
+
+
     # 定义分析步参数和场变量值
     mdb.models['Model-1'].CoupledTempDisplacementStep(name='Step-1',
                                                       previous='Initial', timePeriod=timePeriod1, maxNumInc=1000,

@@ -39,7 +39,6 @@ def part_var(
         read.plug_1(inputfile)
         part_property = read.mat()
         mesh_size = read.mesh_size()
-
     else:
 
         part_property = [
@@ -49,10 +48,22 @@ def part_var(
             [desity_h, Elastic_h, Poisson_h, Conductivity_h, SpecificHeat_h, Expansion_h]
         ]
 
-    # 导入构件
     part_name = ['shell', 'bfc', 'fengtou', 'propeller']
     part_path = [filepath_c, filepath_b, filepath_f, filepath_h]
     part_size = [size_c, size_b, size_f, size_h]
+
+    # 检查输入的参数是否大于0
+    for i in part_property:
+        for j in i:
+            assert os.access(j) > 0, 'THE {} MUST GREAT THAN 0'.format(J)
+
+    # 检查输入的参数是否大于0
+    for i in part_size:
+        assert os.access(i) > 0, 'THE {} MUST GREAT THAN 0'.format(i)
+
+    # 检查文件是否存放
+    for i in part_path:
+        assert os.access(i, mode=os.F_OK), '{} IS NOT EXIT!'.format(i)
 
     # 定义一个part类,完成模型导入等过程
     count = 0

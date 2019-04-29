@@ -21,6 +21,14 @@ sys.path.append('E:\\propellant_v0125-1100\\propellent_07_job')
 # 开始主函数
 def curing_input(timePeriod1=None,intialtemp=None,table_list=None,Composite_outface=None,Cpu_num=None
                 , var_export=False, var_input=False, inputfile=None):
+
+    assert timePeriod1 > 0, 'THE TIME MUST BEEN GREATER THAN 0'
+    assert intialtemp > 0, 'THE INITIAL TEMPRRATURE MUST BEEN GREATER THAN 0'
+    for i in table_list:
+        for j in i:
+            assert j > 0, 'The Rise temperature curve do not exit nagetive or zero'
+    assert type(Cpu_num) == int, 'The type of number of CPUs must been int.'
+
     a = mdb.models['Model-1'].rootAssembly
     # print('curing_load is active!')
     if var_export:

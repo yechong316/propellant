@@ -37,6 +37,17 @@ def tie_input(
             [pick_face2index_list(Master_hf), pick_face2index_list(Slave_hf), Position_hf, var_hf]
         ]
 
+    # 数据检查，必须要求主从面的索引为int， 容差必须大于等于0， 是否切换主从面为布尔类型
+    for data in data_tie:
+
+        for i in data[0]:
+            assert type(i) == int, 'INDEX MUST BEEN INT!'
+        for i in data[1]:
+            assert type(i) == int, 'INDEX MUST BEEN INT!'
+
+        assert data[2] >= 0
+        assert type(data[3]) == bool
+
     '''
     ABAQUS在建立tie关系的时候遵循这样的流程:
     找到主面实体 --> 根据这实体上的索引号读取到Face --> 根据Face生成region_master --> 

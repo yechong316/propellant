@@ -16,6 +16,11 @@ from propellent_03_function.propellent_03_function import *
 job_path = os.getcwd() + '\\'
 
 def warp(F,thickness,width,Cpu_num, var_export=False, var_input=False, inputfile=None ):
+
+    assert F > 0, 'The F must been greater than 0'
+    assert thickness > 0, 'The thickness must been greater than 0'
+    assert width > 0, 'The width must been greater than 0'
+    assert type(Cpu_num) == int, 'The type of number of CPUs must been int.'
     # print('warp is active!')
     if var_export:
         data_thermal = [F,thickness,width,Cpu_num]
