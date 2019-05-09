@@ -5,6 +5,8 @@ import osutils, os
 
 from propellent_07_job.thermal_parameter_GUI_file import *
 
+data_path = os.path.abspath(os.path.join(os.getcwd(), "...")) + '\\abaqus_plugins\\propellant\\propellent_04_data\\'
+
 if var_data().extract_var == 'GUI':
     data_time = Data_GUI().time
     data_init_temp = Data_GUI().init_temp
@@ -44,8 +46,8 @@ class _03_platform_thermal_plugin(AFXForm):
         self.Composite_outfaceKw = AFXObjectKeyword(self.cmd, 'Composite_outface', TRUE, pickedDefault)
         self.Cpu_numKw = AFXFloatKeyword(self.cmd, 'Cpu_num', True, data_CPUnum)
         self.var_exportKw = AFXBoolKeyword(self.cmd, 'var_export', AFXBoolKeyword.TRUE_FALSE, True, False)
-        self.var_inputKw = AFXBoolKeyword(self.cmd, 'var_input', AFXBoolKeyword.TRUE_FALSE,True, False)
-        self.inputfileKw = AFXStringKeyword(self.cmd, 'inputfile', True, None)
+        self.var_inputKw = AFXBoolKeyword(self.cmd, 'var_input', AFXBoolKeyword.TRUE_FALSE,True, True)
+        self.inputfileKw = AFXStringKeyword(self.cmd, 'inputfile', True, data_path + 'Thermal_v2019-01-28_13-00-45.txt')
 
     #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     def getFirstDialog(self):

@@ -178,19 +178,19 @@ class Property_ORT(Property):
 
     def ort_property(self, desity, elastic, conductivity, expansion, specific):
         # 生成密度
-        self.mat_name.Density(table=(desity,))
-
+        self.mat_name.Density(table=((desity,),))
         # 根据材料是否各项异性输入弹性模量
-        self.mat_name.Elastic(type=ENGINEERING_CONSTANTS, table=(elastic, ))
+        self.mat_name.Elastic(
+            type=ENGINEERING_CONSTANTS, table=elastic)
 
         # 根据材料是否各项异性输入热传导
-        self.mat_name.Conductivity(type=ENGINEERING_CONSTANTS, table=(conductivity, ))
+        self.mat_name.Conductivity(type=ANISOTROPIC, table=conductivity)
 
         # 输入比热容
-        self.mat_name.SpecificHeat(table=specific,)
+        self.mat_name.SpecificHeat(table=((specific,),))
 
         # 输入热膨胀
-        self.mat_name.Expansion(type=ENGINEERING_CONSTANTS, table=expansion, )
+        self.mat_name.Expansion(type=ANISOTROPIC, table=expansion)
 
         print('   - Finish generating {} propertes...'.format(self.name))
 
@@ -281,6 +281,10 @@ class Read:
         # 温度冲击
 
     def plug_3(self, txtname):
+        with open(txtname, 'r'
+                # , encoding='utf-8'
+                  ) as f:
+            data_origin = f.read()
         # print('readTXT-functiong is successful starting')
         #     删除无用汉字文本
         data_origin = data_origin.replace('温度冲击试验时间:', '')
@@ -316,6 +320,10 @@ class Read:
         # 固化工艺
 
     def plug_4(self, txtname):
+        with open(txtname, 'r'
+                # , encoding='utf-8'
+                  ) as f:
+            data_origin = f.read()
         # print('readTXT is successful starting')
         #     删除无用汉字文本
         data_origin = data_origin.replace('固化工艺时间:', '')
@@ -350,6 +358,11 @@ class Read:
 
     def plug_5(self, txtname):
         # 打开该txt文件
+        with open(txtname, 'r'
+                # , encoding='utf-8'
+                  ) as f:
+            data_origin = f.read()
+
         #     删除无用汉字文本
         data_origin = data_origin.replace('预紧力:', '')
         data_origin = data_origin.replace('使用说明：每一行的数据分别对应预紧力,纤维铺层厚度，纤维宽度，CPU核数', '')

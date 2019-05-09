@@ -26,7 +26,7 @@ elif var_data().extract_var == 'file':
     data_b_h_var = Data_file().b_h_var
     data_h_f_position = Data_file().h_f_position
     data_h_f_var = Data_file().h_f_var
-
+data_path = os.path.abspath(os.path.join(os.getcwd(), "...")) + '\\abaqus_plugins\\propellant\\propellent_04_data\\'
 ###########################################################################
 # Class definition
 ###########################################################################
@@ -61,8 +61,8 @@ class _02_platform_tie_plugin(AFXForm):
         self.Position_hfKw = AFXFloatKeyword(self.cmd, 'Position_hf', True, data_h_f_position)
         self.var_hfKw = AFXBoolKeyword(self.cmd, 'var_hf', AFXBoolKeyword.TRUE_FALSE, True, data_h_f_var)
         self.var_exportKw = AFXBoolKeyword(self.cmd, 'var_export', AFXBoolKeyword.TRUE_FALSE, True, False)
-        self.var_inputKw = AFXBoolKeyword(self.cmd, 'var_input', AFXBoolKeyword.TRUE_FALSE,True, False)
-        self.inputfileKw = AFXStringKeyword(self.cmd, 'inputfile', True, None)
+        self.var_inputKw = AFXBoolKeyword(self.cmd, 'var_input', AFXBoolKeyword.TRUE_FALSE,True, True)
+        self.inputfileKw = AFXStringKeyword(self.cmd, 'inputfile', True, data_path + 'Tie_v2019-03-06_14-36-51.txt')
 
     #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     def getFirstDialog(self):

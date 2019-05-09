@@ -55,15 +55,12 @@ def part_var(
     # 检查输入的参数是否大于0
     for i in part_property:
         for j in i:
-            assert os.access(j) > 0, 'THE {} MUST GREAT THAN 0'.format(J)
+            assert j > 0, 'THE {} MUST GREAT THAN 0'.format(j)
 
     # 检查输入的参数是否大于0
     for i in part_size:
-        assert os.access(i) > 0, 'THE {} MUST GREAT THAN 0'.format(i)
+        assert i > 0, 'THE {} MUST GREAT THAN 0'.format(i)
 
-    # 检查文件是否存放
-    for i in part_path:
-        assert os.access(i, mode=os.F_OK), '{} IS NOT EXIT!'.format(i)
 
     # 定义一个part类,完成模型导入等过程
     count = 0
@@ -92,8 +89,12 @@ def part_var(
         exportTXT(part_property, 1)
 
 
-def orthotropic_mat(name, desity, elastic, conductivity, expansion, specific):
+def orthotropic_mat(
+        name, desity, E_engineer_propellant, conductivity, expansion, specific,
+
+):
 
     mat = Property_ORT(name)
-    mat.ort_property(desity, elastic, conductivity, expansion, specific)
+    mat.ort_property(desity, E_engineer_propellant, conductivity, expansion, specific)
+
 

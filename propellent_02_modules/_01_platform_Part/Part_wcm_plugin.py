@@ -133,7 +133,7 @@ class Part_wcm_plugin(AFXForm):
 
         # 开关函数
         self.var_exportKw = AFXBoolKeyword(self.cmd, 'var_export', AFXBoolKeyword.TRUE_FALSE, True, False)
-        self.var_inputKw = AFXBoolKeyword(self.cmd, 'var_input', AFXBoolKeyword.TRUE_FALSE, True, False)
+        self.var_inputKw = AFXBoolKeyword(self.cmd, 'var_input', AFXBoolKeyword.TRUE_FALSE, True, True)
         self.inputfileKw  = AFXStringKeyword(self.cmd, 'inputfile', True,
                                              data_path + 'Property_v2019-01-28_13-16-05.txt')
         self.var_WCMKw = AFXBoolKeyword(self.cmd, 'var_WCM', AFXBoolKeyword.TRUE_FALSE, True, False)

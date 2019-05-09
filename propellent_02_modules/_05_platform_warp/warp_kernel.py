@@ -9,11 +9,16 @@ from caeModules import *
 from driverUtils import executeOnCaeStartup
 from odbAccess import *
 import mesh
+
 import os
 import datetime
+import numpy as np
 
 from propellent_03_function.propellent_03_function import *
+from propellent_03_function.ABAQUSFunction import *
+
 job_path = os.getcwd() + '\\'
+
 
 def warp(F,thickness,width,Cpu_num, var_export=False, var_input=False, inputfile=None ):
 
@@ -21,13 +26,17 @@ def warp(F,thickness,width,Cpu_num, var_export=False, var_input=False, inputfile
     assert thickness > 0, 'The thickness must been greater than 0'
     assert width > 0, 'The width must been greater than 0'
     assert type(Cpu_num) == int, 'The type of number of CPUs must been int.'
-    # print('warp is active!')
+
     if var_export:
+
         data_thermal = [F,thickness,width,Cpu_num]
         exportTXT(data_thermal, 5)
+
     if var_input:
+
         input_warp_data = Read()
         data_warp = input_warp_data.plug_5(inputfile)
+
         warp_kernel_input(
             map(float, data_warp[1])[0],
             map(float, data_warp[2])[0],
@@ -35,18 +44,19 @@ def warp(F,thickness,width,Cpu_num, var_export=False, var_input=False, inputfile
             map(int, data_warp[4])[0]
         )
     else:
+
         warp_kernel_input(F,thickness,width,Cpu_num)
 
 
 
 def warp_kernel_input(F,thickness,width,Cpu_num, var_export=False, var_input=False, inputfile=None):
+
     # 假定初始温度差为200K
     start_temp = 500
     end_temp = 300
 
     # 开始赋予单元属性，赋予初始温度场
     a = mdb.models['Model-1'].rootAssembly
-
     # 以下代码是提取当前模型的所有part的名称，并将tank的名称添加到现有part_list
     part_list = get_all_part_name()
 
@@ -63,6 +73,7 @@ def warp_kernel_input(F,thickness,width,Cpu_num, var_export=False, var_input=Fal
     a = mdb.models['Model-1'].rootAssembly
     instance_list = gain_name_of_composte_instance()#保存当前所有的instances，其中第一个是外壳
     for i in instance_list:
+
         c = a.instances[i].cells
         pickedCells = c[:]
         a.Set(cells=pickedCells, name='Set-init' + i)
@@ -117,6 +128,7 @@ def warp_kernel_input(F,thickness,width,Cpu_num, var_export=False, var_input=Fal
         # 打开odb文件
         odb_name = job_path + Job_new_name + '.odb'
         # print('this is %d times:%s' % (count, odb_name))
+
         # 打开odb文件
         myodb = openOdb(odb_name)
         # print(' %d:open odb %s successful' % (count, odb_name))
@@ -136,14 +148,24 @@ def warp_kernel_input(F,thickness,width,Cpu_num, var_export=False, var_input=Fal
 
         # 遍历所有所有单元数据,如果当前数据属于复合材料实体的,那么返回该数据的S22值
         # 并填入列表list中,对其进行求均值计算
-        list = []
+        total_node_S11, total_node_S22, total_node_S33 = [], [], []
         for i in range(len(data_new.values)):
             if data_new.values[i].instance.name == instance_list[0].upper():
-                composite_S22 = data_new.values[i].data[1]
-                list.append(composite_S22)
+
+                node_S11 = data_new.values[i].data[0]
+                node_S22 = data_new.values[i].data[1]
+                node_S33 = data_new.values[i].data[2]
+                total_node_S11.append(node_S11)
+                total_node_S22.append(node_S22)
+                total_node_S33.append(node_S33)
         # 进行求均值计算
-        avg_S22_1 = sum(list) / len(list)
-        avg_S22 = avg_S22_1
+        mean_S11 = np.mean(total_node_S11)
+        mean_S22 = np.mean(total_node_S22)
+        mean_S33 = np.mean(total_node_S33)
+        print('ITERATION={}, S11_MEAN={}, S22_MEAN={}, S33_MEAN={}'.format(
+            count, mean_S11, mean_S22, mean_S33))
+        avg_S = np.max([mean_S11, mean_S22, mean_S33])
+        avg_S22 = avg_S
         print('    The S22 of composite is {}'.format(avg_S22))
 
         # 计算完毕后根据S22求新一轮迭代所需要的终止温度

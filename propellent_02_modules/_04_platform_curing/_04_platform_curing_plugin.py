@@ -4,6 +4,7 @@ from abaqusConstants import ALL
 import osutils, os
 
 from propellent_07_job.curing_parameter_GUI_file import *
+data_path = os.path.abspath(os.path.join(os.getcwd(), "...")) + '\\abaqus_plugins\\propellant\\propellent_04_data\\'
 
 if var_data().extract_var == 'GUI':
     data_time = Data_GUI().time
@@ -39,8 +40,8 @@ class _04_platform_curing_plugin(AFXForm):
         self.table_listKw.setColumnType(0, AFXTABLE_TYPE_FLOAT)
         self.table_listKw.setColumnType(1, AFXTABLE_TYPE_FLOAT)
         self.var_exportKw = AFXBoolKeyword(self.cmd, 'var_export', AFXBoolKeyword.TRUE_FALSE, True, False)
-        self.var_inputKw = AFXBoolKeyword(self.cmd, 'var_input', AFXBoolKeyword.TRUE_FALSE, True, False)
-        self.inputfileKw = AFXStringKeyword(self.cmd, 'inputfile', True, None)
+        self.var_inputKw = AFXBoolKeyword(self.cmd, 'var_input', AFXBoolKeyword.TRUE_FALSE, True, True)
+        self.inputfileKw = AFXStringKeyword(self.cmd, 'inputfile', True, data_path + 'Curing_v2019-03-07_10-55-14.txt')
     #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     def getFirstDialog(self):

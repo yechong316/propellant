@@ -24,14 +24,13 @@ class Composite_plugin(AFXForm):
         pickedDefault = ''
 
         # 定义专属复合材料的属性
-
-        self.nameKw = AFXStringKeyword(self.cmd_composite, 'name', True, 'T700')
+        self.nameKw = AFXStringKeyword(self.cmd_composite, 'name', True, 'shell')
 
         # 密度
         self.desityKw = AFXFloatKeyword(self.cmd_composite, 'desity', True, 0.056)
 
         # 弹性模量
-        self.elasticKw = AFXTableKeyword(self.cmd_composite, 'elastic', True)
+        self.elasticKw = AFXTableKeyword(self.cmd_composite, 'E_engineer_propellant', True)
         self.elasticKw.setColumnType(0, AFXTABLE_TYPE_FLOAT)
         self.elasticKw.setColumnType(1, AFXTABLE_TYPE_FLOAT)
         self.elasticKw.setColumnType(2, AFXTABLE_TYPE_FLOAT)
