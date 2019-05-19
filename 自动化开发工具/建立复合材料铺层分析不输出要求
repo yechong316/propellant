@@ -1,0 +1,35 @@
+mdb.models['Model-1'].FieldOutputRequest(name='F-Output-2', 
+    createStepName='Step-1', variables=('S', 'E'), layupNames=(
+    'shell-2D-1.CompositeLayup-1', ), layupLocationMethod=SPECIFIED, 
+    outputAtPlyTop=False, outputAtPlyMid=True, outputAtPlyBottom=False, 
+    rebar=EXCLUDE)
+	
+
+mdb.models['Model-1'].FieldOutputRequest(name='F-Output-3', 
+    createStepName='Step-1', variables=('S', 'E'), layupNames=(
+    'shell-2D-1.CompositeLayup-2', ), layupLocationMethod=SPECIFIED, 
+    outputAtPlyTop=False, outputAtPlyMid=True, outputAtPlyBottom=False, 
+    rebar=EXCLUDE)
+mdb.models['Model-1'].FieldOutputRequest(name='F-Output-4', 
+    createStepName='Step-1', variables=('S', 'E'), layupNames=(
+    'shell-2D-1.CompositeLayup-3', ), layupLocationMethod=SPECIFIED, 
+    outputAtPlyTop=False, outputAtPlyMid=True, outputAtPlyBottom=False, 
+    rebar=EXCLUDE)
+mdb.models['Model-1'].FieldOutputRequest(name='F-Output-5', 
+    createStepName='Step-1', variables=('S', 'E'), layupNames=(
+    'shell-2D-1.CompositeLayup-4', ), layupLocationMethod=SPECIFIED, 
+    outputAtPlyTop=False, outputAtPlyMid=True, outputAtPlyBottom=False, 
+    rebar=EXCLUDE)
+	
+	
+	
+'''
+删除不合理的单元
+'''
+leaf = dgo.LeafFromOdbElementPick(elementPick=(('SHELL-2D-1', 56, (
+    '[#0:5 #300 #c00 #3000 #c000 #30000 #c0000', 
+    ' #300000 #0 #c00000 #3000000 #c000000 #30000000 #c0000000', 
+    ' #0 #3 #3c #c0 #300 #c00 #3000', 
+    ' #c000 #30000 #0 #c0000 #300000 #c00000 #3000000', 
+    ' #c000000 #30000000 #c0000000 ]', )), ), )
+session.viewports['Viewport: 1'].odbDisplay.displayGroup.remove(leaf=leaf)

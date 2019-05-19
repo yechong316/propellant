@@ -49,6 +49,7 @@ def part_var(
         ]
 
     part_name = ['shell', 'bfc', 'fengtou', 'propeller']
+
     part_path = [filepath_c, filepath_b, filepath_f, filepath_h]
     part_size = [size_c, size_b, size_f, size_h]
 

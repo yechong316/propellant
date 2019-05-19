@@ -168,7 +168,104 @@ result2PNG('d:/Temp/thermal-2019-05-08-15-36-00.odb', png_name='structure_3-load
 # 添加粘弹性材料属性
 #######################################
 
-mdb.models['Model-1'].materials['Material-1'].Viscoelastic(domain=TIME,
-    time=PRONY, table=((100.0, 200.0, 0.01), ))
-mdb.models['Model-1'].materials['Material-1'].viscoelastic.Trs(table=((20.0,
-    -20.09, 403.61), ))
+
+
+p = mdb.models['Model-1'].parts['shell']
+region1=p.sets['Set_shell']
+p = mdb.models['Model-1'].parts['shell']
+region2=p.sets['Set_shell']
+p = mdb.models['Model-1'].parts['shell']
+region3=p.sets['Set_shell']
+p = mdb.models['Model-1'].parts['shell']
+region4=p.sets['Set_shell']
+p = mdb.models['Model-1'].parts['shell']
+region5=p.sets['Set_shell']
+p = mdb.models['Model-1'].parts['shell']
+region6=p.sets['Set_shell']
+p = mdb.models['Model-1'].parts['shell']
+region7=p.sets['Set_shell']
+p = mdb.models['Model-1'].parts['shell']
+region8=p.sets['Set_shell']
+p = mdb.models['Model-1'].parts['shell']
+s = p.faces
+side1Faces = s.getSequenceFromMask(mask=('[#8 ]', ), )
+normalAxisRegion = p.Surface(side1Faces=side1Faces, name='Surf-1')
+p = mdb.models['Model-1'].parts['shell']
+e = p.edges
+edges = e.getSequenceFromMask(mask=('[#400 ]', ), )
+primaryAxisRegion = p.Set(edges=edges, name='Set-3')
+
+compositeLayup = mdb.models['Model-1'].parts['shell'].CompositeLayup(
+    name='CompositeLayup-1', description='', elementType=CONTINUUM_SHELL,
+    symmetric=False)
+compositeLayup.Section(preIntegrate=OFF, integrationRule=SIMPSON,
+    poissonDefinition=DEFAULT, thicknessModulus=None, temperature=GRADIENT,
+    useDensity=OFF)
+compositeLayup.CompositePly(suppressed=False, plyName='Ply-1', region=region1,
+    material='shell', thicknessType=SPECIFY_THICKNESS, thickness=0.25,
+    orientationType=SPECIFY_ORIENT, orientationValue=30.0,
+    additionalRotationType=ROTATION_NONE, additionalRotationField='',
+    axis=AXIS_3, angle=0.0, numIntPoints=5)
+compositeLayup.CompositePly(suppressed=False, plyName='Ply-2', region=region2,
+    material='shell', thicknessType=SPECIFY_THICKNESS, thickness=0.25,
+    orientationType=SPECIFY_ORIENT, orientationValue=30.0,
+    additionalRotationType=ROTATION_NONE, additionalRotationField='',
+    axis=AXIS_3, angle=0.0, numIntPoints=5)
+compositeLayup.CompositePly(suppressed=False, plyName='Ply-3', region=region3,
+    material='shell', thicknessType=SPECIFY_THICKNESS, thickness=0.25,
+    orientationType=SPECIFY_ORIENT, orientationValue=30.0,
+    additionalRotationType=ROTATION_NONE, additionalRotationField='',
+    axis=AXIS_3, angle=0.0, numIntPoints=5)
+compositeLayup.CompositePly(suppressed=False, plyName='Ply-4', region=region4,
+    material='shell', thicknessType=SPECIFY_THICKNESS, thickness=0.25,
+    orientationType=SPECIFY_ORIENT, orientationValue=30.0,
+    additionalRotationType=ROTATION_NONE, additionalRotationField='',
+    axis=AXIS_3, angle=0.0, numIntPoints=5)
+compositeLayup.CompositePly(suppressed=False, plyName='Ply-5', region=region5,
+    material='shell', thicknessType=SPECIFY_THICKNESS, thickness=0.25,
+    orientationType=SPECIFY_ORIENT, orientationValue=90.0,
+    additionalRotationType=ROTATION_NONE, additionalRotationField='',
+    axis=AXIS_3, angle=0.0, numIntPoints=5)
+compositeLayup.CompositePly(suppressed=False, plyName='Ply-7', region=region6,
+    material='shell', thicknessType=SPECIFY_THICKNESS, thickness=0.25,
+    orientationType=SPECIFY_ORIENT, orientationValue=90.0,
+    additionalRotationType=ROTATION_NONE, additionalRotationField='',
+    axis=AXIS_3, angle=0.0, numIntPoints=5)
+compositeLayup.CompositePly(suppressed=False, plyName='Ply-8', region=region7,
+    material='shell', thicknessType=SPECIFY_THICKNESS, thickness=0.25,
+    orientationType=SPECIFY_ORIENT, orientationValue=90.0,
+    additionalRotationType=ROTATION_NONE, additionalRotationField='',
+    axis=AXIS_3, angle=0.0, numIntPoints=5)
+compositeLayup.CompositePly(suppressed=False, plyName='Ply-6', region=region8,
+    material='shell', thicknessType=SPECIFY_THICKNESS, thickness=0.25,
+    orientationType=SPECIFY_ORIENT, orientationValue=90.0,
+    additionalRotationType=ROTATION_NONE, additionalRotationField='',
+    axis=AXIS_3, angle=0.0, numIntPoints=5)
+compositeLayup.ReferenceOrientation(orientationType=DISCRETE, localCsys=None,
+    additionalRotationType=ROTATION_NONE, angle=0.0,
+    additionalRotationField='', axis=AXIS_3, stackDirection=STACK_3,
+    normalAxisDefinition=SURFACE, normalAxisRegion=normalAxisRegion,
+    normalAxisDirection=AXIS_3, flipNormalDirection=False,
+    primaryAxisDefinition=EDGE, primaryAxisRegion=primaryAxisRegion,
+    primaryAxisDirection=AXIS_1, flipPrimaryDirection=False)
+
+# 切割曲面
+p.PartitionCellByDatumPlane(datumPlane=d2[3], cells=pickedCells)
+session.viewports['Viewport: 1'].view.setValues(width=162.345, height=71.6661,
+    viewOffsetX=-0.309295, viewOffsetY=-0.876532)
+p = mdb.models['Model-1'].parts['结构1_bfc']
+session.viewports['Viewport: 1'].setValues(displayedObject=p)
+p = mdb.models['Model-1'].parts['结构1_bfc']
+p.DatumPlaneByPrincipalPlane(principalPlane=XYPLANE, offset=0.0)
+p = mdb.models['Model-1'].parts['结构1_bfc']
+p.DatumPlaneByPrincipalPlane(principalPlane=XZPLANE, offset=0.0)
+p = mdb.models['Model-1'].parts['结构1_bfc']
+c = p.cells
+pickedCells = c.getSequenceFromMask(mask=('[#1 ]', ), )
+d1 = p.datums
+p.PartitionCellByDatumPlane(datumPlane=d1[3], cells=pickedCells)
+p = mdb.models['Model-1'].parts['结构1_bfc']
+c = p.cells
+pickedCells = c.getSequenceFromMask(mask=('[#3 ]', ), )
+d2 = p.datums
+p.PartitionCellByDatumPlane(datumPlane=d2[2], cells=pickedCells)

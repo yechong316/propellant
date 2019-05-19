@@ -337,7 +337,7 @@ def generate_init_temprature(instances, intialtemp):
 
 
 def initThermal_mesh(part,start_temp):
-    mdb.models['Model-1'].materials['bfc'].elastic.setValues(table=((7.8, 0.3),))
+    # mdb.models['Model-1'].materials['bfc'].elastic.setValues(table=((7.8, 0.3),))
     #
     # #####################
     # 开始赋予力学单元属性

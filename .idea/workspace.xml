@@ -3,15 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="1afbe1bf-c14f-4ae6-959b-2f0173b73b2a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/propellent_02_modules/_01_platform_Part/Part_wcm_kernel.py" beforeDir="false" afterPath="$PROJECT_DIR$/propellent_02_modules/_01_platform_Part/Part_wcm_kernel.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/propellent_02_modules/_01_platform_Part/Part_wcm_plugin.py" beforeDir="false" afterPath="$PROJECT_DIR$/propellent_02_modules/_01_platform_Part/Part_wcm_plugin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/propellent_02_modules/_01_platform_Part/composite/composite_plugin.py" beforeDir="false" afterPath="$PROJECT_DIR$/propellent_02_modules/_01_platform_Part/composite/composite_plugin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/propellent_02_modules/_02_platform_tie/_02_platform_tie_plugin.py" beforeDir="false" afterPath="$PROJECT_DIR$/propellent_02_modules/_02_platform_tie/_02_platform_tie_plugin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/propellent_02_modules/_03_platform_thermal/_03_platform_thermal_plugin.py" beforeDir="false" afterPath="$PROJECT_DIR$/propellent_02_modules/_03_platform_thermal/_03_platform_thermal_plugin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/propellent_02_modules/_04_platform_curing/_04_platform_curing_plugin.py" beforeDir="false" afterPath="$PROJECT_DIR$/propellent_02_modules/_04_platform_curing/_04_platform_curing_plugin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/propellent_02_modules/_05_platform_warp/_05_platform_warp_plugin.py" beforeDir="false" afterPath="$PROJECT_DIR$/propellent_02_modules/_05_platform_warp/_05_platform_warp_plugin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/propellent_02_modules/_05_platform_warp/warp_kernel.py" beforeDir="false" afterPath="$PROJECT_DIR$/propellent_02_modules/_05_platform_warp/warp_kernel.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/propellent_03_function/ABAQUSFunction.py" beforeDir="false" afterPath="$PROJECT_DIR$/propellent_03_function/ABAQUSFunction.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -21,14 +12,59 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/自动化开发工具/将odb文件中的图片打印出去-新版.py">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/自动化开发工具/固化工艺.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="6" column="24" lean-forward="true" selection-start-line="6" selection-start-column="24" selection-end-line="6" selection-end-column="24" />
+            <state relative-caret-position="540">
+              <caret line="34" selection-end-line="51" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/自动化开发工具/温度冲击.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="396">
+              <caret line="26" column="75" selection-start-line="26" selection-start-column="68" selection-end-line="26" selection-end-column="75" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/自动化开发工具/缠绕工艺.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="594">
+              <caret line="39" column="25" selection-start-line="39" selection-start-column="25" selection-end-line="39" selection-end-column="25" />
               <folding>
-                <element signature="e#15#35#0" expanded="true" />
+                <element signature="e#85#105#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/删除pyc.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="162">
+              <caret line="9" column="51" selection-start-line="9" selection-start-column="51" selection-end-line="9" selection-end-column="51" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/自动化开发工具/执行脚本.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="18">
+              <caret line="1" column="22" selection-end-line="1" selection-end-column="22" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/自动化开发工具/打印报告.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="180">
+              <caret line="14" selection-start-line="14" selection-end-line="31" selection-end-column="41" />
             </state>
           </provider>
         </entry>
@@ -44,12 +80,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>data_h_e</find>
-      <find>data_h_p</find>
-      <find>p</find>
-      <find>input_part</find>
-      <find>cmd</find>
-      <find>DTXT IS SUCCESSFUL STARTING!!!')</find>
       <find>CAD_path</find>
       <find>shellS</find>
       <find>AFXStringKeyword</find>
@@ -57,7 +87,6 @@
       <find>Current</find>
       <find>Part()</find>
       <find>Part(</find>
-      <find>pyc</find>
       <find>cmd_h</find>
       <find>Part</find>
       <find>file</find>
@@ -74,6 +103,13 @@
       <find>leaf</find>
       <find>caeModules</find>
       <find>'Viewport: 8'</find>
+      <find>start_temp</find>
+      <find>step_time1</find>
+      <find>pyc</find>
+      <find>Viewport: 2</find>
+      <find>i</find>
+      <find>struct_name</find>
+      <find>struct_name[3]</find>
     </findStrings>
     <replaceStrings>
       <replace>data</replace>
@@ -88,6 +124,12 @@
       <replace>current_sess</replace>
       <replace>viewport_name</replace>
       <replace>session.viewports['Viewport: 1']</replace>
+      <replace>Struct03</replace>
+      <replace>log</replace>
+      <replace>Viewport: 1</replace>
+      <replace>j</replace>
+      <replace>_</replace>
+      <replace>struct_name[k]</replace>
     </replaceStrings>
     <dirStrings>
       <dir>D:\temp\abaqus_plugins\propellant</dir>
@@ -99,24 +141,29 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/自动化开发工具/温度冲击.py" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/propellent_02_modules/_05_platform_warp/warp_kernel.py" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/propellent_03_function/propellent_03_function.py" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/propellent_02_modules/_01_platform_Part/composite/composite_plugin.py" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/propellent_02_modules/_04_platform_curing/curing_kernel.py" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/自动化开发工具/将odb文件中的图片打印出去.py" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/propellent_02_modules/_01_platform_Part/Part_wcm_plugin.py" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/自动化开发工具/固化工艺.py" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/自动化开发工具/缠绕工艺.py" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/自动化开发工具/执行脚本.py" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/propellent_02_modules/_01_platform_Part/Part_wcm_DB.py" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/propellent_02_modules/_04_platform_curing/curing_kernel.py" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/propellent_02_modules/_02_platform_tie/tie_kernel.py" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/propellent_02_modules/_01_platform_Part/Part_wcm_plugin.py" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/propellent_02_modules/_01_platform_Part/composite/composite_plugin.py" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/自动化开发工具/自动化开发工具之佐料.py" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/propellent_03_function/propellent_03_function.py" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/propellent_02_modules/_01_platform_Part/Part_wcm_kernel.py" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/propellent_03_function/ABAQUSFunction.py" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/propellent_02_modules/_02_platform_tie/tie_kernel.py" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/自动化开发工具/自动化开发工具之佐料.py" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/自动化开发工具/输出最大应变值.py" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/自动化开发工具/打印图片.py" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/自动化开发工具/将odb文件中的图片打印出去.py" root0="SKIP_INSPECTION" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/temp.py" />
         <option value="$PROJECT_DIR$/propellent_02_modules/_01_platform_Part/ABAQUSFunction.py" />
-        <option value="$PROJECT_DIR$/propellent_03_function/propellent_03_function.py" />
         <option value="$PROJECT_DIR$/propellent_02_modules/_01_platform_Part/Part_wcm_DB.py" />
         <option value="$PROJECT_DIR$/Platform_totalDB.py" />
         <option value="$PROJECT_DIR$/删除pyc.py" />
@@ -124,7 +171,6 @@
         <option value="$PROJECT_DIR$/propellent_02_modules/_03_platform_thermal/temprature_shock_kernel.py" />
         <option value="$PROJECT_DIR$/propellent_02_modules/_04_platform_curing/curing_kernel.py" />
         <option value="$PROJECT_DIR$/propellent_03_function/ABAQUSFunction.py" />
-        <option value="$PROJECT_DIR$/propellent_02_modules/_05_platform_warp/warp_kernel.py" />
         <option value="$PROJECT_DIR$/propellent_02_modules/_05_platform_warp/_05_platform_warp_plugin.py" />
         <option value="$PROJECT_DIR$/propellent_02_modules/_04_platform_curing/_04_platform_curing_plugin.py" />
         <option value="$PROJECT_DIR$/propellent_02_modules/_02_platform_tie/_02_platform_tie_plugin.py" />
@@ -136,12 +182,23 @@
         <option value="$PROJECT_DIR$/自动化开发工具/自动化开发工具之佐料.py" />
         <option value="$PROJECT_DIR$/自动化开发工具/将odb文件中的图片打印出去-新版.py" />
         <option value="$PROJECT_DIR$/自动化开发工具/将odb文件中的图片打印出去.py" />
+        <option value="$PROJECT_DIR$/propellent_03_function/propellent_03_function.py" />
+        <option value="$PROJECT_DIR$/propellent_02_modules/_05_platform_warp/warp_kernel.py" />
+        <option value="$PROJECT_DIR$/自动化开发工具/读取3方向主应变.py" />
+        <option value="$PROJECT_DIR$/自动化开发工具/打印图片.py" />
+        <option value="$PROJECT_DIR$/删除log.py" />
+        <option value="$PROJECT_DIR$/自动化开发工具/输出最大应变值.py" />
+        <option value="$PROJECT_DIR$/自动化开发工具/肥料.py" />
+        <option value="$PROJECT_DIR$/自动化开发工具/温度冲击.py" />
+        <option value="$PROJECT_DIR$/自动化开发工具/打印报告.py" />
+        <option value="$PROJECT_DIR$/自动化开发工具/执行脚本.py" />
+        <option value="$PROJECT_DIR$/自动化开发工具/缠绕工艺.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="720" />
-    <option name="y" value="60" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="647" />
+    <option name="y" value="50" />
     <option name="width" value="1940" />
     <option name="height" value="1050" />
   </component>
@@ -164,11 +221,13 @@
             <path>
               <item name="propellant" type="b2602c69:ProjectViewProjectNode" />
               <item name="propellant" type="462c0819:PsiDirectoryNode" />
-              <item name="自动化开发工具" type="462c0819:PsiDirectoryNode" />
+              <item name="propellent_02_modules" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="propellant" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="propellant" type="462c0819:PsiDirectoryNode" />
+              <item name="propellent_02_modules" type="462c0819:PsiDirectoryNode" />
+              <item name="_05_platform_warp" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -177,8 +236,8 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="D:/人工智能/ch03_DeepLearningFoundation" />
-    <property name="settings.editor.selected.configurable" value="editor.preferences.appearance" />
+    <property name="last_opened_file_path" value="D:/人工智能/NERuselocal/NERuselocal" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="PyConsoleOptionsProvider">
     <option name="myPythonConsoleState">
@@ -190,6 +249,7 @@
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\temp\abaqus_plugins\propellant\自动化开发工具" />
+      <recent name="D:\temp\abaqus_plugins\propellant" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -205,6 +265,48 @@
     </option>
   </component>
   <component name="RunManager" selected="Python.删除pyc">
+    <configuration name="读取3方向主应变" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="propellant" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/自动化开发工具" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/自动化开发工具/读取3方向主应变.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="删除log" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="propellant" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/删除log.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="删除pyc" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="propellant" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -250,6 +352,8 @@
     <recent_temporary>
       <list>
         <item itemvalue="Python.删除pyc" />
+        <item itemvalue="Python.删除log" />
+        <item itemvalue="Python.读取3方向主应变" />
         <item itemvalue="Python.temp" />
       </list>
     </recent_temporary>
@@ -277,21 +381,21 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <frame x="518" y="40" width="1552" height="840" extended-state="0" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" weight="0.2582563" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.23680739" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.37818697" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.11614731" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.39943343" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="Version Control" order="6" weight="0.3286119" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.1145686" />
       <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
-      <window_info anchor="bottom" id="Python Console" order="9" visible="true" weight="0.060906515" />
+      <window_info anchor="bottom" id="Python Console" order="9" weight="0.060906515" />
       <window_info anchor="bottom" id="TODO" order="10" weight="0.3286119" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -318,13 +422,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/.PyCharmCE2018.3/system/python_stubs/-704344267/builtins.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="226">
-          <caret line="5729" column="6" selection-start-line="5729" selection-start-column="6" selection-end-line="5729" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Platform_total_plugin.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1320">
@@ -333,25 +430,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/propellent_02_modules/_02_platform_tie/pick2index.py" />
-    <entry file="file://$PROJECT_DIR$/删除pyc.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="283">
-          <caret line="20" column="20" selection-start-line="20" selection-start-column="20" selection-end-line="20" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/propellent_03_function/propellent_03_function.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="14664">
-          <caret line="676" column="4" selection-start-line="676" selection-start-column="4" selection-end-line="676" selection-end-column="4" />
-          <folding>
-            <element signature="e#12830#13424#0" />
-            <element signature="e#13468#13536#0" />
-            <element signature="e#16024#16891#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/Anaconda3/Lib/os.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="226">
@@ -401,26 +479,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/.PyCharmCE2018.3/system/python_stubs/-704344267/nt.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1488">
-          <caret line="62" column="10" selection-start-line="62" selection-start-column="6" selection-end-line="62" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/propellent_03_function/ABAQUSFunction.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="8064">
-          <caret line="384" column="24" selection-start-line="384" selection-start-column="24" selection-end-line="384" selection-end-column="24" />
-          <folding>
-            <element signature="e#15#35#0" expanded="true" />
-            <element signature="e#121#715#0" />
-            <element signature="e#759#827#0" />
-            <element signature="e#5428#6230#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$USER_HOME$/.PyCharmCE2018.3/system/python_stubs/-704344267/nt.py" />
     <entry file="file://$PROJECT_DIR$/propellent_02_modules/_04_platform_curing/_04_platform_curing_plugin.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="936">
@@ -470,13 +529,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/Desktop/新建文本文档.bat">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="48">
-          <caret line="2" column="14" selection-start-line="2" selection-start-column="14" selection-end-line="2" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$USER_HOME$/Desktop/新建文本文档.bat" />
     <entry file="file://$PROJECT_DIR$/propellent_02_modules/_01_platform_Part/composite/compositeDB.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1008">
@@ -488,35 +541,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="264">
           <caret line="28" column="12" selection-start-line="28" selection-start-column="12" selection-end-line="28" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/propellent_02_modules/_01_platform_Part/Part_wcm_kernel.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret selection-end-column="14" />
-          <folding>
-            <element signature="e#15#234#1" />
-            <element signature="e#236#256#0" expanded="true" />
-            <element signature="e#1328#1444#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/propellent_02_modules/_05_platform_warp/warp_kernel.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="7" column="24" selection-start-line="7" selection-start-column="24" selection-end-line="7" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/自动化开发工具/将odb文件中的图片打印出去.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="99" column="81" lean-forward="true" selection-start-line="99" selection-start-column="81" selection-end-line="99" selection-end-column="81" />
-          <folding>
-            <element signature="e#15#35#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -532,11 +556,154 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/自动化开发工具/将odb文件中的图片打印出去-新版.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="6" column="24" lean-forward="true" selection-start-line="6" selection-start-column="24" selection-end-line="6" selection-end-column="24" />
+        <state relative-caret-position="264">
+          <caret line="12" column="38" selection-start-line="12" selection-start-column="38" selection-end-line="12" selection-end-column="38" />
           <folding>
             <element signature="e#15#35#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/propellent_02_modules/_01_platform_Part/Part_wcm_kernel.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="312">
+          <caret line="23" column="11" selection-start-line="23" selection-start-column="11" selection-end-line="23" selection-end-column="11" />
+          <folding>
+            <element signature="e#15#234#1" />
+            <element signature="e#236#256#0" expanded="true" />
+            <element signature="e#1328#1444#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/propellent_03_function/propellent_03_function.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-112">
+          <caret line="340" column="5" selection-start-line="340" selection-start-column="5" selection-end-line="340" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.PyCharmCE2018.3/system/python_stubs/-704344267/builtins.py" />
+    <entry file="file://$PROJECT_DIR$/propellent_03_function/ABAQUSFunction.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret selection-end-column="14" />
+          <folding>
+            <element signature="e#15#35#0" expanded="true" />
+            <element signature="e#121#715#0" />
+            <element signature="e#759#827#0" />
+            <element signature="e#5428#6230#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/删除log.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="167">
+          <caret line="19" column="50" selection-start-line="19" selection-start-column="50" selection-end-line="19" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/自动化开发工具/读取3方向主应变.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="9" column="39" selection-start-line="9" selection-start-column="39" selection-end-line="9" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/自动化开发工具/输出最大应变值.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="696">
+          <caret line="29" column="35" lean-forward="true" selection-start-line="13" selection-start-column="4" selection-end-line="29" selection-end-column="35" />
+          <folding>
+            <element signature="e#15#35#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/自动化开发工具/导入构件.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#20#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/自动化开发工具/将odb文件中的图片打印出去.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1074">
+          <caret line="99" column="81" lean-forward="true" selection-start-line="99" selection-start-column="81" selection-end-line="99" selection-end-column="81" />
+          <folding>
+            <element signature="e#15#35#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/自动化开发工具/打印图片.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="480">
+          <caret line="168" column="59" lean-forward="true" selection-start-line="168" selection-start-column="4" selection-end-line="168" selection-end-column="59" />
+          <folding>
+            <element signature="e#0#20#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/propellent_02_modules/_05_platform_warp/warp_kernel.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="104">
+          <caret line="65" column="46" lean-forward="true" selection-start-line="65" selection-start-column="46" selection-end-line="65" selection-end-column="46" />
+          <folding>
+            <element signature="e#150#170#0" expanded="true" />
+            <element signature="e#871#948#0" />
+            <element signature="e#977#1254#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/自动化开发工具/固化工艺.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="540">
+          <caret line="34" selection-end-line="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/自动化开发工具/温度冲击.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="396">
+          <caret line="26" column="75" selection-start-line="26" selection-start-column="68" selection-end-line="26" selection-end-column="75" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/自动化开发工具/缠绕工艺.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="594">
+          <caret line="39" column="25" selection-start-line="39" selection-start-column="25" selection-end-line="39" selection-end-column="25" />
+          <folding>
+            <element signature="e#85#105#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/自动化开发工具/执行脚本.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="18">
+          <caret line="1" column="22" selection-end-line="1" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/自动化开发工具/打印报告.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="14" selection-start-line="14" selection-end-line="31" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/删除pyc.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="9" column="51" selection-start-line="9" selection-start-column="51" selection-end-line="9" selection-end-column="51" />
         </state>
       </provider>
     </entry>
